@@ -30,10 +30,10 @@
 			</div>
 		</div>
 		<div data-role="content">
-		<form action="wx.php?do=bind&op=add" method="post">
+		<form action="wx.php?do=bind&op=add" method="post" data-ajax="false">
 			<div class="input-field"><input id="username" name="username" placeholder="13612345678"/></div>
 			<div class="input-field"><input id="password" name="password" placeholder="**************"/></div>
-			<input id="wx" type="hidden" name="wx" value="$_GET['wx']" />
+			<input id="wx" type="hidden" name="wx" value="$_GET['wxkey']" />
 			<div class="publish-btn"><button type="submit" name="submit" value="submit" data-theme="a">确定</button></div>
 		</form>
 		</div>
