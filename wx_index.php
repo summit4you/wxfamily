@@ -3,12 +3,12 @@
   * wechat php test
   */
 
-
+include_once( './../common.php' );
 include_once( 'botutil.php' );
 
 
-$welcome = 'ÄãºÃ£¡»¶Ó­À´µ½"ÎÒ¼Ò"£¬Î¢ÐÅ¿Í»§¶ËµÄÖÇÄÜ»úÆ÷ÈË£¬¿ÉÒÔ°ïÄãÑ¸ËÙ²éÑ¯¼ÒÈË¶¯Ì¬¡£ÄãÒ²¿ÉÒÔÖ±½ÓÍ¨¹ýÎ¢ÐÅ¿ìËÙ·¢²¼ÕÕÆ¬ºÍÎÄ×Ö£¬Á¢¼´¸ú¼ÒÈË·ÖÏíÓÐ°®µÄÃ¿Ò»¿Ì!\n\n*
-»Ø¸´"1"£¬²é¿´¼ÒÈË¶¯Ì¬;\n(»Ø¸´¡°¼ÒÈËµç»°ºÅÂë¡±¿ÉÒÔ²é¿´Ö¸¶¨¼ÒÈËµÄ¶¯Ì¬ÐÅÏ¢¡£)\n*»Ø¸´¡°2¡±,·¢±í;\n»Ø¸´"0"£¬×¢²á»ò°ó¶¨ÕËºÅ;';
+$welcome = 'ä½ å¥½ï¼æ¬¢è¿Žæ¥åˆ°"æˆ‘å®¶"ï¼Œå¾®ä¿¡å®¢æˆ·ç«¯çš„æ™ºèƒ½æœºå™¨äººï¼Œå¯ä»¥å¸®ä½ è¿…é€ŸæŸ¥è¯¢å®¶äººåŠ¨æ€ã€‚ä½ ä¹Ÿå¯ä»¥ç›´æŽ¥é€šè¿‡å¾®ä¿¡å¿«é€Ÿå‘å¸ƒç…§ç‰‡å’Œæ–‡å­—ï¼Œç«‹å³è·Ÿå®¶äººåˆ†äº«æœ‰çˆ±çš„æ¯ä¸€åˆ»!\n\n*
+å›žå¤"1"ï¼ŒæŸ¥çœ‹å®¶äººåŠ¨æ€;\n(å›žå¤â€œå®¶äººç”µè¯å·ç â€å¯ä»¥æŸ¥çœ‹æŒ‡å®šå®¶äººçš„åŠ¨æ€ä¿¡æ¯ã€‚)\n*å›žå¤â€œ2â€,å‘è¡¨;\nå›žå¤"0"ï¼Œæ³¨å†Œæˆ–ç»‘å®šè´¦å·;';
 //define your token
 define("TOKEN", "family");
 $wechatObj = new wechatCallbackapiTest();
@@ -30,8 +30,8 @@ class wechatCallbackapiTest
     }
 
 	public function welcome($toUsername) {
-        if($toUsername=="gh_51b7466306d9"){//Î¢ÐÅÔ­Ê¼id
-            return      $welcome;//»¶Ó­Óï
+        if($toUsername=="gh_51b7466306d9"){
+            return      $welcome;
         }
     }
 
@@ -52,7 +52,7 @@ class wechatCallbackapiTest
 				
 				if(!empty( $keyword ))
                 {
-					
+					runlog("wx", $keyword);
 					if ($key=='Hello2BizUser'){
 						$msgType = "text";
 						$contentStr = $this->welcome($toUsername);
@@ -61,8 +61,8 @@ class wechatCallbackapiTest
 						$msgType = "news";
 						$url = "http://www.familyday.com.cn/wx.php?do=bind&username=".$fromUsername;
 						$pic = "http://www.familyday.com.cn/wx/template/css/images/logo2-2x.jpg";
-						$articles[] = makeArticleItem("°ó¶¨Î¢ÐÅÕÊºÅ", "Çëµã»÷½øÈëÎ¢ÐÅ°ó¶¨Ò³", $pic, $url);
-						$resultStr = makeArticles($fromUsername, $toUsername, $time, $msgType, "°ó¶¨Î¢ÐÅÕÊºÅ",$articles); 
+						$articles[] = makeArticleItem("ç»‘å®šå¾®ä¿¡å¸å·", "è¯·ç‚¹å‡»è¿›å…¥å¾®ä¿¡ç»‘å®šé¡µ", $pic, $url);
+						$resultStr = makeArticles($fromUsername, $toUsername, $time, $msgType, "ç»‘å®šå¾®ä¿¡å¸å·",$articles); 
 					}else{
 						$msgType = "text";
 						$contentStr = $this->welcome($toUsername);
