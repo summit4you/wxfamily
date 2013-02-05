@@ -30,7 +30,7 @@ class wechatCallbackapiTest
     }
 
 	public function welcome($toUsername) {
-        if($toUsername=="gh_51b7466306d9"){
+        if($toUsername=="gh_71e78c3b0890"){
             return      $welcome;
         }
     }
@@ -64,8 +64,8 @@ class wechatCallbackapiTest
 						$resultStr = makeArticles($fromUsername, $toUsername, $time, $msgType, "绑定微信帐号",$articles); 
 					}else{
 						$msgType = "text";
-						$contentStr = $this->welcome($toUsername);
-						$resultStr = makeText($fromUsername, $toUsername, $time, $msgType, $contentStr); 
+						
+						$resultStr = makeText($fromUsername, $toUsername, $time, $msgType, $welcome); 
 					}
                 	echo $resultStr;
                 }else{
