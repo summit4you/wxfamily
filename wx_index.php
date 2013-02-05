@@ -7,8 +7,7 @@ include_once( './../common.php' );
 include_once( 'botutil.php' );
 
 
-$welcome = '你好！欢迎来到"我家"，微信客户端的智能机器人，可以帮你迅速查询家人动态。你也可以直接通过微信快速发布照片和文字，立即跟家人分享有爱的每一刻!\n\n*
-回复"1"，查看家人动态;\n(回复“家人电话号码”可以查看指定家人的动态信息。)\n*回复“2”,发表;\n回复"0"，注册或绑定账号;';
+
 //define your token
 define("TOKEN", "family");
 $wechatObj = new wechatCallbackapiTest();
@@ -31,7 +30,8 @@ class wechatCallbackapiTest
 
 	public function welcome($toUsername) {
         if($toUsername=="gh_71e78c3b0890"){
-            return      $welcome;
+            return      "你好！欢迎来到\"我家\"，微信客户端的智能机器人，可以帮你迅速查询家人动态。你也可以直接通过微信快速发布照片和文字，立即跟家人分享有爱的每一刻!\n\n*
+回复\"1\"，查看家人动态;\n(回复\“家人电话号码\”可以查看指定家人的动态信息。)\n*回复\“2\”,发表;\n回复\"0\"，注册或绑定账号;";
         }
     }
 
@@ -64,8 +64,9 @@ class wechatCallbackapiTest
 						$resultStr = makeArticles($fromUsername, $toUsername, $time, $msgType, "绑定微信帐号",$articles); 
 					}else{
 						$msgType = "text";
-						
-						$resultStr = makeText($fromUsername, $toUsername, $time, $msgType, $welcome); 
+						$contentStr = "你好！欢迎来到\"我家\"，微信客户端的智能机器人，可以帮你迅速查询家人动态。你也可以直接通过微信快速发布照片和文字，立即跟家人分享有爱的每一刻!\n\n*
+回复\"1\"，查看家人动态;\n(回复\“家人电话号码\”可以查看指定家人的动态信息。)\n*回复\“2\”,发表;\n回复\"0\"，注册或绑定账号;";
+						$resultStr = makeText($fromUsername, $toUsername, $time, $msgType, $contentStr); 
 					}
                 	echo $resultStr;
                 }else{
