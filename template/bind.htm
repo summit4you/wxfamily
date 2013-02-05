@@ -22,11 +22,17 @@
 
 <<script type="text/javascript">
 	$(document).ready(function(){
-		
+
 		function onSuccess(data, status)
         {
-            data = $.trim(data);
-            $("#notification").text(data);
+            data = $.parseJSON(data);
+            if (data.code==1)
+            {
+            	alert(data.msg);
+            }else{
+            	alert('成功');
+            }
+            
         }
   
         function onError(data, status)
