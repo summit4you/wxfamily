@@ -68,10 +68,13 @@
 
 	          if(data.error==0){
 	          	data = data.data;
-	          	var markup = "<li><b>${id}</b> (${message})</li>";
-	          	
-	          	$("#feedTemplate").tmpl(data ).appendTo('#feedlist');
-	          	$('#page').val($('#page').val()+1);
+	          	if (data.length<=0)
+	          		alert("没有更多动态了，赶快发布新的动态吧！");
+	          	else{
+		          	
+		          	$("#feedTemplate").tmpl(data ).appendTo('#feedlist');
+		          	$('#page').val($('#page').val()+1);
+		          }
 	          }else{
 	          	alert(data.msg);
 	          }
