@@ -8,19 +8,19 @@ if ($_GET["op"]=="add"){
 	$password = empty($_POST['password']) ? '' : trim($_POST['password']);
 
 	if(empty($username) || empty($password)) {
-		showmessage('users_were_not_empty_please_re_login',  'wx.php?do=bind&wxkey='.$_GET['wxkey']);
+		showmessage('users_were_not_empty_please_re_login',  'wx.php?do=bind&wxkey='.$_POST['wxkey']);
 	}
 
 	// 登陆验证
 	if(!$passport = getpassport($username, $password)) {
 		
-		showmessage('login_failure_please_re_login',  'wx.php?do=bind&wxkey='.$_GET['wxkey']);
+		showmessage('login_failure_please_re_login',  'wx.php?do=bind&wxkey='.$_POST['wxkey']);
 	}
 
 
 	updatetable('space', array('wxkey'=>$_POST['wxkey']), array('uid'=>$passport['uid']));
 
-	showmessage('do_success', 'wx.php?do=feed&wxkey='.$_GET['wxkey'], 0);
+	showmessage('do_success', 'wx.php?do=feed&wxkey='.$_POST['wxkey'], 0);
 
 }
 
