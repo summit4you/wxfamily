@@ -48,12 +48,11 @@ class wechatCallbackapiTest
                 $toUsername = $postObj->ToUserName;
                 $keyword = trim($postObj->Content);
                 $time = time();
-                addUser2($fromUsername);
 				
 				if(!empty( $keyword ))
                 {
 					runlog("wx", $keyword);
-					if ($key=='Hello2BizUser'){
+					if ($keyword=='Hello2BizUser'){
 						$msgType = "text";
 						$contentStr = $this->welcome($toUsername);
 						$resultStr = makeText($fromUsername, $toUsername, $time, $msgType, $contentStr); 
