@@ -12,8 +12,8 @@ $welcome = '你好！欢迎来到"我家"，微信客户端的智能机器人，可以帮你迅速查询家人动
 //define your token
 define("TOKEN", "family");
 $wechatObj = new wechatCallbackapiTest();
-$wechatObj->valid();
-//$wechatObj->responseMsg();
+//$wechatObj->valid();
+$wechatObj->responseMsg();
 
 
 class wechatCallbackapiTest
