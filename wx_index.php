@@ -71,7 +71,7 @@ class wechatCallbackapiTest
 
 *回复\"1\"，查看家人动态;(回复\"家人电话号码\"可以查看指定家人的动态信息。)
 *回复\"2\",发表;
-回复\"0\"，注册或绑定账号;";
+回复\"3\"，注册或绑定账号;";
 						$resultStr = makeText($fromUsername, $toUsername, $time, $msgType, $contentStr); 
 					}
                 	echo $resultStr;
