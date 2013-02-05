@@ -1,6 +1,7 @@
 <?php
 
 include_once('./../common.php');
+include_once( 'botutil.php' );
 
 //ÔÊÐí¶¯×÷
 $dos = array('bind', 'feed', 'cp');

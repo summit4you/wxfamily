@@ -20,6 +20,38 @@
 <script type="text/javascript" src="template/js/jquery.retina.js"></script>
 <script type="text/javascript" src="template/js/jquery.resizecrop-1.0.3.js"></script>
 
+<<script type="text/javascript">
+	$(document).ready(function(){
+		
+		function onSuccess(data, status)
+        {
+            data = $.trim(data);
+            $("#notification").text(data);
+        }
+  
+        function onError(data, status)
+        {
+            // handle an error
+        } 
+
+		$("#submit").click(function(){
+
+			var formData = $("#callAjaxForm").serialize();
+  
+            $.ajax({
+                type: "POST",
+                url: "wx.php?do=bind&op=add",
+                cache: false,
+                data: formData,
+                success: onSuccess,
+                error: onError
+            });	
+
+			return false;
+		});
+	});
+</script>
+
 </HEAD>
 <body id="top">
 	<div data-role="page" data-theme="a" data-fullscreen="true" id="main" style="background-color: #F5F4EF;">
@@ -30,11 +62,11 @@
 			</div>
 		</div>
 		<div data-role="content">
-		<form action="wx.php?do=bind&op=add" method="post" data-ajax="false">
+		<form action="wx.php?do=bind&op=add" method="post" data-ajax="false" id="callAjaxForm">
 			<div class="input-field"><input id="username" name="username" placeholder="13612345678"/></div>
 			<div class="input-field"><input id="password" name="password" placeholder="**************"/></div>
 			<input id="wx" type="hidden" name="wx" value="$_GET['wxkey']" />
-			<div class="publish-btn"><button type="submit" name="submit" value="submit" data-theme="a">确定</button></div>
+			<div class="publish-btn"><button type="submit" id="submit" name="submit" value="submit" data-theme="a">确定</button></div>
 		</form>
 		</div>
 		

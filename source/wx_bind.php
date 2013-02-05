@@ -8,18 +8,19 @@ if ($_GET["op"]=="add"){
 	$password = empty($_REQUEST['password']) ? '' : trim($_REQUEST['password']);
 
 	if(empty($username) || empty($password)) {
-		showmessage('users_were_not_empty_please_re_login', 'wx.php?do=bind&wxkey='.$_POST['wxkey']);
+		capi_showmessage_by_data('users_were_not_empty_please_re_login', 1);
 	}
 
 	// 登陆验证
 	if(!$passport = getpassport($username, $password)) {
 		
-		showmessage('login_failure_please_re_login', 'wx.php?do=bind&wxkey='.$_POST['wxkey']);
+		capi_showmessage_by_data('login_failure_please_re_login', 1);
 	}
 
 
 	updatetable('space', array('wxkey'=>$_POST['wxkey']), array('uid'=>$passport['uid']));
-	showmessage('do_success', 'wx.php?do=feed', 0);
+
+	capi_showmessage_by_data('do_success', 0);
 
 }
 

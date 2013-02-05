@@ -135,7 +135,44 @@ function html2text($str){
 	return $str;
 }
 
+function capi_mkjson($response='', $callback=''){
+	
+	if ($callback){
+		header('Cache-Control: no-cache, must-revalidate');
+		header('Content-Type: text/javascript;charset=utf-8');
+		echo $callback.'('.json_encode($response).');';
+	}else{
+		// application/x-json will make error in iphone, so I use the text/json
+		// instead of the orign mine type
+		header('Cache-Control: no-cache, must-revalidate');
+		header('Content-Type: text/json;'); 
+		
+		echo json_encode($response);
 
+	}
+	exit();
+}
+
+function capi_showmessage_by_data($msgkey, $code=1, $data=array()){
+	obclean();
+
+	//去掉广告
+	$_SGLOBAL['ad'] = array();
+	
+	//语言
+	include_once(S_ROOT.'./language/lang_showmessage.php');
+	if(isset($_SGLOBAL['msglang'][$msgkey])) {
+		$message = lang_replace($_SGLOBAL['msglang'][$msgkey], $values);
+	} else {
+		$message = $msgkey;
+	}
+	$r = array();
+	$r['code'] = $code;
+	$r['data'] = $data;
+	$r['msg'] = $message;
+	$r['action'] = $msgkey;
+	capi_mkjson($r, $_REQUEST['callback'] );
+}
 
 
 ?>
