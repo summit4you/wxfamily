@@ -69,8 +69,8 @@
 	          if(data.error==0){
 	          	data = data.data;
 	          	var markup = "<li><b>${id}</b> (${message})</li>";
-	          	$.template( "feedTemplate", markup );
-	          	$.tmpl( "feedTemplate", data ).appendTo('#feedlist');
+	          	
+	          	$("#feedTemplate").tmpl(data ).appendTo('#feedlist');
 	          	$('#page').val($('#page').val()+1);
 	          }else{
 	          	alert(data.msg);
