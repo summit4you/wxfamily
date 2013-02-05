@@ -20,7 +20,7 @@ if ($_GET["op"]=="add"){
 
 	updatetable('space', array('wxkey'=>$_POST['wxkey']), array('uid'=>$passport['uid']));
 
-	showmessage('do_success', 'wx.php?do=feed', 0);
+	showmessage('do_success', 'wx.php?do=feed&wxkey='.$_GET['wxkey'], 0);
 
 }
 
