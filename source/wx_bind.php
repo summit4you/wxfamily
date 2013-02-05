@@ -1,5 +1,5 @@
 <?php
 
-include_once template("./template/bind.html");
+include_once template("./wx/template/bind");
 
 ?>
