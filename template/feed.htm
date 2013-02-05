@@ -81,7 +81,17 @@
 
 	$(function(){
 		getfeeds($('#wxkey').val(), $('#perpage').val(), $('#page').val());
+
+		$(window).scroll(function()
+		{
+		    if($(window).scrollTop() == $(document).height() - $(window).height())
+		    {
+		    	getfeeds($('#wxkey').val(), $('#perpage').val(), $('#page').val());
+			}
+		});
 	})
+
+
 	
 </script>
 
