@@ -1338,7 +1338,7 @@ text-decoration: none !important;
 .ui-btn-inner {
 	border-top: 1px solid 	#fff;
 	border-color: rgba(255,255,255,.3);
-	font-size: 12px;
+	font-size: 24px;
 }
 .ui-disabled {
 	opacity: .3;

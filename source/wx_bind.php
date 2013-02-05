@@ -10,8 +10,7 @@ if ($_GET["op"]=="add"){
 	if(empty($username) || empty($password)) {
 		capi_showmessage_by_data('users_were_not_empty_please_re_login', 1);
 	}
-	runlog("wx", $username);
-	runlog("wx", $password);
+	
 	// 登陆验证
 	if(!$passport = getpassport($username, $password)) {
 		
