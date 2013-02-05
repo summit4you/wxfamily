@@ -56,6 +56,6 @@ body{margin-left:10px;margin-right:10px;background-color:#f5f4ef;}
 .class-btn .ui-btn-icon-left>.ui-btn-inner>.ui-icon,.class-btn .ui-btn-icon-right>.ui-btn-inner>.ui-icon{top:15%;}
 .publish-btn{margin-top:12.5%;margin-left:auto;margin-right:auto;width:32.8125%;}
 .bk-color2{background-color:#666666;}
-.input-field{margin-left:3.125%;margin-right:3.125%;margin-top:5.208333333333334%;}.input-field div.ui-input-text{padding:15px 15px 15px 15px;box-shadow:none;background-color:#E0E0E0;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;}
+.input-field{margin-left:3.125%;margin-right:3.125%;margin-top:5.208333333333334%;}.input-field div.ui-input-text{padding:10px 15px 10px 15px;box-shadow:none;background-color:#E0E0E0;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;}
 .input-field .ui-body-a,.input-field .ui-dialog.ui-overlay-a{border-color:#E0E0E0;}
 .input-field input{border:1px solid #E0E0E0;color:#999999;font-size:1.5em;font-family:Microsoft YaHei;}

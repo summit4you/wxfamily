@@ -13,9 +13,8 @@
 }
 
 .ui-bar-a {
-	border-color:rgb(255,255,255);
-	border-width:1px;
-	border-style:solid;
+	
+	border: none;
 	-moz-border-radius:1px;
 	-webkit-border-radius:1px;
 	border-radius:1px;
