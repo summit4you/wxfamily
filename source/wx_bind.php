@@ -8,19 +8,19 @@ if ($_GET["op"]=="add"){
 	$password = empty($_POST['password']) ? '' : trim($_POST['password']);
 
 	if(empty($username) || empty($password)) {
-		capi_showmessage_by_data('users_were_not_empty_please_re_login', 1);
+		showmessage('users_were_not_empty_please_re_login',  'wx.php?do=bind&wxkey='.$_GET['wxkey']);
 	}
-	
+
 	// 登陆验证
 	if(!$passport = getpassport($username, $password)) {
 		
-		capi_showmessage_by_data('login_failure_please_re_login', 1);
+		showmessage('login_failure_please_re_login',  'wx.php?do=bind&wxkey='.$_GET['wxkey']);
 	}
 
 
 	updatetable('space', array('wxkey'=>$_POST['wxkey']), array('uid'=>$passport['uid']));
 
-	capi_showmessage_by_data('do_success', 0);
+	showmessage('do_success', 'www.baid.com', 0);
 
 }
 

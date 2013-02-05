@@ -20,42 +20,42 @@
 <script type="text/javascript" src="template/js/jquery.retina.js"></script>
 <script type="text/javascript" src="template/js/jquery.resizecrop-1.0.3.js"></script>
 
-<script type="text/javascript">
-	$(document).ready(function(){
+ <script type="text/javascript">
+// 	$(document).ready(function(){
 
-		function onSuccess(data, status)
-        {
-            if (data.code==1)
-            {
-            	alert(data.msg);
-            }else{
-            	window.src.href = "www.baid.com";
-            }
+// 		function onSuccess(data, status)
+//         {
+//             if (data.code==1)
+//             {
+//             	alert(data.msg);
+//             }else{
+//             	window.src.href = "www.baid.com";
+//             }
             
-        }
+//         }
   
-        function onError(data, status)
-        {
-            // handle an error
-        } 
+//         function onError(data, status)
+//         {
+//             // handle an error
+//         } 
 
-		$("#submit").click(function(){
+// 		$("#submit").click(function(){
 
-			var formData = $("#callAjaxForm").serialize();
+// 			var formData = $("#callAjaxForm").serialize();
   
-            $.ajax({
-                type: "POST",
-                url: "wx.php?do=bind&op=add",
-                cache: false,
-                data: formData,
-                success: onSuccess,
-                error: onError
-            });	
+//             $.ajax({
+//                 type: "POST",
+//                 url: "wx.php?do=bind&op=add",
+//                 cache: false,
+//                 data: formData,
+//                 success: onSuccess,
+//                 error: onError
+//             });	
 
-			return false;
-		});
-	});
-</script>
+// 			return false;
+// 		});
+// 	});
+ </script>
 
 </HEAD>
 <body id="top">
