@@ -36,6 +36,7 @@
 	          	var markup = "<li><b>${id}</b> (${message})</li>";
 	          	$.template( "feedTemplate", markup ).appendTo('body');
 	          	console.log($.tmpl( "feedTemplate", data ));
+	          	$('#page').val($('#page').val()+1);
 	          }else{
 	          	alert(data.msg);
 	          }
@@ -44,7 +45,7 @@
 	}
 
 	$(function(){
-		getfeeds();
+		getfeeds($('#wxkey').val(), $('#perpage').val(), $('#page').val());
 	})
 	
 </script>
@@ -89,9 +90,9 @@
 		 		</div>
 	 			
 		 		
-		 		<div class="split">
-
-		 		</div>
+		 		<input type="hidden" id="wxkey" name="wxkey" value="$_GET[wxkey]"/>
+		 		<input type="hidden" id="page" name="page" value="1"/>
+		 		<input type="hidden" id="perpage" name="perpage" value="5"/>
 		 	</div>
 
 		 	
