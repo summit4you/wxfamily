@@ -59,6 +59,31 @@ class wechatCallbackapiTest
 						$msgType = "text";
 						$contentStr = $this->welcome($toUsername);
 						$resultStr = makeText($fromUsername, $toUsername, $time, $msgType, $contentStr); 
+					}elseif($keyword == "1"){
+						$msgType = "news";
+						$url = "http://www.familyday.com.cn/wx/wx.php?do=feed&wxkey=".$fromUsername;
+						$pic = "http://www.familyday.com.cn/wx/template/css/images/family/logo3-2x.jpg";
+
+						$jsonurl = "http://www.familyday.com.cn/dapi/space.php?do=wxfeed&perpage=5&page=1&wxkey=".$fromUsername;;
+						$json = file_get_contents($jsonurl,0,null,null);
+						$json_output = json_decode($json);
+
+						if ($json_output->data->error==0){
+							$articles = array();
+							foreach ($json_output->data as $key => $obj)
+							{
+								$articles[] = makeArticleItem($obj->title, $obj->message, $obj->image_1, $url);
+							}
+
+							$articles[] = makeArticleItem("更多", "请点击查看更多动态", $pic, $url);
+							$resultStr = makeArticles($fromUsername, $toUsername, $time, $msgType, "家庭动态",$articles); 
+						}else{
+							$url = "http://www.familyday.com.cn/wx/wx.php?do=bind&wxkey=".$fromUsername;
+							$pic = "http://www.familyday.com.cn/wx/template/css/images/family/logo3-2x.jpg";
+							$articles[] = makeArticleItem("绑定微信帐号", "你还没有绑定微信号，请点击进入微信绑定页", $pic, $url);
+							$resultStr = makeArticles($fromUsername, $toUsername, $time, $msgType, "绑定微信帐号",$articles); 
+						}
+
 					}elseif($keyword == "3"){
 						$msgType = "news";
 						$url = "http://www.familyday.com.cn/wx/wx.php?do=bind&wxkey=".$fromUsername;

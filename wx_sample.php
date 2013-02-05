@@ -61,6 +61,7 @@ class wechatCallbackapiTest
 						$msgType = "news";
 						$url = "http://www.familyday.com.cn/wx.php?do=bind&username=".$fromUsername;
 						$pic = "http://www.familyday.com.cn/wx/template/css/images/logo2-2x.jpg";
+						
 						$articles[] = makeArticleItem("绑定微信帐号", "请点击进入微信绑定页", $pic, $url);
 						$resultStr = makeArticles($fromUsername, $toUsername, $time, $msgType, "绑定微信帐号",$articles); 
 					}else{
