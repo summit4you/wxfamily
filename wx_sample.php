@@ -100,6 +100,6 @@ class wechatCallbackapiTest
 }
 
 
-$db->close();
+
 
 ?>
