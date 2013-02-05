@@ -30,11 +30,14 @@
 	       
 	        success: function( data ) {
 	          /* Get the movies array from the data */
-	          if(data.code==0){
+
+	          if(data.error==0){
 	          	data = data.data;
 	          	var markup = "<li><b>${id}</b> (${message})</li>";
-	          	$.template( "feedTemplate", markup );
+	          	$.template( "feedTemplate", markup ).appendTo('body');
 	          	console.log($.tmpl( "feedTemplate", data ));
+	          }else{
+	          	alert(data.msg);
 	          }
 	        }
 	      });
