@@ -22,16 +22,17 @@
 <script type="text/javascript" src="template/js/jquery.tmpl.min.js"></script>
 <script type="text/javascript" src="template/js/util.js"></script>
 <script id="feedTemplate" type="text/x-jquery-tmpl">
-	<div class="feed" id="feed_{{= id}}_{{= idtype}}" onclick="$('#a_{{= id}}_{{= idtype}}').click()">
+	<div class="feed" id="feed_{{= id}}_{{= idtype}}" onclick="var href = $('#a_{{= id}}_{{= idtype}}').attr('href');window.location.href = href;">
  		<div class="ui-grid-b pheader">
 	 		<div class="ui-block-a avatar">
 	 			<img class="retina" src="{{= avatar}}" />
 	 		</div>
  			<div class="ui-block-b name">{{= username}}</div>
- 			<div class="ui-block-c">1小时前</div>
+ 			<div class="ui-block-c" style="display:none">1小时前</div>
 	 	</div>
  		<div class="panel">
  			<div class="ui-grid-a">
+ 				{if image_1}
  				<div class="ui-block-a content-image"><img class="retina" src="{{= image_1}}" /></div>
  				<div class="ui-block-b content">
  					<div class="subject">
@@ -41,6 +42,9 @@
  						{{html message}}
  					</div>
  				</div>
+ 				{else}
+
+ 				{/if}
  			</div>
  			<div class="ui-grid-a bottom" style="display:none">
  				<div class="ui-block-a group"><a data-role="button"  data-theme="a" data-icon="image"/>最爱电影</a></div>
