@@ -63,21 +63,30 @@ class wechatCallbackapiTest
 						$resultStr = makeText($fromUsername, $toUsername, $time, $msgType, $contentStr); 
 					}elseif($keyword == "1"){
 						$msgType = "news";
-						$url = "http://www.familyday.com.cn/wx/wx.php?do=feed&wxkey=".$fromUsername;
-						$pic = "http://www.familyday.com.cn/wx/template/css/images/family/logo3-2x.jpg";
+						
 
-						$jsonurl = "http://www.familyday.com.cn/dapi/space.php?do=wxfeed&perpage=5&page=1&wxkey=".$fromUsername;;
-						$json = file_get_contents($jsonurl,0,null,null);
-						$json_output = json_decode($json);
+						$query = $_SGLOBAL['db']->query("SELECT * FROM ".tname('space')." WHERE wxkey='$_GET[wxkey]'");
 
-						if ($json_output->data->error==0){
+						
+
+						if ($_SGLOBAL['db']->fetch_array($query)){
 							$articles = array();
 							foreach ($json_output->data as $key => $obj)
 							{
-								$articles[] = makeArticleItem($obj->title, $obj->message, $obj->image_1, $url);
-							}
+								$msg = $obj->username.":".$obj->title."\n".$obj->message;
 
-							$articles[] = makeArticleItem("更多", "请点击查看更多动态", $pic, $url);
+								if ($obj->image_1)
+								{
+									$pic = $obj->image_1;
+								}else{
+									$pic = "http://www.familyday.com.cn/wx/image/nopic.gif";
+								}
+								$url = "http://www.familyday.com.cn/wx/wx.php?do=detail&id=".$obj->id."&uid=".$obj->uid."&idtype=".$obj->idtype."&wxkey=".$fromUsername;
+								$articles[] = makeArticleItem($msg, $msg, $pic, $url);
+							}
+							$url = "http://www.familyday.com.cn/wx/wx.php?do=feed&wxkey=".$fromUsername;
+							$pic = "http://www.familyday.com.cn/wx/images/feed-icon.jpg";
+							$articles[] = makeArticleItem("更多", "更多", $pic, $url);
 							$resultStr = makeArticles($fromUsername, $toUsername, $time, $msgType, "家庭动态",$articles); 
 						}else{
 							$url = "http://www.familyday.com.cn/wx/wx.php?do=bind&wxkey=".$fromUsername;
