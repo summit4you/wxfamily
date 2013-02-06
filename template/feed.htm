@@ -72,8 +72,8 @@
 	          if(data.error==0){
 	          	data = data.data;
 	          	for (var i = 0, len = data.length; i < len; ++i) {
-	          		data[i].message = html_entity_decode(data[i].message);
-	          		data[i].message = html_entity_decode(data[i].message);
+	          		data[i].message = $('<div />').html(data[i].message).text();
+	          		data[i].message = $('<div />').html(data[i].message).text();
 	          	}
 	          	if (data.length<=0)
 	          		alert("没有更多动态了，赶快发布新的动态吧！");

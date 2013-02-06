@@ -62,8 +62,7 @@
 
 		          if(data.error==0){
 		          		data=data.data;
-		          		data.message = html_entity_decode(data.message);
-		          		data.message = html_entity_decode(data.message);
+		          		data.message = $('<div />').html(data.message).text();
 		          		data.dateline = date('Y-m-d H:i',data.dataline);
 			          	$("#detailTemplate").tmpl(data ).appendTo('#detail-panel');
 
