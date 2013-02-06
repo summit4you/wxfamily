@@ -43,7 +43,7 @@ body{margin-left:10px;margin-right:10px;background-color:#f5f4ef;}
 .detail-review .editor{display:-webkit-box;display:-moz-box;display:box;-webkit-box-orient:horizontal;-moz-box-orient:horizontal;box-orient:horizontal;-webkit-box-pack:end;-moz-box-pack:end;box-pack:end;-webkit-box-align:end;-moz-box-align:end;box-align:end;margin-top:1.5625%;clear:both;overflow:hidden;}.detail-review .editor .textarea{width:83.33333333333334%;padding-bottom:1000px;margin-bottom:-1000px;}.detail-review .editor .textarea textarea{font-size:13px;color:#999999;height:40px;border-color:#cccccc;border-style:solid;-webkit-border-radius:0px;border-radius:0px;margin:0;background:white;box-shadow:none;-webkit-box-shadow:none;}
 .detail-review .editor .publish-btn{background-color:#999999;margin-left:3.3333333333333335%;width:13.333333333333334%;height:40px;text-align:center;margin-top:0;}.detail-review .editor .publish-btn a{padding-bottom:1000px;margin-bottom:-1000px;line-height:40px;color:white;font-size:0.9375em;font-family:'FZLanTingHeiS-R-GB';}
 .review-item{margin-left:3.125%;margin-right:3.125%;margin-top:2.604166666666667%;width:93.75%;}.review-item .avatar{margin-left:1.6666666666666667%;width:11.666666666666666%;}.review-item .avatar img{width:100%;}
-.review-item .main{margin-left:0.8333333333333334%;}.review-item .main .content{color:#666666;font-size:0.875em;font-family:'FZLanTingHeiS-B-GB';vertical-align:middle;}.review-item .main .content .name{vertical-align:middle;color:#9ED54A;font-size:0.9375em;font-family:'FZLanTingHeiS-B-GB';}
+.review-item .main{margin-left:0.8333333333333334%;width:86.66666666666667%;}.review-item .main .content{color:#666666;font-size:0.875em;font-family:'FZLanTingHeiS-B-GB';vertical-align:middle;}.review-item .main .content .name{vertical-align:middle;color:#9ED54A;font-size:0.9375em;font-family:'FZLanTingHeiS-B-GB';}
 .review-item .main .time{color:#B7B7B7;font-size:0.6875em;text-align:left;}.review-item .main .time img{vertical-align:middle;width:6.666666666666667%;}
 .review-item .main .time span{vertical-align:middle;}
 .msg-panel{padding:3.90625% 3.90625% 3.90625% 3.90625%;background-color:white;margin-left:3.125%;margin-right:3.125%;margin-top:3.125%;border:1px solid #CCCCCC;}
@@ -60,5 +60,5 @@ body{margin-left:10px;margin-right:10px;background-color:#f5f4ef;}
 .input-field{margin-left:3.125%;margin-right:3.125%;margin-top:5.208333333333334%;}.input-field div.ui-input-text{padding:10px 15px 10px 15px;box-shadow:none;background-color:#E0E0E0;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;}
 .input-field .ui-body-a,.input-field .ui-dialog.ui-overlay-a{border-color:#E0E0E0;}
 .input-field input{border:1px solid #E0E0E0;color:#999999;font-size:1.5em;font-family:Microsoft YaHei;}
-.more-btn{margin-left:3.125%;margin-right:3.125%;text-align:center;}
+.more-btn{margin-left:3.125%;margin-right:3.125%;margin-top:2.604166666666667%;text-align:center;}
 .tips{text-align:left;margin-left:5%;margin-right:auto;color:#999999;font-size:1.25em;}.tips .tips2{font-size:1em;}
