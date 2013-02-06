@@ -104,7 +104,7 @@
 		}
 	}
 
-	function getComment(type, id, page, perpage, auth){
+	function getComment(idtype, id, page, perpage, auth){
 		$.ajax({
 		        dataType: "jsonp",
 		        url: "http://www.familyday.com.cn/dapi/space.php?do=comment&id=" + id + "&idtype=" + idtype + "&m_auth=" + auth + "&page=" + page + "&perpage=" + perpage,
