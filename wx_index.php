@@ -112,8 +112,21 @@ class wechatCallbackapiTest
 					}elseif($keyword == "3"){
 						$msgType = "news";
 						$url = "http://www.familyday.com.cn/wx/wx.php?do=bind&wxkey=".$fromUsername;
-						$pic = "http://www.familyday.com.cn/wx/template/css/images/family/logo3-2x.jpg";
-						$articles[] = makeArticleItem("绑定微信帐号", "请点击进入微信绑定页", $pic, $url);
+						$pic = "http://www.familyday.com.cn/wx/images/bind.jpg";
+						$articles[] = makeArticleItem("把微信号绑定在我家", "把微信号绑定在我家", $pic, $url);
+
+						$url = "http://www.familyday.com.cn/wx/wx.php?do=reg&wxkey=".$fromUsername;
+						$pic = "http://www.familyday.com.cn/wx/images/reg-icon.jpg";
+						$articles[] = makeArticleItem("注册到我家帐号\n（会自动绑定微信）", "注册到我家帐号\n（会自动绑定微信）", $pic, $url);
+
+						$url = "http://www.familyday.com.cn/wx/wx.php?do=feed&wxkey=".$fromUsername;
+						$pic = "http://www.familyday.com.cn/wx/images/feed-icon.jpg";
+						$articles[] = makeArticleItem("全部家人动态", "全部家人动态", $pic, $url);
+
+						$url = "http://www.familyday.com.cn/wx/wx.php?do=feed&wxkey=".$fromUsername;
+						$pic = "http://www.familyday.com.cn/wx/images/about-icon.jpg";
+						$articles[] = makeArticleItem("关于我家的微信客户端", "关于我家的微信客户端", $pic, $url);
+
 						$resultStr = makeArticles($fromUsername, $toUsername, $time, $msgType, "绑定微信帐号",$articles); 
 					}else{
 						$msgType = "text";
