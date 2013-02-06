@@ -34,10 +34,11 @@
 </div>
 
 <div class="detail-image">
-	{if videourl!=""}
-	<video width="100%" src="{{= videourl}}" controls></video>
-	{else}
+	{if pic}
 	<img class="retina" src="{if pic}{{= pic}}{else}template/css/images/family/detail-content.jpg{/if}" />
+	
+	{else}
+	<video width="100%" src="{{= videourl}}" controls></video>
 	{/if}
 </div>
 
