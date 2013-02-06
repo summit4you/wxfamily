@@ -33,7 +33,7 @@
 </div>
 
 <div class="detail-image">
-	<img class="retina" src="{{if pic}}{{html pic}}{{else}}css/images/family/detail-content.jpg{{/if}}" />
+	<img class="retina" src="{{if pic}}{html pic}{{else}}css/images/family/detail-content.jpg{{/if}}" />
 </div>
 
 <div class="detail-message">
@@ -60,7 +60,7 @@
 		          /* Get the movies array from the data */
 
 		          if(data.error==0){
-		          	
+		          		data=data.data;
 			          	$("#detailTemplate").tmpl(data ).appendTo('#detail-panel');
 
 		          }else{
@@ -100,7 +100,7 @@
 	<div data-role="page" data-theme="a" data-fullscreen="true" id="main">
 		
 		 <div data-role="content" style="background-color: white;">
-		 	<div class="detail-panel">
+		 	<div id="detail-panel">
 			 	<div class="detail-header">
 					<div class="avatar"><img class="retina" src="css/images/family/avatar2.jpg"/><span>杜拉拉拉拉拉拉</span></div>
 					<div class="header-logo"><img class="retina" src="css/images/family/logo2.jpg" />
