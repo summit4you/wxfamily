@@ -9,9 +9,9 @@ if ($_SGLOBAL['db']->fetch_array($query)){
 }else{
 	if (isset($_COOKIE['uchome_m_auth'])) 
 	{
-		$result = 0;
-	}else{
 		$result = 1;
+	}else{
+		$result = 0;
 	}
 }
 
