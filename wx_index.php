@@ -3,9 +3,8 @@
   * wechat php test
   */
 
-include_once( './../common.php' );
+include_once('./../common.php');
 include_once( 'botutil.php' );
-
 
 
 //define your token
@@ -63,15 +62,15 @@ class wechatCallbackapiTest
 						$resultStr = makeText($fromUsername, $toUsername, $time, $msgType, $contentStr); 
 					}elseif($keyword == "1"){
 						$msgType = "news";
-						$url = "http://www.familyday.com.cn/wx/wx.php?do=feed&wxkey=".$fromUsername;
-						$pic = "http://www.familyday.com.cn/wx/template/css/images/family/logo3-2x.jpg";
+						
 
 						
-						$query = $_SGLOBAL['db']->query("SELECT * FROM ".tname('space')." WHERE wxkey='$_GET[wxkey]'");
+						$query = $_SGLOBAL['db']->query("SELECT * FROM ".tname('space')." WHERE wxkey='$fromUsername'");
 						if ($_SGLOBAL['db']->fetch_array($query)){
-							$jsonurl = "http://www.familyday.com.cn/dapi/space.php?do=wxfeed&perpage=5&page=1&wxkey=".$fromUsername;;
+							$jsonurl = "http://www.familyday.com.cn/dapi/space.php?do=wxfeed&perpage=5&page=1&wxkey=".$fromUsername;
 							$json = file_get_contents($jsonurl,0,null,null);
 							$json_output = json_decode($json);
+
 							if ($json_output->data->error==0){
 								$articles = array();
 								foreach ($json_output->data as $key => $obj)
