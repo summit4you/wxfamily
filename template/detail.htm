@@ -34,7 +34,11 @@
 </div>
 
 <div class="detail-image">
+	{if videourl}
+	<video width="100%" src="{{= videourl}}" controls></video>
+	{else}
 	<img class="retina" src="{if pic}{{= pic}}{else}template/css/images/family/detail-content.jpg{/if}" />
+	{/if}
 </div>
 
 <div class="detail-message">
@@ -101,6 +105,26 @@
 		        }
 		      });
 
+		}else if(type=="videoid"){
+			$.ajax({
+		        dataType: "jsonp",
+		        url: "http://www.familyday.com.cn/dapi/space.php?do=video&id=" + id + "&uid=" + uid + "&m_auth=" + auth,
+		       
+		        success: function( data ) {
+		          /* Get the movies array from the data */
+
+		          if(data.error==0){
+		          		data=data.data;
+		          		data.message = html_entity_decode(data.message);
+		          		data.dateline = date('Y-m-d H:i',data.dataline);
+			          	$("#detailTemplate").tmpl(data ).appendTo('#detail-panel');
+
+		          }else{
+		          	alert(data.msg);
+		          }
+		        }
+		      });
+
 		}
 	}
 
@@ -133,6 +157,8 @@
 		      });
 	}
 
+	function cpComment()
+
 	$(function(){
 		if ($('#idtype').val()=="reblogid")
 		{
@@ -140,6 +166,9 @@
 		}else if($('#idtype').val()=="rephotoid")
 		{
 			$('#idtype').val("photoid");
+		}else if($('#idtype').val()=="revideoid")
+		{
+			$('#idtype').val("videoid");
 		}
 		getDetail($('#idtype').val(), $('#id').val(), $('#uid').val(), $('#auth').val());
 		getComment($('#idtype').val(), $('#id').val(), $('#page').val(), $('#perpage').val(), $('#auth').val());
