@@ -32,9 +32,9 @@
 	 	</div>
  		<div class="panel">
  			<div class="ui-grid-a">
- 				{if image_1!=""}
- 					<div class="ui-block-a content-image"><img class="retina" src="{{= image_1}}" /></div>
- 				{/if}
+ 				
+ 				<div class="ui-block-a content-image"><img class="retina" src="{{= image_1}}" /></div>
+ 				
  				<div class="ui-block-b content">
  					<div class="subject">
  						{{= title}}
@@ -84,6 +84,10 @@
 		          	for (var i = 0, len = data.length; i < len; ++i) {
 		          		data[i].message = html_entity_decode(data[i].message);
 		          		data[i].message = html_entity_decode(data[i].message);
+		          		if (data[i].image_1=="")
+		          		{
+		          			data[i].image_1 = "http://www.familyday.com.cn/wx/image/nopic.gif";
+		          		}
 		          	}
 		          	$("#feedTemplate").tmpl(data ).appendTo('#feedlist');
 		          	$('#page').val($('#page').val()+1);
