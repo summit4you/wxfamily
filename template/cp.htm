@@ -55,14 +55,16 @@
                             // =================================================
                                 
                             // Create a new formdata
-                            var formobj =  document.getElementById("hiddenform");
-                            var fd = formobj.getFormData();
+                            var fd = new FormData();
                             // Add file data
-                            var f = $.canvasResize('dataURLtoBlob',data);
-                            f.name = file.name;
-                            fd.append($('#Filedata').attr('name'), f);
-                           
-                            console.log(fd);
+                            // var f = $.canvasResize('dataURLtoBlob',data);
+                            // f.name = file.name;
+                            fd.append($('input').attr('name'), file);
+                            fd.append("op", "uploadphoto");
+                            fd.append("topicid", "0");
+                            fd.append("pic_title", "from wx");
+                            fd.append("m_auth", $('#auth').val());
+
                              $.ajax({
                                 url        : 'http://www.familyday.com.cn/dapi/cp.php?ac=upload',
                                 type       : 'POST',
@@ -88,10 +90,13 @@
                                 } 
                             }).done(function (response) {
                                
-                                console.log(response);
-                                if(response.picid){
+                               
+                                if(response.error==0){
                                     // Complete
+                                    $("#picid").val(response.data.picid);
                                     $('#pbar').html('done');
+                                }else{
+                                	alert("上传失败");
                                 }
                                 
                             });
@@ -132,13 +137,6 @@
 				<div class="class-btn"><a data-role="button"  data-theme="a" data-icon="image"/>创意BB杂锦</a></div>
 				<div class="publish-btn"><a href="#" data-role="button">确定</a></div>
 				<input type="file" id="Filedata" name="Filedata" accept="image/*" style="display:none;"></div>
-
-				<<form id="hiddenform" style="display:none;" enctype="multipart/form-data">
-					<input type="hidden" id="op" name="op" value="uploadphoto"/>
-					<input type="hidden" id="topicid" name="topicid" value="0"/>
-					<input type="hidden" id="pic_title" name="pic_title" value="wx"/>
-					<input type="hidden" id="m_auth" name="m_auth" value="$m_auth"/>
-				</form>
 			
 		</div>
 		
@@ -148,5 +146,6 @@
 	<input type="hidden" id="idtype" name="idtype" value="$_GET[idtype]"/>
 	<input type="hidden" id="auth" name="auth" value="$m_auth"/>
 	<input type="hidden" id="uid" name="uid" value="$_GET[uid]"/>
+	<input type="hidden" id="picid" name="picid" value="0"/>
 </body>
 </html>
