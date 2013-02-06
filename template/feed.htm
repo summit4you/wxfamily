@@ -22,7 +22,7 @@
 <script type="text/javascript" src="template/js/jquery.tmpl.min.js"></script>
 <script type="text/javascript" src="template/js/util.js"></script>
 <script id="feedTemplate" type="text/x-jquery-tmpl">
-	<div class="feed">
+	<div class="feed" id="feed_{{= id}}_{{= idtype}}" onclick="$('#a_{{= id}}_{{= idtype}}').click()">
  		<div class="ui-grid-b pheader">
 	 		<div class="ui-block-a avatar">
 	 			<img class="retina" src="{{= avatar}}" />
@@ -45,7 +45,7 @@
  			<div class="ui-grid-a bottom" style="display:none">
  				<div class="ui-block-a group"><a data-role="button"  data-theme="a" data-icon="image"/>最爱电影</a></div>
  				<div class="ui-block-b more">
- 					<a href="wx.php?do=detail&id={{= id}}&uid={{= uid}}&idtype={{= idtype}}&wxkey=$_GET[wxkey]" data-role="none" data-ajax="false">
+ 					<a href="wx.php?do=detail&id={{= id}}&uid={{= uid}}&idtype={{= idtype}}&wxkey=$_GET[wxkey]" data-role="none" data-ajax="false" id="a_{{= id}}_{{= idtype}}">
  						<img class="retina" src="template/css/images/family/btn-more.jpg"/>
  					</a>
  				</div>
