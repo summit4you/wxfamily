@@ -63,31 +63,41 @@ class wechatCallbackapiTest
 						$resultStr = makeText($fromUsername, $toUsername, $time, $msgType, $contentStr); 
 					}elseif($keyword == "1"){
 						$msgType = "news";
-						
+						$url = "http://www.familyday.com.cn/wx/wx.php?do=feed&wxkey=".$fromUsername;
+						$pic = "http://www.familyday.com.cn/wx/template/css/images/family/logo3-2x.jpg";
 
+						
 						$query = $_SGLOBAL['db']->query("SELECT * FROM ".tname('space')." WHERE wxkey='$_GET[wxkey]'");
-
-						
-
 						if ($_SGLOBAL['db']->fetch_array($query)){
-							$articles = array();
-							foreach ($json_output->data as $key => $obj)
-							{
-								$msg = $obj->username.":".$obj->title."\n".$obj->message;
-
-								if ($obj->image_1)
+							$jsonurl = "http://www.familyday.com.cn/dapi/space.php?do=wxfeed&perpage=5&page=1&wxkey=".$fromUsername;;
+							$json = file_get_contents($jsonurl,0,null,null);
+							$json_output = json_decode($json);
+							if ($json_output->data->error==0){
+								$articles = array();
+								foreach ($json_output->data as $key => $obj)
 								{
-									$pic = $obj->image_1;
-								}else{
-									$pic = "http://www.familyday.com.cn/wx/image/nopic.gif";
+									$msg = $obj->username.":".$obj->title."\n".$obj->message;
+
+									if ($obj->image_1)
+									{
+										$pic = $obj->image_1;
+									}else{
+										$pic = "http://www.familyday.com.cn/wx/image/nopic.gif";
+									}
+									$url = "http://www.familyday.com.cn/wx/wx.php?do=detail&id=".$obj->id."&uid=".$obj->uid."&idtype=".$obj->idtype."&wxkey=".$fromUsername;
+									$articles[] = makeArticleItem($msg, $msg, $pic, $url);
 								}
-								$url = "http://www.familyday.com.cn/wx/wx.php?do=detail&id=".$obj->id."&uid=".$obj->uid."&idtype=".$obj->idtype."&wxkey=".$fromUsername;
-								$articles[] = makeArticleItem($msg, $msg, $pic, $url);
+								$url = "http://www.familyday.com.cn/wx/wx.php?do=feed&wxkey=".$fromUsername;
+								$pic = "http://www.familyday.com.cn/wx/images/feed-icon.jpg";
+								$articles[] = makeArticleItem("更多", "更多", $pic, $url);
+								$resultStr = makeArticles($fromUsername, $toUsername, $time, $msgType, "家庭动态",$articles); 
+				
+							}else{
+								$url = "http://www.familyday.com.cn/wx/wx.php?do=bind&wxkey=".$fromUsername;
+								$pic = "http://www.familyday.com.cn/wx/images/bind.jpg";
+								$articles[] = makeArticleItem("绑定微信帐号", "你还没有绑定微信号，请点击进入微信绑定页", $pic, $url);
+								$resultStr = makeArticles($fromUsername, $toUsername, $time, $msgType, "绑定微信帐号",$articles); 
 							}
-							$url = "http://www.familyday.com.cn/wx/wx.php?do=feed&wxkey=".$fromUsername;
-							$pic = "http://www.familyday.com.cn/wx/images/feed-icon.jpg";
-							$articles[] = makeArticleItem("更多", "更多", $pic, $url);
-							$resultStr = makeArticles($fromUsername, $toUsername, $time, $msgType, "家庭动态",$articles); 
 						}else{
 							$url = "http://www.familyday.com.cn/wx/wx.php?do=bind&wxkey=".$fromUsername;
 							$pic = "http://www.familyday.com.cn/wx/template/css/images/family/logo3-2x.jpg";
