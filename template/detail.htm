@@ -23,22 +23,22 @@
 
 <script id="detailTemplate" type="text/x-jquery-tmpl">
 <div class="detail-header">
-	<div class="avatar"><img class="retina" src="template/css/images/family/avatar2.jpg"/><span>{{html name}}</span></div>
+	<div class="avatar"><img class="retina" src="template/css/images/family/avatar2.jpg"/><span>{{= name}}</span></div>
 	<div class="header-logo"><img class="retina" src="template/css/images/family/logo2.jpg" />
 		</div>
 </div>
 
 <div class="detail-subject">
-	<div class="subject">{if subject}{{html subject}}{else}{{html title}}{/if}</div>
+	<div class="subject">{if subject}{{html subject}}{else}{{= title}}{/if}</div>
 </div>
 
 <div class="detail-image">
-	<img class="retina" src="{if pic}{{html pic}}{else}template/css/images/family/detail-content.jpg{/if}" />
+	<img class="retina" src="{if pic}{{= pic}}{else}template/css/images/family/detail-content.jpg{/if}" />
 </div>
 
 <div class="detail-message">
 	<div>{{html message}}</div>
-	<div class="time"><img class="retina" src="template/css/images/family/timeico.jpg"/><span>{{html dateline}}</span></div>
+	<div class="time"><img class="retina" src="template/css/images/family/timeico.jpg"/><span>{{= dateline}}</span></div>
 	<div class="buttons">
 		<ul>
 			<li><a href="#"><img class="retina" src="template/css/images/family/reblog.jpg" /></a></li>
