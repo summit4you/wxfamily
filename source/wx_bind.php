@@ -8,9 +8,9 @@ $json = file_get_contents($jsonurl,0,null,null);
 $json_output = json_decode($json);
 
 if ($json_output->data->error==0){
-	$result = 0;
-}else{
 	$result = 1;
+}else{
+	$result = 0;
 }
 
 if ($_GET["op"]=="add"){
