@@ -31,7 +31,7 @@ body{margin-left:10px;margin-right:10px;background-color:#f5f4ef;}
 .detail-header .header-logo{background-color:white;border-bottom:none;height:auto;margin-left:0px;-webkit-box-flex:1;-moz-box-flex:1;box-flex:1;}.detail-header .header-logo img{float:right;margin-top:0px;}
 .detail-subject{background-color:#145D32;margin-left:0px;margin-right:0px;margin-top:3.3333333333333335%;}.detail-subject .subject{display:inline-block;margin-left:3.125%;margin-right:3.125%;padding-left:2.65625%;padding-right:2.65625%;background-color:white;color:#141414;font-size:1.0625em;overflow:auto;width:auto;}
 .detail-image{margin-left:3.125%;margin-right:3.125%;margin-top:2.083333333333333%;}.detail-image img{width:100%;}
-.detail-message{margin-left:3.125%;margin-right:3.125%;margin-top:1.7708333333333332%;color:#666666;font-size:0.875em;font-family:'FZLanTingHeiS-R-GB';}.detail-message .time{color:#B7B7B7;font-size:0.6875em;text-align:right;width:100%;}.detail-message .time img{vertical-align:middle;width:3.4375000000000004%;}
+.detail-message{margin-left:3.125%;margin-right:3.125%;margin-top:1.7708333333333332%;color:#666666;font-size:1.75em;font-family:'FZLanTingHeiS-R-GB';}.detail-message .time{color:#B7B7B7;font-size:1.375em;text-align:right;width:100%;}.detail-message .time img{vertical-align:middle;width:3.4375000000000004%;}
 .detail-message .time span{vertical-align:middle;}
 .detail-message .buttons{width:100%;}.detail-message .buttons ul{list-style:none;text-align:right;}
 .detail-message .buttons li{display:inline;margin-left:8.59375%;}
