@@ -409,33 +409,43 @@ body{
 		}
 	}
 	.editor{
-		.box(horizontal, center, center);
+		.box(horizontal, end, end);
 		.margin-top(960, 3);
+		clear:both;
+	 	overflow:hidden;
 		.textarea{
 			
-			.flex(2);
+			.width(600,400);
 			textarea{
 				font-size: 13px;
 				color: #999999;
-				height:40px;
+				height:100px;
 				border-color: #cccccc;
 				border-style: solid;
 				-webkit-border-radius: 0px;
 				border-radius:0px;
+				margin:0;
 			}
+			padding-bottom:1000px; /* @max-column-height */
+   			margin-bottom:-1000px; /* @max-column-height */
 		}
 		.publish-btn{
 			background-color: #999999;
 			.margin-left(600,20);
-			.flex(1);
+			.width(600,200);
 			height:40px;
 			text-align: center;
+			
+   			margin-top:0;
 			a{
+				padding-bottom:1000px; /* @max-column-height */
+   			margin-bottom:-1000px; /* @max-column-height */
 				 line-height:40px;   
 				color: white;
-				.font-size-em(15);
+				.font-size-em(30);
 				font-family: 'FZLanTingHeiS-R-GB';
 			}
+			
 		}
 	}
 }
