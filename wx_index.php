@@ -71,8 +71,9 @@ class wechatCallbackapiTest
 							$articles = array();
 							foreach ($json_output->data as $key => $obj)
 							{
+								$obj->message = html_entity_decode($obj->message);
+								$obj->message = html_entity_decode($obj->message);
 								$obj->message = strip_tags($obj->message);
-								
 								$msg = $obj->username.":".$obj->title."\n".$obj->message;
 
 								if ($obj->image_1)
