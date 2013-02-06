@@ -34,7 +34,7 @@
 </div>
 
 <div class="detail-image">
-	{if videourl}
+	{if videourl!=""}
 	<video width="100%" src="{{= videourl}}" controls></video>
 	{else}
 	<img class="retina" src="{if pic}{{= pic}}{else}template/css/images/family/detail-content.jpg{/if}" />
@@ -194,7 +194,7 @@
 		}
 		getDetail($('#idtype').val(), $('#id').val(), $('#uid').val(), $('#auth').val());
 		getComment($('#idtype').val(), $('#id').val(), $('#page').val(), $('#perpage').val(), $('#auth').val());
-		cpComment($('#idtype').val(), $('#id').val(), $('#review').val(), $('#auth').val());
+		
 	})
 	
 </script>
@@ -214,7 +214,7 @@
 		 		<div class="bb2"><div class="bb21"></div><div class="bb22"></div></div>
 		 		<div class="editor">
 		 			<div class="textarea"><textarea placeholder="写点评论吧..." id="review"></textarea></div>
-		 			<div class="publish-btn"><a>发布</a></div>
+		 			<div class="publish-btn"><a href="javascript:;" onclick="cpComment($('#idtype').val(), $('#id').val(), $('#review').val(), $('#auth').val());">发布</a></div>
 		 		</div>
 		 	</div>
 
