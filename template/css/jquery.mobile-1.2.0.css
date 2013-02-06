@@ -95,7 +95,7 @@
 .ui-body-a select,
 .ui-body-a textarea,
 .ui-body-a button {
-	 font-family: 'ltchj';
+	 font-family: 'lthj';
 }
 
 .ui-body-a .ui-link-inherit {
@@ -107,7 +107,7 @@
 }
 
 .ui-body-a .ui-link{
-	font-family: 'lthj;;
+	font-family: 'lthj';
 	font-size:1em;
 	font-weight:bold;
 	color:rgb(158,213,75);
@@ -117,7 +117,7 @@
 }
 
 .ui-body-a .ui-link:hover{
-	font-family: 'lthj;;
+	font-family: 'lthj';
 	font-size:1em;
 	font-weight:bold;
 	color:rgb(158,213,75);
@@ -127,7 +127,7 @@
 }
 
 .ui-body-a .ui-link:active{
-	font-family: 'lthj;;
+	font-family: 'lthj';
 	font-size:0.938em;
 	font-weight:bold;
 	color:rgb(158,213,75);
@@ -137,7 +137,7 @@
 }
 
 .ui-body-a .ui-link:visited{
-	font-family: 'lthj;;
+	font-family: 'lthj';
 	font-size:1em;
 	font-weight:bold;
 	color:rgb(158,213,75);
@@ -147,7 +147,7 @@
 }
 .ui-btn-up-a {
 	background:rgb(159,213,74);
-	font-family: 'ltchj';
+	font-family: 'lthj';
 	font-size:1.25em;
 	color:rgb(255,255,255);
 	line-height:120%;
@@ -166,7 +166,7 @@
 }
 .ui-btn-hover-a {
 	background:rgb(159,213,74);
-	font-family: 'ltchj';
+	font-family: 'lthj';
 	font-size:1.25em;
 	color:rgb(255,255,255);
 	line-height:120%;
@@ -185,7 +185,7 @@
 }
 .ui-btn-down-a {
 	background:rgb(159,213,74);
-	font-family: 'ltchj';
+	font-family: 'lthj';
 	font-size:1.25em;
 	color:rgb(255,255,255);
 	line-height:120%;
@@ -1182,7 +1182,7 @@
 .ui-btn-active {
  	cursor : pointer;
 	background:rgb(159,213,74);
-	font-family: 'ltchj';
+	font-family: 'lthj';
 	font-size:20pt;
 	color:rgb(255,255,255);
 	line-height:120%;
@@ -1332,7 +1332,7 @@
 
 
 @font-face {
-	font-family: 'lthj;;
+	font-family: 'lthj';
 	src: local("'lthj;")
 }
 
