@@ -1,5 +1,8 @@
 <?php
 
+$result = 0;
+
+
 if ($_GET["op"]=="add"){
 
 	include_once S_ROOT.'./uc_client/client.php';
@@ -8,13 +11,19 @@ if ($_GET["op"]=="add"){
 	$password = empty($_POST['password']) ? '' : trim($_POST['password']);
 
 	if(empty($username) || empty($password)) {
-		showmessage('users_were_not_empty_please_re_login',  'wx.php?do=bind&wxkey='.$_POST['wxkey']);
+		// showmessage('users_were_not_empty_please_re_login',  'wx.php?do=bind&wxkey='.$_POST['wxkey']);
+		$result = -1;
+		include_once template("./wx/template/bind");
+		exit;
 	}
 
 	// 登陆验证
 	if(!$passport = getpassport($username, $password)) {
 		
-		showmessage('login_failure_please_re_login',  'wx.php?do=bind&wxkey='.$_POST['wxkey']);
+		// showmessage('login_failure_please_re_login',  'wx.php?do=bind&wxkey='.$_POST['wxkey']);
+		$result = -1;
+		include_once template("./wx/template/bind");
+		exit;
 	}
 
 
@@ -27,7 +36,9 @@ if ($_GET["op"]=="add"){
 	ssetcookie('m_auth',$json_output->data->m_auth, time()+3600*24*365);
 	ssetcookie('wxkey',$_POST['wxkey'], time()+3600*24*365);
 
-	showmessage('do_success', 'wx.php?do=feed&wxkey='.$_POST['wxkey'], 0);
+	// showmessage('do_success', 'wx.php?do=feed&wxkey='.$_POST['wxkey'], 0);
+
+	$result = 1;
 
 }
 

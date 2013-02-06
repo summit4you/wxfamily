@@ -67,15 +67,40 @@
 			</div>
 		</div>
 		<div data-role="content">
+		
+		<!--{if $result==0}-->
+			<div class="tips">您已经成功的将微信和我家的账号绑定了。<br/>
+			你可以：<br/>
+			—快速掌握家人动态<br/>
+			—发布照片、日记、活动跟家人分享<br/>
+			您暂时还不可以（逐渐完善）：<br/>
+			X 整理空间<br/>
+			X 发布视频<br/>
+			X 收藏、转发
+			</div>
+			<div class="publish-btn"><a href="wx.php?do=feed&wxkey=$_GET[wxkey]" data-ajax="false">看看家人的动态</a></div>
+			<div class="publish-btn"><a href="wx.php?do=feed&wxkey=$_GET[wxkey]" data-ajax="false">发布照片</a></div>
+		<!--{elseif $result==-1}-->			
+			<div class="tips">未能将您的微信和我家账号实现绑定<br/>
+							原因可能是：<br/>
+							—检查您输入的账号密码是否正确<br/>
+							—您还没有注册我家的账号
+			</div>
+			<div class="publish-btn"><a href="wx.php?do=bind&wxkey=$_GET[wxkey]" data-ajax="false">重新绑定</a></div>
+			<div class="publish-btn"><a href="wx.php?do=reg&wxkey=$_GET[wxkey]" data-ajax="false">注册一个我家的帐号</a></div>
+		<!--{else}-->
 
 			<div class="tips"> 将微信绑定到我家<br/><span class="tips2">通过微信在家庭圈分享</span></div>
 
-		<form action="wx.php?do=bind&op=add" method="post" data-ajax="false" id="callAjaxForm">
-			<div class="input-field"><input id="username" name="username" placeholder="手机号码" value="" type="text" /></div>
-			<div class="input-field"><input id="password" name="password" placeholder="请输入你在我家的密码" value="" type="password" /></div>
-			<input id="wxkey" type="hidden" name="wxkey" value="$_GET['wxkey']" />
-			<div class="publish-btn"><button type="submit" id="submit" name="submit" value="submit" data-theme="a">确定</button></div>
-		</form>
+			<form action="wx.php?do=bind&op=add" method="post" data-ajax="false" id="callAjaxForm">
+				<div class="input-field"><input id="username" name="username" placeholder="手机号码" value="" type="text" /></div>
+				<div class="input-field"><input id="password" name="password" placeholder="请输入你在我家的密码" value="" type="password" /></div>
+				<input id="wxkey" type="hidden" name="wxkey" value="$_GET['wxkey']" />
+				<div class="publish-btn"><button type="submit" id="submit" name="submit" value="submit" data-theme="a">确定</button></div>
+			</form>
+
+		<!--{/if}-->
+
 		</div>
 		
     </div>
