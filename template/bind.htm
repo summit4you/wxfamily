@@ -78,16 +78,16 @@
 			X 发布视频<br/>
 			X 收藏、转发
 			</div>
-			<div class="publish-btn"><a href="wx.php?do=feed&wxkey=$_GET[wxkey]" data-ajax="false">看看家人的动态</a></div>
-			<div class="publish-btn"><a href="wx.php?do=feed&wxkey=$_GET[wxkey]" data-ajax="false">发布照片</a></div>
+			<div class="publish-btn"><a href="wx.php?do=feed&wxkey=$_GET[wxkey]" data-ajax="false" data-role="button">看看家人的动态</a></div>
+			<div class="publish-btn"><a href="wx.php?do=feed&wxkey=$_GET[wxkey]" data-ajax="false" data-role="button">发布照片</a></div>
 		<!--{elseif $result==-1}-->			
 			<div class="tips">未能将您的微信和我家账号实现绑定<br/>
 							原因可能是：<br/>
 							—检查您输入的账号密码是否正确<br/>
 							—您还没有注册我家的账号
 			</div>
-			<div class="publish-btn"><a href="wx.php?do=bind&wxkey=$_GET[wxkey]" data-ajax="false">重新绑定</a></div>
-			<div class="publish-btn"><a href="wx.php?do=reg&wxkey=$_GET[wxkey]" data-ajax="false">注册一个我家的帐号</a></div>
+			<div class="publish-btn"><a href="wx.php?do=bind&wxkey=$_GET[wxkey]" data-ajax="false" data-role="button">重新绑定</a></div>
+			<div class="publish-btn"><a href="wx.php?do=reg&wxkey=$_GET[wxkey]" data-ajax="false" data-role="button">注册一个我家的帐号</a></div>
 		<!--{else}-->
 
 			<div class="tips"> 将微信绑定到我家<br/><span class="tips2">通过微信在家庭圈分享</span></div>
