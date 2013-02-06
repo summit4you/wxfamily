@@ -55,18 +55,16 @@
                             // =================================================
                                 
                             // Create a new formdata
-                            var fd = new FormData();
+                            var formobj =  document.getElementById("hiddenform");
+                            var fd = formobj.getFormData();
                             // Add file data
                             var f = $.canvasResize('dataURLtoBlob',data);
                             f.name = file.name;
-                            fd.append($('input').attr('name'), f);
-                            fd.append("op", "uploadphoto");
-                            fd.append("topicid", "0");
-                            fd.append("pic_title", "from wx");
-                            fd.append("m_auth", $('#auth').val());
-
+                            fd.append($('#Filedata').attr('name'), f);
+                           
+                            console.log(fd);
                              $.ajax({
-                                url        : '../dapi/cp.php?ac=upload',
+                                url        : 'http://www.familyday.com.cn/dapi/cp.php?ac=upload',
                                 type       : 'POST',
                                 data       : fd,
                                 dataType   : 'json',
@@ -134,6 +132,13 @@
 				<div class="class-btn"><a data-role="button"  data-theme="a" data-icon="image"/>创意BB杂锦</a></div>
 				<div class="publish-btn"><a href="#" data-role="button">确定</a></div>
 				<input type="file" id="Filedata" name="Filedata" accept="image/*" style="display:none;"></div>
+
+				<<form id="hiddenform" style="display:none;" enctype="multipart/form-data">
+					<input type="hidden" id="op" name="op" value="uploadphoto"/>
+					<input type="hidden" id="topicid" name="topicid" value="0"/>
+					<input type="hidden" id="pic_title" name="pic_title" value="wx"/>
+					<input type="hidden" id="m_auth" name="m_auth" value="$m_auth"/>
+				</form>
 			
 		</div>
 		
