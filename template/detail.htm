@@ -21,11 +21,77 @@
 <script type="text/javascript" src="template/js/jquery.resizecrop-1.0.3.js"></script>
 <script type="text/javascript" src="template/js/jquery.tmpl.min.js"></script>
 
+<script id="detailTemplate" type="text/x-jquery-tmpl">
+<div class="detail-header">
+	<div class="avatar"><img class="retina" src="css/images/family/avatar2.jpg"/><span>{{html name}}</span></div>
+	<div class="header-logo"><img class="retina" src="css/images/family/logo2.jpg" />
+		</div>
+</div>
+
+<div class="detail-subject">
+	<div class="subject">{{if subject}}{{html subject}}{{else}}{{html title}}{{/if}}</div>
+</div>
+
+<div class="detail-image">
+	<img class="retina" src="{{if pic}}{{html pic}}{{else}}css/images/family/detail-content.jpg{{/if}}" />
+</div>
+
+<div class="detail-message">
+	<div>{{html message}}</div>
+	<div class="time"><img class="retina" src="css/images/family/timeico.jpg"/><span>{{html dateline}}</span></div>
+	<div class="buttons">
+		<ul>
+			<li><a href="#"><img class="retina" src="css/images/family/reblog.jpg" /></a></li>
+			<li><a href="#"><img class="retina" src="css/images/family/like.jpg" /></a></li>
+		</ul>
+	</div>
+</div>
+</script>
+
 <script type="text/javascript">
 	
-	function getDetail(){
+	function getDetail(type, id, uid, auth){
+		if (type=="blogid"){
+			$.ajax({
+		        dataType: "jsonp",
+		        url: "http://www.familyday.com.cn/dapi/space.php?do=blog&id=" + id + "&uid=" + uid + "&m_auth=" + auth,
+		       
+		        success: function( data ) {
+		          /* Get the movies array from the data */
 
+		          if(data.error==0){
+		          	
+			          	$("#detailTemplate").tmpl(data ).appendTo('#detail-panel');
+
+		          }else{
+		          	alert(data.msg);
+		          }
+		        }
+		      });
+		}else if(type=="photoid"){
+			$.ajax({
+		        dataType: "jsonp",
+		        url: "http://www.familyday.com.cn/dapi/space.php?do=photo&id=" + id + "&uid=" + uid + "&m_auth=" + auth,
+		       
+		        success: function( data ) {
+		          /* Get the movies array from the data */
+
+		          if(data.error==0){
+		          	
+			          	$("#detailTemplate").tmpl(data ).appendTo('#detail-panel');
+
+		          }else{
+		          	alert(data.msg);
+		          }
+		        }
+		      });
+
+		}
 	}
+
+	$(function(){
+		getDetail($('#idtype').val(), $('#id').val(), $('#uid').val(), $('#auth').val());
+	})
 	
 </script>
 
@@ -34,31 +100,32 @@
 	<div data-role="page" data-theme="a" data-fullscreen="true" id="main">
 		
 		 <div data-role="content" style="background-color: white;">
+		 	<div class="detail-panel">
+			 	<div class="detail-header">
+					<div class="avatar"><img class="retina" src="css/images/family/avatar2.jpg"/><span>杜拉拉拉拉拉拉</span></div>
+					<div class="header-logo"><img class="retina" src="css/images/family/logo2.jpg" />
+			 		</div>
+				</div>
+			 	
+			 	<div class="detail-subject">
+			 		<div class="subject">超人宝贝</div>
+			 	</div>
+			 	
+			 	<div class="detail-image">
+			 		<img class="retina" src="css/images/family/detail-content.jpg" />
+			 	</div>
 
-		 	<div class="detail-header">
-				<div class="avatar"><img class="retina" src="css/images/family/avatar2.jpg"/><span>杜拉拉拉拉拉拉</span></div>
-				<div class="header-logo"><img class="retina" src="css/images/family/logo2.jpg" />
-		 		</div>
-			</div>
-		 	
-		 	<div class="detail-subject">
-		 		<div class="subject">超人宝贝</div>
-		 	</div>
-		 	
-		 	<div class="detail-image">
-		 		<img class="retina" src="css/images/family/detail-content.jpg" />
-		 	</div>
-
-		 	<div class="detail-message">
-		 		<div>宝宝的白日梦~超人一飞冲天...宝宝的白日梦~超人一飞冲天...宝宝的白日梦~超人一飞冲天...宝宝的白日梦~超人一飞冲天...宝宝的白日梦~超人一飞冲天...宝宝的白日梦~超人一飞冲天...宝宝的白日梦~超人一飞冲天...</div>
-		 		<div class="time"><img class="retina" src="css/images/family/timeico.jpg"/><span>1小时前</span></div>
-		 		<div class="buttons">
-		 			<ul>
-		 				<li><a href="#"><img class="retina" src="css/images/family/reblog.jpg" /></a></li>
-		 				<li><a href="#"><img class="retina" src="css/images/family/like.jpg" /></a></li>
-		 			</ul>
-		 		</div>
-		 	</div>
+			 	<div class="detail-message">
+			 		<div>宝宝的白日梦~超人一飞冲天...宝宝的白日梦~超人一飞冲天...宝宝的白日梦~超人一飞冲天...宝宝的白日梦~超人一飞冲天...宝宝的白日梦~超人一飞冲天...宝宝的白日梦~超人一飞冲天...宝宝的白日梦~超人一飞冲天...</div>
+			 		<div class="time"><img class="retina" src="css/images/family/timeico.jpg"/><span>1小时前</span></div>
+			 		<div class="buttons">
+			 			<ul>
+			 				<li><a href="#"><img class="retina" src="css/images/family/reblog.jpg" /></a></li>
+			 				<li><a href="#"><img class="retina" src="css/images/family/like.jpg" /></a></li>
+			 			</ul>
+			 		</div>
+			 	</div>
+			 </div>
 
 		 	<div class="detail-review">
 		 		<div class="banner">评论</div>
@@ -129,8 +196,12 @@
 		 	</div>
 
 		 </div>
-		  <div data-role="footer" data-position="fixed">
-		  </div>
+
+		<input type="hidden" id="wxkey" name="wxkey" value="$_GET[wxkey]"/>
+ 		<input type="hidden" id="id" name="id" value="$_GET[id]"/>
+ 		<input type="hidden" id="idtype" name="idtype" value="$_GET[idtype]"/>
+ 		<input type="hidden" id="auth" name="auth" value="$m_auth"/>
+ 		<input type="hidden" id="uid" name="uid" value="$_GET[uid]"/>
     </div>
 </body>
 </html>
