@@ -7,7 +7,12 @@ $query = $_SGLOBAL['db']->query("SELECT * FROM ".tname('space')." WHERE wxkey='$
 if ($_SGLOBAL['db']->fetch_array($query)){
 	$result = 1;
 }else{
-	$result = 0;
+	if (isset($_COOKIE['uchome_m_auth'])) 
+	{
+		$result = 0;
+	}else{
+		$result = 1;
+	}
 }
 
 if ($_GET["op"]=="add"){
