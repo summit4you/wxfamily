@@ -71,8 +71,8 @@
 			<div class="tips"> 将微信绑定到我家<br/><span class="tips2">通过微信在家庭圈分享</span></div>
 
 		<form action="wx.php?do=bind&op=add" method="post" data-ajax="false" id="callAjaxForm">
-			<div class="input-field"><input id="username" name="username" placeholder="13612345678" value=""/></div>
-			<div class="input-field"><input id="password" name="password" placeholder="**************" value=""/></div>
+			<div class="input-field"><input id="username" name="username" placeholder="帐号" value="" type="text" /></div>
+			<div class="input-field"><input id="password" name="password" placeholder="密码" value="" type="password" /></div>
 			<input id="wxkey" type="hidden" name="wxkey" value="$_GET['wxkey']" />
 			<div class="publish-btn"><button type="submit" id="submit" name="submit" value="submit" data-theme="a">确定</button></div>
 		</form>
