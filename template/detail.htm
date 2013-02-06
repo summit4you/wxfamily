@@ -157,7 +157,29 @@
 		      });
 	}
 
-	function cpComment()
+	function cpComment(idtype, id, message, auth){
+		var pattern = /^[\s]{0,}$/g;
+		if (!pattern.test(message)){
+			$.ajax({
+			        dataType: "jsonp",
+			        url: "http://www.familyday.com.cn/dapi/do.php?ac=comment&id=" + id + "&idtype=" + idtype + "&m_auth=" + auth + "&message=" + message + "&come=wx",
+			       
+			        success: function( data ) {
+			          /* Get the movies array from the data */
+
+			          if(data.error==0){
+			          	  $('#comment-panel').html("");
+			          	  $('#page').val(1);
+				          getComment($('#idtype').val(), $('#id').val(), $('#page').val(), $('#perpage').val(), $('#auth').val());		
+			          }else{
+			          	alert(data.msg);
+			          }
+			        }
+			});
+		}else{
+			alert("至少写一点东西！");
+		}
+	}
 
 	$(function(){
 		if ($('#idtype').val()=="reblogid")
@@ -172,6 +194,7 @@
 		}
 		getDetail($('#idtype').val(), $('#id').val(), $('#uid').val(), $('#auth').val());
 		getComment($('#idtype').val(), $('#id').val(), $('#page').val(), $('#perpage').val(), $('#auth').val());
+		cpComment($('#idtype').val(), $('#id').val(), $('#review').val(), $('#auth').val());
 	})
 	
 </script>
