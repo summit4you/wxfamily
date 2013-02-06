@@ -134,6 +134,13 @@
 	}
 
 	$(function(){
+		if ($('#idtype').val()=="reblogid")
+		{
+			$('#idtype').val("blogid");
+		}else if($('#idtype').val()=="photoid")
+		{
+			$('#idtype').val("photoid");
+		}
 		getDetail($('#idtype').val(), $('#id').val(), $('#uid').val(), $('#auth').val());
 		getComment($('#idtype').val(), $('#id').val(), $('#page').val(), $('#perpage').val(), $('#auth').val());
 	})
