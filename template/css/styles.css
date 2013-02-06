@@ -1,4 +1,7 @@
 @font-face{font-family:'ltchj';src:url('../fonts/ltchj.ttf');font-weight:normal;font-style:normal;}@font-face{font-family:'lthj';src:url('../fonts/lthj.ttf');font-weight:normal;font-style:normal;}a{text-decoration:none;}
+.lthj{font-family:"lthj","ltchj",Microsoft YaHei;}
+.ltchj{font-family:"ltchj","lthj",Microsoft YaHei;}
+.YaHei{font-family:Microsoft YaHei,"ltchj","lthj";}
 body{margin-left:10px;margin-right:10px;background-color:#f5f4ef;font-family:"lthj","ltchj",Microsoft YaHei;}
 .ui-bar-a{text-shadow:none;font-weight:normal;background-color:#f5f4ef;}
 .ui-body-a,.ui-overlay-a{text-shadow:none;}

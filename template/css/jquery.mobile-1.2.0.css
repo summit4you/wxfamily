@@ -3,6 +3,24 @@
 /*Custom Theme :a
 -----------------------------------------------------------------------------------------------------------*/
 
+@font-face {
+    font-family: 'ltchj';
+    src: url('../fonts/ltchj.ttf');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+@font-face {
+    font-family: 'lthj';
+    src: url('../fonts/lthj.ttf');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 .ui-btn-text{
 	position: none;
 	z-index: 1;
@@ -77,7 +95,7 @@
 .ui-body-a select,
 .ui-body-a textarea,
 .ui-body-a button {
-	 font-family: FZLanTingHeiS-R-GB;
+	 font-family: 'ltchj';
 }
 
 .ui-body-a .ui-link-inherit {
@@ -89,7 +107,7 @@
 }
 
 .ui-body-a .ui-link{
-	font-family: FZLanTingHeiS-B-GB;
+	font-family: 'lthj;;
 	font-size:1em;
 	font-weight:bold;
 	color:rgb(158,213,75);
@@ -99,7 +117,7 @@
 }
 
 .ui-body-a .ui-link:hover{
-	font-family: FZLanTingHeiS-B-GB;
+	font-family: 'lthj;;
 	font-size:1em;
 	font-weight:bold;
 	color:rgb(158,213,75);
@@ -109,7 +127,7 @@
 }
 
 .ui-body-a .ui-link:active{
-	font-family: FZLanTingHeiS-B-GB;
+	font-family: 'lthj;;
 	font-size:0.938em;
 	font-weight:bold;
 	color:rgb(158,213,75);
@@ -119,7 +137,7 @@
 }
 
 .ui-body-a .ui-link:visited{
-	font-family: FZLanTingHeiS-B-GB;
+	font-family: 'lthj;;
 	font-size:1em;
 	font-weight:bold;
 	color:rgb(158,213,75);
@@ -129,7 +147,7 @@
 }
 .ui-btn-up-a {
 	background:rgb(159,213,74);
-	font-family: FZLanTingHeiS-R-GB;
+	font-family: 'ltchj';
 	font-size:1.25em;
 	color:rgb(255,255,255);
 	line-height:120%;
@@ -148,7 +166,7 @@
 }
 .ui-btn-hover-a {
 	background:rgb(159,213,74);
-	font-family: FZLanTingHeiS-R-GB;
+	font-family: 'ltchj';
 	font-size:1.25em;
 	color:rgb(255,255,255);
 	line-height:120%;
@@ -167,7 +185,7 @@
 }
 .ui-btn-down-a {
 	background:rgb(159,213,74);
-	font-family: FZLanTingHeiS-R-GB;
+	font-family: 'ltchj';
 	font-size:1.25em;
 	color:rgb(255,255,255);
 	line-height:120%;
@@ -1164,7 +1182,7 @@
 .ui-btn-active {
  	cursor : pointer;
 	background:rgb(159,213,74);
-	font-family: FZLanTingHeiS-R-GB;
+	font-family: 'ltchj';
 	font-size:20pt;
 	color:rgb(255,255,255);
 	line-height:120%;
@@ -1311,19 +1329,11 @@
 	box-shadow:0px 0px 4px rgba(0,0,0,0.3);
 
 }
-@font-face {
-	font-family: Microsoft YaHei;
-	src: local("Microsoft YaHei")
-}
+
 
 @font-face {
-	font-family: FZLanTingHeiS-R-GB;
-	src: local("FZLanTingHeiS-R-GB")
-}
-
-@font-face {
-	font-family: FZLanTingHeiS-B-GB;
-	src: local("FZLanTingHeiS-B-GB")
+	font-family: 'lthj;;
+	src: local("'lthj;")
 }
 
 @font-face {
