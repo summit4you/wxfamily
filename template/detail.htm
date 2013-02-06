@@ -61,6 +61,7 @@
 
 		          if(data.error==0){
 		          		data=data.data;
+		          		data.message = $('<div />').html(data.message).text();
 			          	$("#detailTemplate").tmpl(data ).appendTo('#detail-panel');
 
 		          }else{
@@ -77,7 +78,7 @@
 		          /* Get the movies array from the data */
 
 		          if(data.error==0){
-		          	
+		          		data=data.data;
 			          	$("#detailTemplate").tmpl(data ).appendTo('#detail-panel');
 
 		          }else{

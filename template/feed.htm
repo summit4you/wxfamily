@@ -24,17 +24,17 @@
 	<div class="feed">
  		<div class="ui-grid-b pheader">
 	 		<div class="ui-block-a avatar">
-	 			<img class="retina" src="{{html avatar}}" />
+	 			<img class="retina" src="{{= avatar}}" />
 	 		</div>
- 			<div class="ui-block-b name">{{html username}}</div>
+ 			<div class="ui-block-b name">{{= username}}</div>
  			<div class="ui-block-c">1小时前</div>
 	 	</div>
  		<div class="panel">
  			<div class="ui-grid-a">
- 				<div class="ui-block-a content-image"><img class="retina" src="{{html image_1}}" /></div>
+ 				<div class="ui-block-a content-image"><img class="retina" src="{{= image_1}}" /></div>
  				<div class="ui-block-b content">
  					<div class="subject">
- 						{{html title}}
+ 						{{= title}}
  					</div>
  					<div class="message">
  						{{html message}}
@@ -44,7 +44,7 @@
  			<div class="ui-grid-a bottom">
  				<div class="ui-block-a group"><a data-role="button"  data-theme="a" data-icon="image"/>最爱电影</a></div>
  				<div class="ui-block-b more">
- 					<a href="wx.php?do=detail&id={{html id}}&uid={{html uid}}&idtype={{html idtype}}&wxkey=$_GET[wxkey]" data-role="none" data-ajax="false">
+ 					<a href="wx.php?do=detail&id={{= id}}&uid={{= uid}}&idtype={{= idtype}}&wxkey=$_GET[wxkey]" data-role="none" data-ajax="false">
  						<img class="retina" src="template/css/images/family/btn-more.jpg"/>
  					</a>
  				</div>
@@ -70,6 +70,9 @@
 
 	          if(data.error==0){
 	          	data = data.data;
+	          	for (var i = 0, len = data.length; i < len; ++i) {
+	          		data[i].message = $('<div />').html(data[i].message).text();
+	          	}
 	          	if (data.length<=0)
 	          		alert("没有更多动态了，赶快发布新的动态吧！");
 	          	else{
