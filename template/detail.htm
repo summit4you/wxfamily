@@ -20,6 +20,7 @@
 <script type="text/javascript" src="template/js/jquery.retina.js"></script>
 <script type="text/javascript" src="template/js/jquery.resizecrop-1.0.3.js"></script>
 <script type="text/javascript" src="template/js/jquery.tmpl.min.js"></script>
+<script type="text/javascript" src="template/js/util.js"></script>
 
 <script id="detailTemplate" type="text/x-jquery-tmpl">
 <div class="detail-header">
@@ -61,7 +62,8 @@
 
 		          if(data.error==0){
 		          		data=data.data;
-		          		data.message = $('<div />').html(data.message).text();
+		          		data.message = html_entity_decode(data.message);
+		          		data.dateline = date('Y-m-d H:i',data.dataline);
 			          	$("#detailTemplate").tmpl(data ).appendTo('#detail-panel');
 
 		          }else{
