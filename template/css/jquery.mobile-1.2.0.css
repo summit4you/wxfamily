@@ -103,7 +103,7 @@
 }
 
 .ui-body-a .ui-link-inherit {
-	font-size:14pt;
+	font-size:14px;
 	color:rgb(121,121,121);
 	line-height:150%;
 	text-align:justify;
@@ -227,7 +227,7 @@
 	linear-gradient(-90deg,rgb(129,168,206) 0%,rgb(94,135,176) 98%);
 	
 	text-shadow:0px -1px 1px rgb(37,79,122);
-	font-size:12pt;
+	font-size:12px;
 	color:rgb(255,255,255);
 	line-height:120%;
 	text-align:justify;
@@ -244,7 +244,7 @@
 .ui-bar-b .ui-link-inherit {
 	
 	text-shadow:0px -1px 1px rgb(37,79,122);
-	font-size:12pt;
+	font-size:12px;
 	color:rgb(255,255,255);
 	line-height:120%;
 	text-align:justify;
@@ -285,7 +285,7 @@
 	linear-gradient(-90deg,rgb(230,230,230) 0%,rgb(204,204,204) 99%);
 	
 	text-shadow:0px 1px 0px rgb(255,255,255);
-	font-size:12pt;
+	font-size:12px;
 	color:rgb(51,51,51);
 	line-height:120%;
 	text-align:justify;
@@ -302,7 +302,7 @@
 .ui-body-b .ui-link-inherit {
 	
 	text-shadow:0px 1px 0px rgb(255,255,255);
-	font-size:12pt;
+	font-size:12px;
 	color:rgb(51,51,51);
 	line-height:120%;
 	text-align:justify;
@@ -311,7 +311,7 @@
 
 .ui-body-b .ui-link{
 	font-family: Adobe Heiti Std;
-	font-size:16pt;
+	font-size:16px;
 	font-weight:bold;
 	color:rgb(36,136,205);
 	line-height:120%;
@@ -321,7 +321,7 @@
 
 .ui-body-b .ui-link:hover{
 	font-family: Adobe Heiti Std;
-	font-size:16pt;
+	font-size:16px;
 	font-weight:bold;
 	color:rgb(36,135,204);
 	line-height:120%;
@@ -331,7 +331,7 @@
 
 .ui-body-b .ui-link:active{
 	font-family: Adobe Heiti Std;
-	font-size:16pt;
+	font-size:16px;
 	font-weight:bold;
 	color:rgb(36,135,204);
 	line-height:120%;
@@ -341,7 +341,7 @@
 
 .ui-body-b .ui-link:visited{
 	font-family: Adobe Heiti Std;
-	font-size:16pt;
+	font-size:16px;
 	font-weight:bold;
 	color:rgb(37,138,204);
 	line-height:120%;
@@ -366,7 +366,7 @@
 	font-family: Adobe Heiti Std;
 	
 	text-shadow:0px -1px 1px rgb(20,80,114);
-	font-size:12pt;
+	font-size:12px;
 	color:rgb(255,255,255);
 	line-height:120%;
 	text-align:center;
@@ -376,7 +376,7 @@
 .ui-btn-up-b a.ui-link-inherit {
 	
 	text-shadow:0px -1px 1px rgb(20,80,114);
-	font-size:12pt;
+	font-size:12px;
 	color:rgb(255,255,255);
 	line-height:120%;
 	text-align:center;
@@ -400,7 +400,7 @@
 	font-family: Adobe Heiti Std;
 	
 	text-shadow:0px -1px 1px rgb(1,77,104);
-	font-size:12pt;
+	font-size:12px;
 	color:rgb(255,255,255);
 	line-height:120%;
 	text-align:center;
@@ -410,7 +410,7 @@
 .ui-btn-hover-b a.ui-link-inherit {
 	
 	text-shadow:0px -1px 1px rgb(1,77,104);
-	font-size:12pt;
+	font-size:12px;
 	color:rgb(255,255,255);
 	line-height:120%;
 	text-align:center;
@@ -434,7 +434,7 @@
 	font-family: Adobe Heiti Std;
 	
 	text-shadow:0px -1px 1px rgb(34,83,119);
-	font-size:12pt;
+	font-size:12px;
 	color:rgb(255,255,255);
 	line-height:120%;
 	text-align:center;
@@ -444,7 +444,7 @@
 .ui-btn-down-b a.ui-link-inherit {
 	
 	text-shadow:0px -1px 1px rgb(34,83,119);
-	font-size:12pt;
+	font-size:12px;
 	color:rgb(255,255,255);
 	line-height:120%;
 	text-align:center;
@@ -471,7 +471,7 @@
 	linear-gradient(-90deg,rgb(240,240,240) 0%,rgb(233,234,235) 99%);
 	
 	text-shadow:0px 1px 1px rgb(255,255,255);
-	font-size:12pt;
+	font-size:12px;
 	color:rgb(62,62,62);
 	line-height:120%;
 	text-align:justify;
@@ -488,7 +488,7 @@
 .ui-bar-c .ui-link-inherit {
 	
 	text-shadow:0px 1px 1px rgb(255,255,255);
-	font-size:12pt;
+	font-size:12px;
 	color:rgb(62,62,62);
 	line-height:120%;
 	text-align:justify;
@@ -529,7 +529,7 @@
 	linear-gradient(-90deg,rgb(238,238,238) 0%,rgb(221,221,221) 99%);
 	
 	text-shadow:0px 1px 0px rgb(255,255,255);
-	font-size:12pt;
+	font-size:12px;
 	color:rgb(51,51,51);
 	line-height:120%;
 	text-align:justify;
@@ -546,7 +546,7 @@
 .ui-body-c .ui-link-inherit {
 	
 	text-shadow:0px 1px 0px rgb(255,255,255);
-	font-size:12pt;
+	font-size:12px;
 	color:rgb(51,51,51);
 	line-height:120%;
 	text-align:justify;
@@ -555,7 +555,7 @@
 
 .ui-body-c .ui-link{
 	font-family: Adobe Heiti Std;
-	font-size:16pt;
+	font-size:16px;
 	font-weight:bold;
 	color:rgb(36,136,205);
 	line-height:120%;
@@ -565,7 +565,7 @@
 
 .ui-body-c .ui-link:hover{
 	font-family: Adobe Heiti Std;
-	font-size:16pt;
+	font-size:16px;
 	font-weight:bold;
 	color:rgb(36,135,204);
 	line-height:120%;
@@ -575,7 +575,7 @@
 
 .ui-body-c .ui-link:active{
 	font-family: Adobe Heiti Std;
-	font-size:16pt;
+	font-size:16px;
 	font-weight:bold;
 	color:rgb(36,135,204);
 	line-height:120%;
@@ -585,7 +585,7 @@
 
 .ui-body-c .ui-link:visited{
 	font-family: Adobe Heiti Std;
-	font-size:16pt;
+	font-size:16px;
 	font-weight:bold;
 	color:rgb(37,138,204);
 	line-height:120%;
@@ -610,7 +610,7 @@
 	font-family: Adobe Heiti Std;
 	
 	text-shadow:0px 1px 1px rgb(246,246,246);
-	font-size:12pt;
+	font-size:12px;
 	color:rgb(68,68,68);
 	line-height:120%;
 	text-align:center;
@@ -620,7 +620,7 @@
 .ui-btn-up-c a.ui-link-inherit {
 	
 	text-shadow:0px 1px 1px rgb(246,246,246);
-	font-size:12pt;
+	font-size:12px;
 	color:rgb(68,68,68);
 	line-height:120%;
 	text-align:center;
@@ -644,7 +644,7 @@
 	font-family: Adobe Heiti Std;
 	
 	text-shadow:0px 1px 1px rgb(255,255,255);
-	font-size:12pt;
+	font-size:12px;
 	color:rgb(16,16,16);
 	line-height:120%;
 	text-align:center;
@@ -654,7 +654,7 @@
 .ui-btn-hover-c a.ui-link-inherit {
 	
 	text-shadow:0px 1px 1px rgb(255,255,255);
-	font-size:12pt;
+	font-size:12px;
 	color:rgb(16,16,16);
 	line-height:120%;
 	text-align:center;
@@ -678,7 +678,7 @@
 	font-family: Adobe Heiti Std;
 	
 	text-shadow:0px 1px 1px rgb(255,255,255);
-	font-size:12pt;
+	font-size:12px;
 	color:rgb(17,17,17);
 	line-height:120%;
 	text-align:center;
@@ -1176,7 +1176,7 @@
 .ui-btn-down-e a.ui-link-inherit {
 	
 	text-shadow:0px 1px 1px rgb(255,255,255);
-	font-size:12pt;
+	font-size:12px;
 	color:rgb(17,17,17);
 	line-height:120%;
 	text-align:center;
@@ -1187,7 +1187,7 @@
  	cursor : pointer;
 	background:rgb(159,213,74);
 	font-family: 'lthj';
-	font-size:20pt;
+	font-size:20px;
 	color:rgb(255,255,255);
 	line-height:120%;
 	text-align:center;
@@ -1195,7 +1195,7 @@
 }
 
 .ui-btn-active a.ui-link {
-	/*font-size:20pt;*/
+	font-size:20px;
 	color:rgb(255,255,255);
 	line-height:120%;
 	text-align:center;
