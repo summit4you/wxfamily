@@ -3,6 +3,16 @@
 $result = 0;
 
 
+$jsonurl = "http://www.familyday.com.cn/dapi/space.php?do=wxfeed&perpage=5&page=1&wxkey=".$_GET['wxkey'];
+$json = file_get_contents($jsonurl,0,null,null);
+$json_output = json_decode($json);
+
+if ($json_output->data->error==0){
+	$result = 0;
+}else{
+	$result = 1;
+}
+
 if ($_GET["op"]=="add"){
 
 	include_once S_ROOT.'./uc_client/client.php';

@@ -72,7 +72,7 @@
 			<div class="tips">您已经成功的将微信和我家的账号绑定了。<br/>
 			你可以：<br/>
 			—快速掌握家人动态<br/>
-			—发布照片、日记、活动跟家人分享<br/>
+			—发布照片、日记跟家人分享<br/>
 			您暂时还不可以（逐渐完善）：<br/>
 			X 整理空间<br/>
 			X 发布视频<br/>
@@ -92,7 +92,7 @@
 
 			<div class="tips"> 将微信绑定到我家<br/><span class="tips2">通过微信在家庭圈分享</span></div>
 
-			<form action="wx.php?do=bind&op=add" method="post" data-ajax="false" id="callAjaxForm">
+			<form action="wx.php?do=bind&op=add&wxkey=$_GET[wxkey]" method="post" data-ajax="false" id="callAjaxForm">
 				<div class="input-field"><input id="username" name="username" placeholder="手机号码" value="" type="text" /></div>
 				<div class="input-field"><input id="password" name="password" placeholder="请输入你在我家的密码" value="" type="password" /></div>
 				<input id="wxkey" type="hidden" name="wxkey" value="$_GET['wxkey']" />
