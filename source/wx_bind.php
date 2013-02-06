@@ -21,7 +21,7 @@ if ($_GET["op"]=="add"){
 	updatetable('space', array('wxkey'=>$_POST['wxkey']), array('uid'=>$passport['uid']));
 
 	// 同步登陆
-	$jsonurl = "http://www.familyday.com.cn/dapi/do.php?ac=login&iscookie=1&username=".$_POST['username'])."password=".$_POST['password']);
+	$jsonurl = "http://www.familyday.com.cn/dapi/do.php?ac=login&iscookie=1&username=".$_POST['username']."password=".$_POST['password'];
 	$json = file_get_contents($jsonurl,0,null,null);
 	
 
