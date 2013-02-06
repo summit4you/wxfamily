@@ -49,6 +49,16 @@
 </div>
 </script>
 
+<script id="commentTemplate" type="text/x-jquery-tmpl">
+<div class="ui-grid-a review-item">
+	<div class="ui-block-a avatar"><img class="retina" src="{{= avatar}}"/></div>
+	<div class="ui-block-b main">
+		<div class="content"><span class="name">{{= authorname}}</span>：{{html message}}</div>
+		<div class="time"><img class="retina" src="template/css/images/family/timeico.jpg"/><span>{{= dateline}}</span></div>
+	</div>
+</div>
+</script>
+
 <script type="text/javascript">
 	
 	function getDetail(type, id, uid, auth){
@@ -94,8 +104,38 @@
 		}
 	}
 
+	function getComment(type, id, page, perpage, auth){
+		$.ajax({
+		        dataType: "jsonp",
+		        url: "http://www.familyday.com.cn/dapi/space.php?do=comment&id=" + id + "&idtype=" + idtype + "&m_auth=" + auth + "&page=" + page + "&perpage=" + perpage,
+		       
+		        success: function( data ) {
+		          /* Get the movies array from the data */
+
+		          if(data.error==0){
+		          		data=data.data;
+		          		if (data.length<=0)
+			          		
+			          		$('.more-btn').html('没有更多评论了，赶快发布新的评论吧！');
+			          	else{
+				          	for (var i = 0, len = data.length; i < len; ++i) {
+				          		data[i].message = html_entity_decode(data[i].message);
+				          		data[i].message = html_entity_decode(data[i].message);
+				          		data[i].dateline = date('Y-m-d H:i',data[i].dataline);
+				          	}
+			          		$("#commentTemplate").tmpl(data).appendTo('#comment-panel');
+			          		$('#page').val($('#page').val()+1);
+			          	}
+		          }else{
+		          	alert(data.msg);
+		          }
+		        }
+		      });
+	}
+
 	$(function(){
 		getDetail($('#idtype').val(), $('#id').val(), $('#uid').val(), $('#auth').val());
+		getComment($('#idtype').val(), $('#id').val(), $('#page').val(), $('#perpage').val(), $('#auth').val());
 	})
 	
 </script>
@@ -119,63 +159,11 @@
 		 		</div>
 		 	</div>
 
-		 	<div class="review-lists">
-		 		<div class="ui-grid-a review-item">
-		 			<div class="ui-block-a avatar"><img class="retina" src="template/css/images/family/avatar2.jpg"/></div>
-		 			<div class="ui-block-b main">
-		 				<div class="content"><span class="name">林美瑞</span>：妈妈好有创意啊~</div>
-		 				<div class="time"><img class="retina" src="template/css/images/family/timeico.jpg"/><span>9分钟前</span></div>
-		 			</div>
-		 		</div>
-
-		 		<div class="ui-grid-a review-item">
-		 			<div class="ui-block-a avatar"><img class="retina" src="template/css/images/family/avatar2.jpg"/></div>
-		 			<div class="ui-block-b main">
-		 				<div class="content"><span class="name">林美瑞</span>：妈妈好有创意啊~</div>
-		 				<div class="time"><img class="retina" src="template/css/images/family/timeico.jpg"/><span>9分钟前</span></div>
-		 			</div>
-		 		</div>
-
-		 		<div class="ui-grid-a review-item">
-		 			<div class="ui-block-a avatar"><img class="retina" src="template/css/images/family/avatar2.jpg"/></div>
-		 			<div class="ui-block-b main">
-		 				<div class="content"><span class="name">林美瑞</span>：妈妈好有创意啊~</div>
-		 				<div class="time"><img class="retina" src="template/css/images/family/timeico.jpg"/><span>9分钟前</span></div>
-		 			</div>
-		 		</div>
-
-		 		<div class="ui-grid-a review-item">
-		 			<div class="ui-block-a avatar"><img class="retina" src="template/css/images/family/avatar2.jpg"/></div>
-		 			<div class="ui-block-b main">
-		 				<div class="content"><span class="name">林美瑞</span>：妈妈好有创意啊~</div>
-		 				<div class="time"><img class="retina" src="template/css/images/family/timeico.jpg"/><span>9分钟前</span></div>
-		 			</div>
-		 		</div>
-
-		 		<div class="ui-grid-a review-item">
-		 			<div class="ui-block-a avatar"><img class="retina" src="template/css/images/family/avatar2.jpg"/></div>
-		 			<div class="ui-block-b main">
-		 				<div class="content"><span class="name">林美瑞</span>：妈妈好有创意啊~</div>
-		 				<div class="time"><img class="retina" src="template/css/images/family/timeico.jpg"/><span>9分钟前</span></div>
-		 			</div>
-		 		</div>
-
-		 		<div class="ui-grid-a review-item">
-		 			<div class="ui-block-a avatar"><img class="retina" src="template/css/images/family/avatar2.jpg"/></div>
-		 			<div class="ui-block-b main">
-		 				<div class="content"><span class="name">林美瑞</span>：妈妈好有创意啊~</div>
-		 				<div class="time"><img class="retina" src="template/css/images/family/timeico.jpg"/><span>9分钟前</span></div>
-		 			</div>
-		 		</div>
-
-		 		<div class="ui-grid-a review-item">
-		 			<div class="ui-block-a avatar"><img class="retina" src="template/css/images/family/avatar2.jpg"/></div>
-		 			<div class="ui-block-b main">
-		 				<div class="content"><span class="name">林美瑞</span>：妈妈好有创意啊~</div>
-		 				<div class="time"><img class="retina" src="template/css/images/family/timeico.jpg"/><span>9分钟前</span></div>
-		 			</div>
-		 		</div>
+		 	<div class="review-lists" id="comment-panel">
+		 		
 		 	</div>
+
+		 	<div class="more-btn"><a href="javascript:;" onclick="getComment($('#idtype').val(), $('#id').val(), $('#page').val(), $('#perpage').val(), $('#auth').val());" data-role="button">更多</a></div>
 
 		 </div>
 
@@ -184,6 +172,8 @@
  		<input type="hidden" id="idtype" name="idtype" value="$_GET[idtype]"/>
  		<input type="hidden" id="auth" name="auth" value="$m_auth"/>
  		<input type="hidden" id="uid" name="uid" value="$_GET[uid]"/>
+ 		<input type="hidden" id="page" name="page" value="1"/>
+	 	<input type="hidden" id="perpage" name="perpage" value="5"/>
     </div>
 </body>
 </html>

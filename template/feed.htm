@@ -71,14 +71,15 @@
 
 	          if(data.error==0){
 	          	data = data.data;
-	          	for (var i = 0, len = data.length; i < len; ++i) {
-	          		data[i].message = html_entity_decode(data[i].message);
-	          		data[i].message = html_entity_decode(data[i].message);
-	          	}
+	          	
 	          	if (data.length<=0)
-	          		alert("没有更多动态了，赶快发布新的动态吧！");
+	          		
+	          		$('.more-btn').html('没有更多动态了，赶快发布新的动态吧！');
 	          	else{
-		          	
+		          	for (var i = 0, len = data.length; i < len; ++i) {
+		          		data[i].message = html_entity_decode(data[i].message);
+		          		data[i].message = html_entity_decode(data[i].message);
+		          	}
 		          	$("#feedTemplate").tmpl(data ).appendTo('#feedlist');
 		          	$('#page').val($('#page').val()+1);
 		          }
