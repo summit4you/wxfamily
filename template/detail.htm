@@ -38,7 +38,7 @@
 </div>
 
 <div class="detail-message">
-	<div>{{= message}}</div>
+	<div>{{html message}}</div>
 	<div class="time"><img class="retina" src="template/css/images/family/timeico.jpg"/><span>{{= dateline}}</span></div>
 	<div class="buttons">
 		<ul>
@@ -62,9 +62,9 @@
 
 		          if(data.error==0){
 		          		data=data.data;
-		          		data.message = $('<div />').html(data.message).text();
+		          		data.message = html_entity_decode(data.message);
 		          		data.dateline = date('Y-m-d H:i',data.dataline);
-			          	$("#detailTemplate").tmpl(data ).appendTo('#detail-panel');
+			          	$("#detailTemplate").tmpl(data).appendTo('#detail-panel');
 
 		          }else{
 		          	alert(data.msg);
@@ -81,6 +81,8 @@
 
 		          if(data.error==0){
 		          		data=data.data;
+		          		data.message = html_entity_decode(data.message);
+		          		data.dateline = date('Y-m-d H:i',data.dataline);
 			          	$("#detailTemplate").tmpl(data ).appendTo('#detail-panel');
 
 		          }else{
