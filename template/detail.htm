@@ -29,11 +29,11 @@
 </div>
 
 <div class="detail-subject">
-	<div class="subject">{{if subject}}{{html subject}}{{else}}{{html title}}{{/if}}</div>
+	<div class="subject">{if subject}{{html subject}}{else}{{html title}}{/if}</div>
 </div>
 
 <div class="detail-image">
-	<img class="retina" src="{{if pic}}{html pic}{{else}}template/css/images/family/detail-content.jpg{{/if}}" />
+	<img class="retina" src="{if pic}{{html pic}}{else}template/css/images/family/detail-content.jpg{/if}" />
 </div>
 
 <div class="detail-message">
