@@ -261,13 +261,14 @@ body{
 	.margin-right(640, 20);
 
 	.box(horizontal, end, end);
-
+	clear:both;
    .width(640,600);
   
 	.avatar{
 
-		.flex(1);
-		
+		width: 50%;
+		padding-bottom:1000px; /* @max-column-height */
+   		margin-bottom:-1000px; /* @max-column-height */
 		span {
 			margin: 0;
 			.margin-left(640, 10);
@@ -278,7 +279,7 @@ body{
 		}
 
 		img{
-			vertical-align:middle;
+			
 			.width(320,74);
 			
 		}
@@ -289,7 +290,9 @@ body{
 		border-bottom: none;
 		height: 50px;
 		margin-left: 0px;
-		.flex(1);
+		width: 50%;
+		padding-bottom:1000px; /* @max-column-height */
+   		margin-bottom:-1000px; /* @max-column-height */
 		img{
 			float:right;
 			margin-top:0px;
