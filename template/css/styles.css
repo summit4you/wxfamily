@@ -60,3 +60,4 @@ body{margin-left:10px;margin-right:10px;background-color:#f5f4ef;}
 .input-field .ui-body-a,.input-field .ui-dialog.ui-overlay-a{border-color:#E0E0E0;}
 .input-field input{border:1px solid #E0E0E0;color:#999999;font-size:1.5em;font-family:Microsoft YaHei;}
 .more-btn{margin-left:3.125%;margin-right:3.125%;text-align:center;}
+.tips{text-align:center;margin-left:auto;margin-right:auto;color:#999999;font-size:1.25em;}.tips .tips2{font-size:1em;}
