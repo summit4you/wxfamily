@@ -21,6 +21,10 @@
 
 }
 
+.ui-btn-inner{
+	text-align: center;
+}
+
 .ui-btn-text{
 	position: none;
 	z-index: 1;
@@ -1186,15 +1190,15 @@
 	font-size:20pt;
 	color:rgb(255,255,255);
 	line-height:120%;
-	text-align:justify;
+	text-align:center;
 
 }
 
 .ui-btn-active a.ui-link {
-	font-size:20pt;
+	/*font-size:20pt;*/
 	color:rgb(255,255,255);
 	line-height:120%;
-	text-align:justify;
+	text-align:center;
 
 }
 .ui-checkbox-on .ui-icon,
