@@ -42,7 +42,7 @@
               }
             }
           });
-        });
+    }
         
     function submitPhoto(){
         var pattern = /^[\s]{0,}$/g;
@@ -52,7 +52,7 @@
             alert("至少写一点东西！");
         }
     }
-        
+
 	$(function(){
 		$('.msg-image').click(function(){
             $('input[name=Filedata]').trigger('click');
