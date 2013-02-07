@@ -1190,9 +1190,9 @@
  	cursor : pointer;
 	background:rgb(159,213,74);
 	font-family: 'lthj';
-	font-size:20px;
+	font-size:inherit;
 	color:rgb(255,255,255);
-	line-height:120%;
+	line-height:inherit;
 	text-align:center;
 
 }
