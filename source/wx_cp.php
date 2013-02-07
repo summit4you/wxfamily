@@ -1,10 +1,9 @@
 <?php
 
-if (isset($_COOKIE['uchome_m_auth'])) 
-{
- 	$m_auth=$_COOKIE['uchome_m_auth'];
- 	$wxkey=$_GET['wxkey'];
-}else{
+$m_auth = "<script>document.write(localStorage.getItem('auth'));</script>";
+$wxkey = "<script>document.write(localStorage.getItem('auth'));</script>";
+
+if(empty($m_auth)){
 	$query = $_SGLOBAL['db']->query("SELECT * FROM ".tname('space')." WHERE wxkey='$_GET[wxkey]'");
 
 	if ($value=$_SGLOBAL['db']->fetch_array($query)){
