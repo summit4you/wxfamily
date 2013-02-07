@@ -72,8 +72,8 @@
 			<div class="tips"> 注册一个我家帐号<br/><span class="tips2">会自动与您的微信绑定</span></div>
 
 			<form action="wx.php?do=invite&op=mobileinvite&wxkey=$_GET[wxkey]" method="post" data-ajax="false" id="callAjaxForm">
-				<div class="input-field"><input id="name" name="username" placeholder="姓名" value="" type="text" /></div>
-				<div class="input-field"><input id="username" name="password1" placeholder="手机号" value="" type="text" /></div>
+				<div class="input-field"><input id="name" name="name" placeholder="姓名" value="" type="text" /></div>
+				<div class="input-field"><input id="username" name="username" placeholder="手机号" value="" type="text" /></div>
 				<input id="wxkey" type="hidden" name="wxkey" value="$_GET['wxkey']" />
 				<div class="publish-btn"><button type="submit" id="submit" name="submit" value="submit" data-theme="a">确定</button></div>
 			</form>
