@@ -80,6 +80,18 @@
 			</div>
 			<div class="publish-btn2"><a href="wx.php?do=feed&wxkey=$_GET[wxkey]" data-ajax="false" data-role="button">看看家人的动态</a></div>
 			<div class="publish-btn2"><a href="wx.php?do=cp&wxkey=$_GET[wxkey]" data-ajax="false" data-role="button">发布照片</a></div>
+		<!--{if $result==2}-->
+			<div class="tips">您已经注册过我家帐号。<br/>
+			你可以：<br/>
+			—快速掌握家人动态<br/>
+			—发布照片、日记跟家人分享<br/>
+			您暂时还不可以（逐渐完善）：<br/>
+			X 整理空间<br/>
+			X 发布视频<br/>
+			X 收藏、转发
+			</div>
+			<div class="publish-btn2"><a href="wx.php?do=feed&wxkey=$_GET[wxkey]" data-ajax="false" data-role="button">看看家人的动态</a></div>
+			<div class="publish-btn2"><a href="wx.php?do=cp&wxkey=$_GET[wxkey]" data-ajax="false" data-role="button">发布照片</a></div>
 		<!--{elseif $result==-1}-->			
 			<div class="tips">未能注册成功<br/>
 							原因可能是：<br/>

@@ -20,7 +20,7 @@ if ($_GET[op]=="register"){
 	$query = $_SGLOBAL['db']->query("SELECT * FROM ".tname('space')." WHERE wxkey='$_GET[wxkey]'");
 
 	if ($value=$_SGLOBAL['db']->fetch_array($query)){
-		$result = -1;
+		$result = 2;
 		include_once template("./wx/template/reg");
 		exit;
 	}
