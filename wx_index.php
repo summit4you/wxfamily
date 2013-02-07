@@ -62,35 +62,45 @@ class wechatCallbackapiTest
 						$resultStr = makeText($fromUsername, $toUsername, $time, $msgType, $contentStr); 
 					}elseif($keyword == "1"){
 						$msgType = "news";
-						
-						$jsonurl = "http://www.familyday.com.cn/dapi/space.php?do=wxfeed&perpage=5&page=1&wxkey=".$fromUsername;
-						$json = file_get_contents($jsonurl,0,null,null);
-						$json_output = json_decode($json);
+						$con = mysql_connect("localhost","familyday","fmd30991261");
+						if (!$con)
+						  {
+						  die('Could not connect: ' . mysql_error());
+						  }
+						mysql_select_db("familyday", $con);
+						$result = mysql_query("SELECT * FROM uchome_space WHERE wxkey='".$fromUsername."'");
+						if($row = mysql_fetch_array($result))
+						{					
+							mysql_close($con);
+							$jsonurl = "http://www.familyday.com.cn/dapi/space.php?do=wxfeed&perpage=5&page=1&wxkey=".$fromUsername;
+							$json = file_get_contents($jsonurl,0,null,null);
+							$json_output = json_decode($json);
 
-						if ($json_output->data->error==0){
-							$articles = array();
-							foreach ($json_output->data as $key => $obj)
-							{
-								$obj->message = html_entity_decode($obj->message);
-								$obj->message = html_entity_decode($obj->message);
-								$obj->message = strip_tags($obj->message);
-								$msg = $obj->username.":".$obj->title."\n".$obj->message;
-
-								if ($obj->image_1)
+							if ($json_output->data->error==0){
+								$articles = array();
+								foreach ($json_output->data as $key => $obj)
 								{
-									$pic = $obj->image_1;
-								}else{
-									$pic = "http://www.familyday.com.cn/wx/image/nopic.gif";
+									$obj->message = html_entity_decode($obj->message);
+									$obj->message = html_entity_decode($obj->message);
+									$obj->message = strip_tags($obj->message);
+									$msg = $obj->username.":".$obj->title."\n".$obj->message;
+
+									if ($obj->image_1)
+									{
+										$pic = $obj->image_1;
+									}else{
+										$pic = "http://www.familyday.com.cn/wx/image/nopic.gif";
+									}
+									$url = "http://www.familyday.com.cn/wx/wx.php?do=detail&id=".$obj->id."&uid=".$obj->uid."&idtype=".$obj->idtype."&wxkey=".$fromUsername;
+									$articles[] = makeArticleItem($msg, $msg, $pic, $url);
 								}
-								$url = "http://www.familyday.com.cn/wx/wx.php?do=detail&id=".$obj->id."&uid=".$obj->uid."&idtype=".$obj->idtype."&wxkey=".$fromUsername;
-								$articles[] = makeArticleItem($msg, $msg, $pic, $url);
+								$url = "http://www.familyday.com.cn/wx/wx.php?do=feed&wxkey=".$fromUsername;
+								$pic = "http://www.familyday.com.cn/wx/images/feed-icon.jpg";
+								$articles[] = makeArticleItem("更多动态", "更多动态", $pic, $url);
+								$resultStr = makeArticles($fromUsername, $toUsername, $time, $msgType, "家庭动态",$articles); 
 							}
-							$url = "http://www.familyday.com.cn/wx/wx.php?do=feed&wxkey=".$fromUsername;
-							$pic = "http://www.familyday.com.cn/wx/images/feed-icon.jpg";
-							$articles[] = makeArticleItem("更多动态", "更多动态", $pic, $url);
-							$resultStr = makeArticles($fromUsername, $toUsername, $time, $msgType, "家庭动态",$articles); 
-			
 						}else{
+							mysql_close($con);
 							$url = "http://www.familyday.com.cn/wx/wx.php?do=bind&wxkey=".$fromUsername;
 							$pic = "http://www.familyday.com.cn/wx/images/bind.jpg";
 							$articles[] = makeArticleItem("绑定微信帐号", "你还没有绑定微信号，请点击进入微信绑定页", $pic, $url);
@@ -140,7 +150,7 @@ class wechatCallbackapiTest
 
 						$url = "http://www.familyday.com.cn/wx/wx.php?do=invite&wxkey=".$fromUsername;
 						$pic = "http://www.familyday.com.cn/wx/images/invite-icon.jpg";
-						$articles[] = makeArticleItem("邀请好友", "邀请好友", $pic, $url);
+						$articles[] = makeArticleItem("邀请家人", "邀请家人", $pic, $url);
 
 						$url = "http://www.familyday.com.cn/wx/wx.php?do=feed&wxkey=".$fromUsername;
 						$pic = "http://www.familyday.com.cn/wx/images/feed-icon.jpg";
