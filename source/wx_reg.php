@@ -29,7 +29,7 @@ if ($_GET[op]=="register"){
 
 	// 验证手机号码
 	if(empty($username)) {
-		wxshowmessage('username_can_not_be_empty');
+		wxshowmessage('用户名不能为空');
 	} elseif (!preg_match("/^0?(13[0-9]|15[012356789]|18[0236789]|14[57])[0-9]{8}$/",$username)) {
 		wxshowmessage('user_name_is_not_legitimate');
 	}
