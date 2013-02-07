@@ -43,6 +43,33 @@
             }
           });
     }
+
+    function publicBlog(subject, message, tags, auth){
+        $.ajax({
+            dataType: "jsonp",
+            url: "http://www.familyday.com.cn/dapi/cp.php?ac=blog&m_auth=" + auth + "&message=" + message + "&friend=0&come=wx&makefeed=1&blogsubmit=1&tags=" + tags+ "&subject=" + subject,
+           
+            success: function( data ) {
+              /* Get the movies array from the data */
+
+              if(data.error==0){
+                data = data.data;
+                alert("提交成功，获得了"+data.credit+"点积分");
+              }else{
+                alert(data.msg);
+              }
+            }
+          });
+    }
+
+    function submitBlog(){
+        var pattern = /^[\s]{0,}$/g;
+        if (!pattern.test($('#message').val())){
+            publicBlog($('#subject').val(), $('#message').val(), $('#tagname').val(), $('#auth').val());
+        }else{
+            alert("至少写一点东西！");
+        }
+    }
         
     function submitPhoto(){
         var pattern = /^[\s]{0,}$/g;
@@ -152,14 +179,18 @@
 	<div data-role="page" data-theme="a" data-fullscreen="true" id="main">
 		<div data-role="header">
 			<div class="ui-grid-a header">
+                <!--{if $op=="photo"}-->
 				<div class="ui-block-a header-menu"><p>发图片</p></div>
+                <!--{elseif $op=="blog"}-->
+                <div class="ui-block-a header-menu"><p>发日记</p></div>
+                <!--{/if}-->
 				<div class="ui-block-b"><div class="header-logo"><div><img class="retina" src="template/css/images/family/logo.jpg" height="26"/></div></div></div>
 				<div class="ui-block-a header-menu-check"><div class="tri-down"></div></div>
 			</div>
 		</div>
 
 		<div data-role="content">
-			
+			<!--{if $op=="photo"}-->
 				<div class="msg-panel">
 					<div class="msg group">
 						<div class="msg-image">
@@ -169,6 +200,7 @@
 						<div class="msg-content"><textarea placeholder="写点东东吧..." id="message"></textarea></div>
 					</div>
 				</div>
+           
                  <!--{if count($taglist)>0}-->
     				
                     <div data-role="fieldcontain" class="select-btn">
@@ -185,8 +217,35 @@
                         </select>
                     </div>
                 <!--{/if}-->
+
 				<div class="publish-btn"><a href="javascript:;" data-role="button" onclick="submitPhoto();">确定</a></div>
-				<input type="file" id="Filedata" name="Filedata" accept="image/*" style="display:none;"></div>
+                <input type="file" id="Filedata" name="Filedata" accept="image/*" style="display:none;"></div>
+            <!--{elseif $op=="blog"}-->
+                <div class="msg-panel">
+                    <div class="msg group">
+                        <div class="msg-content"><input placeholder="标题" id="subject"></input></div>
+                        <div class="msg-content"><textarea placeholder="写点东东吧..." id="message"></textarea></div>
+                    </div>
+                </div>
+                <!--{if count($taglist)>0}-->
+                    
+                    <div data-role="fieldcontain" class="select-btn">
+                        <div class="btn-icon">
+                            <div class="icon">
+                                <img class="retina" src="template/css/images/family/tag.png"></img>
+                            </div>
+                        </div>
+                        <label for="select-choice-0" class="select"></label>
+                        <select name="select-choice-0" id="select-choice-1">
+                            <!--{loop $taglist $value}-->
+                                <option value="$value[tagname]">$value[tagname]</option>
+                            <!--{/loop}-->
+                        </select>
+                    </div>
+                <!--{/if}-->
+                <div class="publish-btn"><a href="javascript:;" data-role="button" onclick="submitBlog();">确定</a></div>
+            <!--{/if}-->
+				
 			
 		</div>
 		
