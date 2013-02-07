@@ -70,7 +70,7 @@
 		if (type=="blogid"){
 			$.ajax({
 		        dataType: "jsonp",
-		        url: "http://www.familyday.com.cn/dapi/space.php?do=blog&id=" + id + "&uid=" + uid + "&m_auth=" + auth,
+		        url: "http://www.familyday.com.cn/dapi/space.php?do=blog&id=" + id + "&uid=" + uid + "&m_auth=" + encodeURIComponent(auth),
 		       
 		        success: function( data ) {
 		          /* Get the movies array from the data */
@@ -89,7 +89,7 @@
 		}else if(type=="photoid"){
 			$.ajax({
 		        dataType: "jsonp",
-		        url: "http://www.familyday.com.cn/dapi/space.php?do=photo&id=" + id + "&uid=" + uid + "&m_auth=" + auth,
+		        url: "http://www.familyday.com.cn/dapi/space.php?do=photo&id=" + id + "&uid=" + uid + "&m_auth=" + encodeURIComponent(auth),
 		       
 		        success: function( data ) {
 		          /* Get the movies array from the data */
@@ -109,7 +109,7 @@
 		}else if(type=="videoid"){
 			$.ajax({
 		        dataType: "jsonp",
-		        url: "http://www.familyday.com.cn/dapi/space.php?do=video&id=" + id + "&uid=" + uid + "&m_auth=" + auth,
+		        url: "http://www.familyday.com.cn/dapi/space.php?do=video&id=" + id + "&uid=" + uid + "&m_auth=" + encodeURIComponent(auth),
 		       
 		        success: function( data ) {
 		          /* Get the movies array from the data */
@@ -132,7 +132,7 @@
 	function getComment(idtype, id, page, perpage, auth){
 		$.ajax({
 		        dataType: "jsonp",
-		        url: "http://www.familyday.com.cn/dapi/space.php?do=comment&id=" + id + "&idtype=" + idtype + "&m_auth=" + auth + "&page=" + page + "&perpage=" + perpage,
+		        url: "http://www.familyday.com.cn/dapi/space.php?do=comment&id=" + id + "&idtype=" + idtype + "&m_auth=" + encodeURIComponent(auth) + "&page=" + page + "&perpage=" + perpage,
 		       
 		        success: function( data ) {
 		          /* Get the movies array from the data */
@@ -163,7 +163,7 @@
 		if (!pattern.test(message)){
 			$.ajax({
 			        dataType: "jsonp",
-			        url: "http://www.familyday.com.cn/dapi/do.php?ac=comment&id=" + id + "&idtype=" + idtype + "&m_auth=" + auth + "&message=" + message + "&come=wx",
+			        url: "http://www.familyday.com.cn/dapi/do.php?ac=comment&id=" + id + "&idtype=" + idtype + "&m_auth=" + encodeURIComponent(auth) + "&message=" + message + "&come=wx",
 			       
 			        success: function( data ) {
 			          /* Get the movies array from the data */
@@ -183,7 +183,7 @@
 	}
 
 	$(function(){
-		
+
 		$('#auth').val(localStorage.getItem('auth'));
 
 		if ($('#idtype').val()=="reblogid")
