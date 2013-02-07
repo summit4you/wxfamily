@@ -13,7 +13,7 @@ if ($_GET[op]=="mobileinvite"){
 
 	if ($space=$_SGLOBAL['db']->fetch_array($query)){
 
-		$username = trim($_POST['phonenum']);
+		$username = trim($_POST['username']);
 		$name = trim($_POST['name']);
 		if(empty($username)) {
 			wxshowmessage('user_name_is_not_legitimate');
