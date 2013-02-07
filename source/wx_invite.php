@@ -10,48 +10,134 @@ include_once(S_ROOT.'./source/function_magic.php');
 $query = $_SGLOBAL['db']->query("SELECT * FROM ".tname('space')." WHERE wxkey='$_GET[wxkey]'");
 $space=$_SGLOBAL['db']->fetch_array($query);
 
+$siteurl = getsiteurl();
+
+$friendnum = getcount('friend', array('fuid'=>$space['uid'], 'status'=>0));
+
+$maxcount = 50;//最多好友邀请
+$reward = getreward('invitecode', 0);
+$appid = empty($_GET['app']) ? 0 : intval($_GET['app']);
+
+$inviteapp = $invite_code = '';
+if(empty($reward['credit']) || $appid) {
+	$reward['credit'] = 0;
+	$invite_code = space_key($space, $appid);
+}
+
+$siteurl = getsiteurl();
+$spaceurl = $siteurl.'space.php?uid='.$_SGLOBAL['supe_uid'];
+$mailvar = array(
+	"<a href=\"$spaceurl\">".avatar($space['uid'], 'middle')."</a><br>".$_SN[$space['uid']],
+	$_SN[$space['uid']],
+	$_SCONFIG['sitename'],
+	'',
+	'',
+	$spaceurl,
+	''
+);
+
+//取出相应的应用
+$appinfo = array();
+if($appid) {
+	$query = $_SGLOBAL['db']->query("SELECT * FROM ".tname('myapp')." WHERE appid='$appid'");
+	$appinfo = $_SGLOBAL['db']->fetch_array($query);
+	if($appinfo) {
+		$inviteapp = "&amp;app=$appid";
+		$mailvar[6] = $appinfo['appname'];
+	} else {
+		$appid = 0;
+	}
+}
+
+	
+
+//处理短信邀请
+if($_GET[op]=="smsinvite") {
+	$username = trim($_POST['username']);
+	$name = trim($_POST['name']);
+	if(empty($username)) {
+		showmessage('user_name_is_not_legitimate');
+	}elseif(!preg_match("/^0?(13[0-9]|15[012356789]|18[0236789]|14[57])[0-9]{8}$/",$username)){
+	    showmessage('user_name_is_not_legitimate');
+	}
+	
+  
+   //file_get_contents($url);
+	if (!empty($space)){
+	   if($reward['credit']) {
+				//计算积分扣减积分
+			$credit = intval($reward['credit'])*($invitenum+1);
+			
+			$setarr = array(
+				'uid' => $space['uid'],
+				'code' => $_POST['password'],
+				'email' => $username.'@familyday.com.cn',
+				'type' => 1
+			);
+			$id = inserttable('invite', $setarr, 1);
+			realname_set($setarr['uid'],$space['username']);
+			if ($id){
+				
+				
+				$space2 = addmember($username, $_POST['password'], $username.'@familyday.com.cn');
+			
+				invite_update($id, $space2['uid'], $space2['username'], $space['uid'], $space['username'], 0);
+				//$message = $name.",我是".(($space[namestatus]>0)?$space['name']:$space['username'])."，我在爱发现(www.atfaxian.com)分享了很多本地时尚购物的东东哦，请你来看看。你的账号是".$username."，初始密码是".$_POST['password'];
+				//SendMessage($username,$message);
+				
+				realname_get();
+				 SendMessage($username,smlang('invite_friend',array($name,$_POST['password'],$_SN[$setarr['uid']])));
+				//creatsms($message, $username);
+				if($reward['credit']) {
+					$credit = intval($reward['credit']);
+					$_SGLOBAL['db']->query("UPDATE ".tname('space')." SET credit=credit-$credit WHERE uid='$setarr[uid]'");
+				}
+				wxshowmessage('邀请成功','wx.php?do=feed&wxkey='.$_GET['wxkey']);
+			}else{
+				wxshowmessage('邀请失败','cp.php?ac=invite');
+			}
+			/*if($id) {
+				$mailvar[4] = "{$siteurl}invite.php?{$id}{$code}{$inviteapp}";
+				createmail($value, $mailvar);
+				$invitenum++;
+			} else {
+				$failingmail[] = $value;
+			}*/
+		} else {
+			/*$mailvar[4] = "{$siteurl}invite.php?u=$space[uid]&amp;c=$invite_code{$inviteapp}";
+			if($appid) {
+				$mailvar[6] = $appinfo['appname'];
+			}
+			createmail($value, $mailvar);*/
+
+			$setarr = array(
+				'uid' => $space['uid'],
+				'code' => $_POST['password'],
+				'email' => $username.'@familyday.com.cn',
+				'type' => 1
+			);
+			realname_set($setarr['uid'],$space['username']);
+			$id = inserttable('invite', $setarr, 1);
+
+			$space2 = addmember($username, $_POST['password'], $username.'@aifaxian.com');
+			
+			invite_update($id, $space2['uid'], $space2['username'], $space['uid'], $space['username'], 0);
+			
+			realname_get();
+			 SendMessage($username,smlang('invite_friend',array($name,$_POST['password'],$_SN[$setarr['uid']])));
+			if($reward['credit']) {
+					$credit = intval($reward['credit']);
+					$_SGLOBAL['db']->query("UPDATE ".tname('space')." SET credit=credit-$credit WHERE uid='$space[uid]'");
+			}
+			wxshowmessage('邀请成功','wx.php?do=bind&wxkey='.$_GET['wxkey']);
+		}
+	}
+   
+}
+
 if ($_GET[op]=="mobileinvite"){
 	
 
-
-	$siteurl = getsiteurl();
-
-	$friendnum = getcount('friend', array('fuid'=>$space['uid'], 'status'=>0));
-
-	$maxcount = 50;//最多好友邀请
-	$reward = getreward('invitecode', 0);
-	$appid = empty($_GET['app']) ? 0 : intval($_GET['app']);
-
-	$inviteapp = $invite_code = '';
-	if(empty($reward['credit']) || $appid) {
-		$reward['credit'] = 0;
-		$invite_code = space_key($space, $appid);
-	}
-
-	$siteurl = getsiteurl();
-	$spaceurl = $siteurl.'space.php?uid='.$_SGLOBAL['supe_uid'];
-	$mailvar = array(
-		"<a href=\"$spaceurl\">".avatar($space['uid'], 'middle')."</a><br>".$_SN[$space['uid']],
-		$_SN[$space['uid']],
-		$_SCONFIG['sitename'],
-		'',
-		'',
-		$spaceurl,
-		''
-	);
-
-	//取出相应的应用
-	$appinfo = array();
-	if($appid) {
-		$query = $_SGLOBAL['db']->query("SELECT * FROM ".tname('myapp')." WHERE appid='$appid'");
-		$appinfo = $_SGLOBAL['db']->fetch_array($query);
-		if($appinfo) {
-			$inviteapp = "&amp;app=$appid";
-			$mailvar[6] = $appinfo['appname'];
-		} else {
-			$appid = 0;
-		}
-	}
 
 	
 
