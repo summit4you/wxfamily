@@ -84,7 +84,7 @@
 		          	for (var i = 0, len = data.length; i < len; ++i) {
 		          		data[i].message = html_entity_decode(data[i].message);
 		          		data[i].message = html_entity_decode(data[i].message);
-		          		data[i].dateline = date('Y-m-d H:i',data[i].dateline);
+		          		data[i].dateline = date('Y-m-d',data[i].dateline);
 		          		if (data[i].image_1=="")
 		          		{
 		          			data[i].image_1 = "http://www.familyday.com.cn/wx/image/nopic.gif";
