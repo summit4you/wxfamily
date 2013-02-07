@@ -29,12 +29,11 @@ class wechatCallbackapiTest
 
 	public function welcome($toUsername) {
         if($toUsername=="gh_71e78c3b0890"){
-            return      "你好！欢迎来到“我家”，绑定微信机器人，帮你快速了解家人动态，还可以快速发布照片和文字，立即跟家人分享！
+            return      "你好！欢迎来到“家庭圈”，绑定微信机器人，帮你快速了解家人动态、发布照片和日记、立即跟家人分享！
 
-•回复【1】——查看家人动态；
-•回复【2】——发表照片和日记；
-•回复【3】——把微信绑定到我家；
-•回复【4】——注册我家账号；
+•回复【1】——查看你的家庭圈动态；
+•回复【2】——发表照片或日记；
+•回复【3】——绑定微信、注册家庭圈；
 ";
         }
     }
@@ -96,7 +95,7 @@ class wechatCallbackapiTest
 								}
 								$url = "http://www.familyday.com.cn/wx/wx.php?do=feed&wxkey=".$fromUsername;
 								$pic = "http://www.familyday.com.cn/wx/images/feed-icon.jpg";
-								$articles[] = makeArticleItem("更多动态", "更多动态", $pic, $url);
+								$articles[] = makeArticleItem("更多...", "更多...", $pic, $url);
 								$resultStr = makeArticles($fromUsername, $toUsername, $time, $msgType, "家庭动态",$articles); 
 							}
 						}else{
@@ -127,7 +126,7 @@ class wechatCallbackapiTest
 
 							$url = "http://www.familyday.com.cn/wx/wx.php?do=feed&wxkey=".$fromUsername;
 							$pic = "http://www.familyday.com.cn/wx/images/feed-icon.jpg";
-							$articles[] = makeArticleItem("全部家人动态", "全部家人动态", $pic, $url);
+							$articles[] = makeArticleItem("全部家庭圈动态", "全部家庭圈动态", $pic, $url);
 							$resultStr = makeArticles($fromUsername, $toUsername, $time, $msgType, "发布",$articles); 
 
 						}else{
@@ -142,11 +141,11 @@ class wechatCallbackapiTest
 						$msgType = "news";
 						$url = "http://www.familyday.com.cn/wx/wx.php?do=bind&wxkey=".$fromUsername;
 						$pic = "http://www.familyday.com.cn/wx/images/bind.jpg";
-						$articles[] = makeArticleItem("把微信号绑定在我家", "把微信号绑定在我家", $pic, $url);
+						$articles[] = makeArticleItem("把微信号绑定到我的家庭圈", "把微信号绑定到我的家庭圈", $pic, $url);
 
 						$url = "http://www.familyday.com.cn/wx/wx.php?do=reg&wxkey=".$fromUsername;
 						$pic = "http://www.familyday.com.cn/wx/images/reg-icon.jpg";
-						$articles[] = makeArticleItem("注册到我家帐号\n（会自动绑定微信）", "注册到我家帐号\n（会自动绑定微信）", $pic, $url);
+						$articles[] = makeArticleItem("注册到家庭圈帐号\n（会自动绑定微信）", "注册到家庭圈帐号\n（会自动绑定微信）", $pic, $url);
 
 						$url = "http://www.familyday.com.cn/wx/wx.php?do=invite&wxkey=".$fromUsername;
 						$pic = "http://www.familyday.com.cn/wx/images/invite-icon.jpg";
@@ -154,21 +153,20 @@ class wechatCallbackapiTest
 
 						$url = "http://www.familyday.com.cn/wx/wx.php?do=feed&wxkey=".$fromUsername;
 						$pic = "http://www.familyday.com.cn/wx/images/feed-icon.jpg";
-						$articles[] = makeArticleItem("全部家人动态", "全部家人动态", $pic, $url);
+						$articles[] = makeArticleItem("全部家庭圈动态", "全部家庭圈动态", $pic, $url);
 
 						$url = "http://www.familyday.com.cn/wx/wx.php?do=feed&wxkey=".$fromUsername;
 						$pic = "http://www.familyday.com.cn/wx/images/about-icon.jpg";
-						$articles[] = makeArticleItem("关于我家的微信客户端", "关于我家的微信客户端", $pic, $url);
+						$articles[] = makeArticleItem("关于微信家庭圈", "关于微信家庭圈", $pic, $url);
 
 						$resultStr = makeArticles($fromUsername, $toUsername, $time, $msgType, "绑定微信帐号",$articles); 
 					}else{
 						$msgType = "text";
-						$contentStr = "你好！欢迎来到“我家”，绑定微信机器人，帮你快速了解家人动态，还可以快速发布照片和文字，立即跟家人分享！
+						$contentStr = "你好！欢迎来到“家庭圈”，绑定微信机器人，帮你快速了解家人动态、发布照片和日记、立即跟家人分享！
 
-•回复【1】——查看家人动态；
-•回复【2】——发表照片和日记；
-•回复【3】——把微信绑定到我家；
-•回复【4】——注册我家账号；
+•回复【1】——查看你的家庭圈动态；
+•回复【2】——发表照片或日记；
+•回复【3】——绑定微信、注册家庭圈；
 ";
 						$resultStr = makeText($fromUsername, $toUsername, $time, $msgType, $contentStr); 
 					}
