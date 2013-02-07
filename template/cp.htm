@@ -25,6 +25,34 @@
 <script type="text/javascript" src="template/js/jquery.canvasResize.js"></script>
 
 <script type="text/javascript">
+
+    function pubilchPhoto(picid, message, tags, auth){
+            $.ajax({
+            dataType: "jsonp",
+            url: "http://www.familyday.com.cn/dapi/cp.php?ac=photo&m_auth=" + m_auth + "&title["+picid+"]=&message=" + message + "&friend=0&come=wx&makefeed=1&photosubmit=1&tags=" + tags,
+           
+            success: function( data ) {
+              /* Get the movies array from the data */
+
+              if(data.error==0){
+                data = data.data;
+                alert("提交成功，获得了"+data.credit+"点积分");
+              }else{
+                alert(data.msg);
+              }
+            }
+          });
+        });
+        
+    function submitPhoto(){
+        var pattern = /^[\s]{0,}$/g;
+        if (!pattern.test(message)){
+            pubilchPhoto($('#picid').val(), $('#message').val(), $('#tagname').val(), $('#auth').val());
+        }else{
+            alert("至少写一点东西！");
+        }
+    }
+        
 	$(function(){
 		$('.msg-image').click(function(){
             $('input[name=Filedata]').trigger('click');
@@ -114,32 +142,7 @@
             $('#tagid').val($('#select-choice-1').val());
         });
 
-        function pubilchPhoto(picid, message, tags, auth){
-            $.ajax({
-            dataType: "jsonp",
-            url: "http://www.familyday.com.cn/dapi/cp.php?ac=photo&m_auth=" + m_auth + "&title["+picid+"]=&message=" + message + "&friend=0&come=wx&makefeed=1&photosubmit=1&tags=" + tags,
-           
-            success: function( data ) {
-              /* Get the movies array from the data */
-
-              if(data.error==0){
-                data = data.data;
-                alert("提交成功，获得了"+data.credit+"点积分");
-              }else{
-                alert(data.msg);
-              }
-            }
-          });
-        });
         
-        function submitPhoto(){
-            var pattern = /^[\s]{0,}$/g;
-            if (!pattern.test(message)){
-                pubilchPhoto($('#picid').val(), $('#message').val(), $('#tagname').val(), $('#auth').val());
-            }else{
-                alert("至少写一点东西！");
-            }
-        }
 
 	});
 </script>
