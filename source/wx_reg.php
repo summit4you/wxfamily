@@ -29,29 +29,29 @@ if ($_GET[op]=="register"){
 
 	// 验证手机号码
 	if(empty($username)) {
-		showmessage('username_can_not_be_empty');
+		wxshowmessage('username_can_not_be_empty');
 	} elseif (!preg_match("/^0?(13[0-9]|15[012356789]|18[0236789]|14[57])[0-9]{8}$/",$username)) {
-		showmessage('user_name_is_not_legitimate');
+		wxshowmessage('user_name_is_not_legitimate');
 	}
 
 	// 验证密码
 	if(empty($password)) {
-		showmessage('passwrod_can_not_be_empty');
+		wxshowmessage('passwrod_can_not_be_empty');
 	}
 
 	if($password!=$password2) {
-		showmessage('两次输入密码不一致');
+		wxshowmessage('两次输入密码不一致');
 	}
 
 	
 
 	//检查邮箱
 	if(empty($email)) {
-		showmessage('email_format_is_wrong');
+		wxshowmessage('email_format_is_wrong');
 	}
 	if($_SCONFIG['checkemail']) {
 		if($count = getcount('spacefield', array('email'=>$email))) {
-			showmessage('email_has_been_registered');
+			wxshowmessage('email_has_been_registered');
 		}
 	}
 
@@ -61,7 +61,7 @@ if ($_GET[op]=="register"){
 		$query = $_SGLOBAL['db']->query("SELECT dateline FROM ".tname('space')." WHERE regip='$onlineip' ORDER BY dateline DESC LIMIT 1");
 		if($value = $_SGLOBAL['db']->fetch_array($query)) {
 			if($_SGLOBAL['timestamp'] - $value['dateline'] < $_SCONFIG['regipdate']*3600) {
-				showmessage('regip_has_been_registered');
+				wxshowmessage('regip_has_been_registered');
 			}
 		}
 	}
@@ -71,19 +71,19 @@ if ($_GET[op]=="register"){
 	$newuid = uc_user_register($username, $password, $email);
 	if($newuid <= 0) {
 		if($newuid == -1) {
-			showmessage('user_name_is_not_legitimate');
+			wxshowmessage('user_name_is_not_legitimate');
 		} elseif($newuid == -2) {
-			showmessage('include_not_registered_words');
+			wxshowmessage('include_not_registered_words');
 		} elseif($newuid == -3) {
-			showmessage('user_name_already_exists');
+			wxshowmessage('user_name_already_exists');
 		} elseif($newuid == -4) {
-			showmessage('email_format_is_wrong');
+			wxshowmessage('email_format_is_wrong');
 		} elseif($newuid == -5) {
-			showmessage('email_not_registered');
+			wxshowmessage('email_not_registered');
 		} elseif($newuid == -6) {
-			showmessage('email_has_been_registered');
+			wxshowmessage('email_has_been_registered');
 		} else {
-			showmessage('register_error');
+			wxshowmessage('register_error');
 		}
 	} else {
 		$setarr = array(

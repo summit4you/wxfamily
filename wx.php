@@ -2,7 +2,7 @@
 
 include_once('./../common.php');
 include_once( 'botutil.php' );
-
+include_once( 'wx_common.php' );
 //ÔÊÐí¶¯×÷
 $dos = array('bind', 'feed', 'cp', 'detail', 'reg', 'setting');
 $do = (!empty($_GET['do']) && in_array($_GET['do'], $dos))?$_GET['do']:'bind';
