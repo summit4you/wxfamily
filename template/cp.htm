@@ -192,7 +192,9 @@
             $('#tagid').val($('#select-choice-1').val());
         });
 
-       
+       $('#select-choice-2').change(function(){
+            window.location.href = $('#select-choice-2').val();
+        });
 
 	});
 </script>
@@ -203,9 +205,25 @@
 		<div data-role="header">
 			<div class="ui-grid-a header">
                 <!--{if $op=="photo"}-->
-				<div class="ui-block-a header-menu"><p>发图片</p></div>
+				<div class="ui-block-a header-menu">
+                    <div data-role="fieldcontain" class="title-btn">
+                    <select name="select-choice-2" id="select-choice-2" data-icon="false">
+                       <option value="http://www.familyday.com.cn/wx/wx.php?do=cp&op=photo&wxkey=$_GET[wxkey]">发图片</option>
+                       <option value="http://www.familyday.com.cn/wx/wx.php?do=cp&op=blog&wxkey=$_GET[wxkey]">发日记</option>
+                    </select>
+                    
+                    </div>
+                </div>
                 <!--{elseif $op=="blog"}-->
-                <div class="ui-block-a header-menu"><p>发日记</p></div>
+                <div class="ui-block-a header-menu">
+                    <div data-role="fieldcontain" class="title-btn">
+                    <select name="select-choice-2" id="select-choice-2" data-icon="false">
+                       <option value="http://www.familyday.com.cn/wx/wx.php?do=cp&op=blog&wxkey=$_GET[wxkey]">发日记</option>
+                       <option value="http://www.familyday.com.cn/wx/wx.php?do=cp&op=photo&wxkey=$_GET[wxkey]">发图片</option>
+                    </select>
+                    
+                    </div>
+                </div>
                 <!--{/if}-->
 				<div class="ui-block-b"><div class="header-logo"><div><img class="retina" src="template/css/images/family/logo.jpg" height="26"/></div></div></div>
 				<div class="ui-block-a header-menu-check"><div class="tri-down"></div></div>

@@ -117,7 +117,7 @@
 	font-size:1em;
 	font-weight:bold;
 	color:rgb(158,213,75);
-	line-height:120%;
+	line-height:inherit;
 	text-align:center;
 
 }
@@ -127,7 +127,7 @@
 	font-size:1em;
 	font-weight:bold;
 	color:rgb(158,213,75);
-	line-height:120%;
+	line-height:inherit;
 	text-align:center;
 
 }
@@ -137,7 +137,7 @@
 	font-size:0.938em;
 	font-weight:bold;
 	color:rgb(158,213,75);
-	line-height:120%;
+	line-height:inherit;
 	text-align:center;
 
 }
@@ -147,16 +147,16 @@
 	font-size:1em;
 	font-weight:bold;
 	color:rgb(158,213,75);
-	line-height:120%;
+	line-height:inherit;
 	text-align:center;
 
 }
 .ui-btn-up-a {
 	background:rgb(159,213,74);
 	font-family: 'lthj';
-	font-size:1.25em;
+	font-size:inherit;
 	color:rgb(255,255,255);
-	line-height:120%;
+	line-height:inherit;
 	text-align:center;
 	text-shadow:none;
 	border: none;
@@ -165,7 +165,7 @@
 .ui-btn-up-a a.ui-link-inherit {
 	font-size:1.25em;
 	color:rgb(255,255,255);
-	line-height:120%;
+	line-height:inherit;
 	text-align:center;
 	text-shadow:none;
 	border: none;
@@ -185,7 +185,7 @@
 .ui-btn-hover-a a.ui-link-inherit {
 	font-size:1.25em;
 	color:rgb(255,255,255);
-	line-height:120%;
+	line-height:inherit;
 	text-align:center;
 	text-shadow:none;
 	border: none;
@@ -193,18 +193,18 @@
 .ui-btn-down-a {
 	background:rgb(159,213,74);
 	font-family: 'lthj';
-	font-size:1.25em;
+	font-size:inherit;
 	color:rgb(255,255,255);
-	line-height:120%;
+	line-height:inherit;
 	text-align:center;
 	text-shadow:none;
 	border: none;
 }
 
 .ui-btn-down-a a.ui-link-inherit {
-	font-size:1.25em;
+	font-size:inherit;
 	color:rgb(255,255,255);
-	line-height:120%;
+	line-height:inherit;
 	text-align:center;
 	text-shadow:none;
 	border: none;
@@ -1190,9 +1190,9 @@
  	cursor : pointer;
 	background:rgb(159,213,74);
 	font-family: 'lthj';
-	font-size:inherit;
+	font-size:inherit; /* should fix */
 	color:rgb(255,255,255);
-	line-height:inherit;
+	line-height:inherit; /* should fix */
 	text-align:center;
 
 }
@@ -1200,7 +1200,7 @@
 .ui-btn-active a.ui-link {
 	font-size:20px;
 	color:rgb(255,255,255);
-	line-height:120%;
+	line-height:inherit;
 	text-align:center;
 
 }
