@@ -46,6 +46,8 @@ if ($_GET["op"]=="add"){
 	$json = file_get_contents($jsonurl,0,null,null);
 	$json_output = json_decode($json);
 	ssetcookie('m_auth',$json_output->data->m_auth, time()+3600*24*365);
+	echo "<script>localStorage.setItem('auth',\"$json_output->data->m_auth\");</script>";
+	echo "<script>localStorage.setItem('wxkey',\"$_POST['wxkey']\");</script>";
 	ssetcookie('wxkey',$_POST['wxkey'], time()+3600*24*365);
 
 	// showmessage('do_success', 'wx.php?do=feed&wxkey='.$_POST['wxkey'], 0);
