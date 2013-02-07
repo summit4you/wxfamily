@@ -13,6 +13,7 @@
 
 
 
+
 @font-face {
     font-family: 'lthj';
     src: url('../fonts/lthj.ttf');
@@ -169,12 +170,13 @@
 	text-shadow:none;
 	border: none;
 }
+
 .ui-btn-hover-a {
 	background:rgb(159,213,74);
 	font-family: 'lthj';
-	font-size:1.25em;
+	font-size:inherit;
 	color:rgb(255,255,255);
-	line-height:120%;
+	line-height:inherit;
 	text-align:center;
 	text-shadow:none;
 	border: none;
