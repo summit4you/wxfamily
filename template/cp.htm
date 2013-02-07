@@ -167,9 +167,9 @@
                                     // Complete
                                     $("#picid").val(response.data.picid);
                                     console.log(response.data.picid);
-                                    $('#pbar').html('done');
+                                    $('#pbar').html('上传成功');
                                 }else{
-                                	alert("上传失败");
+                                	 $('#pbar').html('上传失败');
                                 }
                                 
                             });
@@ -211,8 +211,8 @@
 				<div class="msg-panel">
 					<div class="msg group">
 						<div class="msg-image">
-							<img class="retina" src="image/nophoto.jpg" />
-							<p><span style="display: block; padding: 2px 0; width: 0; background: #193; text-align: center;" id="pbar"></span></p>
+							<img class="retina" src="image/nopic.gif" />
+							<p><span style="display: block; padding: 2px 0; width: 0; background: #145d32; color:white; text-align: center;" id="pbar"></span></p>
 						</div>
 						<div class="msg-content"><textarea placeholder="写点东东吧..." id="message"></textarea></div>
 					</div>
