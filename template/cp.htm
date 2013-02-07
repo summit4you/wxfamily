@@ -124,22 +124,7 @@
 
               if(data.error==0){
                 data = data.data;
-                
-                if (data.length<=0)
-                    
-                    $('.more-btn').html('没有更多动态了，赶快发布新的动态吧！');
-                else{
-                    for (var i = 0, len = data.length; i < len; ++i) {
-                        data[i].message = html_entity_decode(data[i].message);
-                        data[i].message = html_entity_decode(data[i].message);
-                        if (data[i].image_1=="")
-                        {
-                            data[i].image_1 = "http://www.familyday.com.cn/wx/image/nopic.gif";
-                        }
-                    }
-                    $("#feedTemplate").tmpl(data ).appendTo('#feedlist');
-                    $('#page').val($('#page').val()+1);
-                  }
+                alert("提交成功，获得了"+data.credit+"点积分");
               }else{
                 alert(data.msg);
               }
