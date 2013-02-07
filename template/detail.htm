@@ -67,21 +67,23 @@
 <script type="text/javascript">
 
 	function getUser( fuid, auth){
+		var r;
 		$.ajax({
 	        dataType: "jsonp",
 	        url: "http://www.familyday.com.cn/dapi/space.php?do=friend&fuid=" + fuid + "&m_auth=" + encodeURIComponent(auth),
-	       
+	       async: false,
 	        success: function( data ) {
 	          /* Get the movies array from the data */
 
 	          if(data.error==0){
-	          		return data.data;
+	          		r =  data.data;
 
 	          }else{
 	          	alert(data.msg);
 	          }
 	        }
 	      });
+		return r;
 	}
 	
 	function getDetail(type, id, uid, auth){
@@ -117,6 +119,7 @@
 		          		data=data.data;
 		          		data.message = html_entity_decode(data.message);
 		          		data.dateline = date('Y-m-d H:i',data.dataline);
+		          		data.user = getUser(data.uid, auth);
 			          	$("#detailTemplate").tmpl(data ).appendTo('#detail-panel');
 
 		          }else{
@@ -137,6 +140,7 @@
 		          		data=data.data;
 		          		data.message = html_entity_decode(data.message);
 		          		data.dateline = date('Y-m-d H:i',data.dataline);
+		          		data.user = getUser(data.uid, auth);
 			          	$("#detailTemplate").tmpl(data ).appendTo('#detail-panel');
 
 		          }else{
