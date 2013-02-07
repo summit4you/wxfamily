@@ -183,6 +183,9 @@
 	}
 
 	$(function(){
+		
+		$('#auth').val(localStorage.getItem('auth'));
+
 		if ($('#idtype').val()=="reblogid")
 		{
 			$('#idtype').val("blogid");

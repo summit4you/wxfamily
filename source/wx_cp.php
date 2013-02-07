@@ -1,6 +1,6 @@
 <?php
 
-$m_auth = getAuth();
+/*$m_auth = getAuth();
 
 
 if(empty($m_auth)){
@@ -12,7 +12,7 @@ if(empty($m_auth)){
 	wxshowmessage('login_failure_please_re_login',  'wx.php?do=bind&wxkey='.$_GET['wxkey']);
 }
 
-
+*/
 	
 $taglist = array();
 
