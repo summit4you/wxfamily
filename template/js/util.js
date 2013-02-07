@@ -469,3 +469,5 @@ function html_entity_decode (string, quote_style) {
 
   return tmp_str;
 }
+
+

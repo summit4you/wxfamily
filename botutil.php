@@ -175,7 +175,9 @@ function capi_showmessage_by_data($msgkey, $code=1, $data=array()){
 }
 
 
-
-
-
+function getAuth(){
+	$jsonurl = "http://www.familyday.com.cn/wx/wx_auth.php";
+	$json = file_get_contents($jsonurl,0,null,null);
+	return $json;
+}
 ?>

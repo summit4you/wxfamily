@@ -1,7 +1,7 @@
 <?php
 	
-$m_auth = "<script>document.write(localStorage.getItem('auth'));</script>";
-$wxkey = "<script>document.write(localStorage.getItem('auth'));</script>";
+$m_auth = getAuth();
+
 
 
 	
