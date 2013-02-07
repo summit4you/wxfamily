@@ -8,72 +8,79 @@ include_once(S_ROOT.'./source/function_cp.php');
 include_once(S_ROOT.'./source/function_magic.php');
 
 if ($_GET[op]=="mobileinvite"){
+	
+	$query = $_SGLOBAL['db']->query("SELECT * FROM ".tname('space')." WHERE wxkey='$_GET[wxkey]'");
 
-	$username = trim($_POST['phonenum']);
-	$name = trim($_POST['name']);
-	if(empty($username)) {
-		wxshowmessage('user_name_is_not_legitimate');
-	}elseif(!preg_match("/^0?(13[0-9]|15[012356789]|18[0236789]|14[57])[0-9]{8}$/",$username)){
-	    wxshowmessage('user_name_is_not_legitimate');
-	}
+	if ($space=$_SGLOBAL['db']->fetch_array($query)){
 
-   if($reward['credit']) {
-			//计算积分扣减积分
-		$credit = intval($reward['credit'])*($invitenum+1);
-		
-		$setarr = array(
-			'uid' => $_SGLOBAL['supe_uid'],
-			'code' => $_POST['password'],
-			'email' => saddslashes($value),
-			'type' => 1
-		);
-		$id = inserttable('invite', $setarr, 1);
-		realname_set($setarr['uid'],$_SGLOBAL['supe_username']);
-		if ($id){
+		$username = trim($_POST['phonenum']);
+		$name = trim($_POST['name']);
+		if(empty($username)) {
+			wxshowmessage('user_name_is_not_legitimate');
+		}elseif(!preg_match("/^0?(13[0-9]|15[012356789]|18[0236789]|14[57])[0-9]{8}$/",$username)){
+			wxshowmessage('user_name_is_not_legitimate');
+		}
+
+	   if($reward['credit']) {
+				//计算积分扣减积分
+			$credit = intval($reward['credit'])*($invitenum+1);
 			
+			$setarr = array(
+				'uid' => $space['uid'],
+				'code' => $_POST['password'],
+				'email' => saddslashes($value),
+				'type' => 1
+			);
+			$id = inserttable('invite', $setarr, 1);
+			realname_set($setarr['uid'],$space['username']);
+			if ($id){
+				
+				
+				$space2 = addmember($username, $_POST['password'], $username.'@familyday.com.cn');
 			
-			$space2 = addmember($username, $_POST['password'], $username.'@aifaxian.com');
-		
-			invite_update($id, $space2['uid'], $space2['username'], $space['uid'], $space['username'], 0);
-			
-			
-			realname_get();
-			SendMessage($username,smlang('invite_friend',array($name,$_POST['password'],$_SN[$setarr['uid']])));
-			
-			if($reward['credit']) {
-				$credit = intval($reward['credit']);
-				$_SGLOBAL['db']->query("UPDATE ".tname('space')." SET credit=credit-$credit WHERE uid='$_SGLOBAL[supe_uid]'");
+				invite_update($id, $space2['uid'], $space2['username'], $space['uid'], $space['username'], 0);
+				
+				
+				realname_get();
+				SendMessage($username,smlang('invite_friend',array($name,$_POST['password'],$_SN[$setarr['uid']])));
+				
+				if($reward['credit']) {
+					$credit = intval($reward['credit']);
+					$_SGLOBAL['db']->query("UPDATE ".tname('space')." SET credit=credit-$credit WHERE uid='$space[uid]'");
+				}
+				
+			}else{
+			   
 			}
 			
-		}else{
-		   
-		}
-		
-	} else {
-		
+		} else {
+			
 
-		$setarr = array(
-			'uid' => $_SGLOBAL['supe_uid'],
-			'code' => $_POST['password'],
-			'email' => saddslashes($value),
-			'type' => 1
-		);
-		$id = inserttable('invite', $setarr, 1);
-         realname_set($setarr['uid'],$_SGLOBAL['supe_username']);
-		$space2 = addmember($username, $_POST['password'], $username.'@aifaxian.com');
-		
-		invite_update($id, $space2['uid'], $space2['username'], $space['uid'], $space['username'], 0);
-		
-		realname_get();
-		 SendMessage($username,smlang('invite_friend',array($name,$_POST['password'],$_SN[$setarr['uid']])));
-		if($reward['credit']) {
-				$credit = intval($reward['credit']);
-				$_SGLOBAL['db']->query("UPDATE ".tname('space')." SET credit=credit-$credit WHERE uid='$_SGLOBAL[supe_uid]'");
+			$setarr = array(
+				'uid' => $space['uid'],
+				'code' => $_POST['password'],
+				'email' => saddslashes($value),
+				'type' => 1
+			);
+			$id = inserttable('invite', $setarr, 1);
+			 realname_set($setarr['uid'],$space['username']);
+			$space2 = addmember($username, $_POST['password'], $username.'@familyday.com.cn');
+			
+			invite_update($id, $space2['uid'], $space2['username'], $space['uid'], $space['username'], 0);
+			
+			realname_get();
+			 SendMessage($username,smlang('invite_friend',array($name,$_POST['password'],$_SN[$setarr['uid']])));
+			if($reward['credit']) {
+					$credit = intval($reward['credit']);
+					$_SGLOBAL['db']->query("UPDATE ".tname('space')." SET credit=credit-$credit WHERE uid='$space[uid]'");
+			}
+			
 		}
-		
+
+	   wxshowmessage('邀请成功', 'wx.php?do=feed&wxkey='.$_GET['wxkey']);
+	}else{
+		wxshowmessage('login_failure_please_re_login',  'wx.php?do=bind&wxkey='.$_GET['wxkey']);
 	}
-
-   wxshowmessage('邀请成功', 'wx.php?do=feed&wxkey='.$_GET['wxkey']);
 }
 
 
