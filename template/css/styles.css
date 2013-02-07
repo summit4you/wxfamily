@@ -53,8 +53,8 @@ body{margin-left:10px;margin-right:10px;background-color:#f5f4ef;font-family:"lt
 .msg-panel{padding:3.90625% 3.90625% 3.90625% 3.90625%;background-color:white;margin-left:3.125%;margin-right:3.125%;margin-top:3.125%;border:1px solid #CCCCCC;}
 .msg{display:-webkit-box;display:-moz-box;display:box;-webkit-box-orient:horizontal;-moz-box-orient:horizontal;box-orient:horizontal;-webkit-box-pack:start;-moz-box-pack:start;box-pack:start;-webkit-box-align:start;-moz-box-align:start;box-align:start;clear:both;overflow:hidden;}.msg .msg-image{width:18.333333333333332%;}.msg .msg-image img{width:100%;}
 .msg .msg-content{width:78.33333333333333%;margin-left:3.3333333333333335%;padding-bottom:1000px;margin-bottom:-1000px;}
-.msg .msg-content2{width:100%;margin-left:3.3333333333333335%;padding-bottom:1000px;margin-bottom:-1000px;}
-.msg input{border-style:none;border-color:Transparent;overflow:auto;border-radius:0px;border:0px;box-shadow:none;height:100%;padding-bottom:1000px;margin-bottom:-1000px;}
+.msg .msg-content2{width:100%;margin-left:3.3333333333333335%;padding-bottom:1000px;margin-bottom:-1000px;margin-top:1.0416666666666665%;}
+.msg input{border-style:none;border-color:Transparent;overflow:auto;border-radius:0px;border:0px;box-shadow:none;height:100%;padding-bottom:1000px;margin-bottom:-1000px;box-shadow:none;-webkit-box-shadow:none;-moz-box-shadow:none;}
 .msg textarea{border-style:none;border-color:Transparent;overflow:auto;border-radius:0px;border:0px;box-shadow:none;height:100%;padding-bottom:1000px;margin-bottom:-1000px;}
 .ui-input-text.ui-focus,.ui-input-search.ui-focus{-moz-box-shadow:none;-webkit-box-shadow:none;box-shadow:none;}
 .class-btn{margin-top:2.083333333333333%;margin-left:3.125%;margin-right:3.125%;}.class-btn .ui-btn-inner{padding:5px 5px 5px 40px;}
