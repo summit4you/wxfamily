@@ -110,8 +110,8 @@
         });
 
 
-		$('#tag').change(function(){
-            $('#tagid').val($('#tag').val());
+		$('#select-choice-1').change(function(){
+            $('#tagid').val($('#select-choice-1').val());
         });
 
 	});
@@ -140,10 +140,19 @@
 					</div>
 				</div>
                  <!--{if count($taglist)>0}-->
-    				<div class="class-btn">
-                        <a data-role="button"  data-theme="a" data-icon="image" onclick=" $('#tag').trigger('click');"/>
-                            $taglist[0][tagname]
-                        </a>
+    				
+                    <div data-role="fieldcontain" class="select-btn">
+                        <div class="btn-icon">
+                            <div class="icon">
+                                <img class="retina" src="css/images/family/tag.png"></img>
+                            </div>
+                        </div>
+                        <label for="select-choice-0" class="select"></label>
+                        <select name="select-choice-0" id="select-choice-1">
+                            <!--{loop $taglist $value}-->
+                                <option value="$value[id]">$value[tagname]</option>
+                            <!--{/loop}-->
+                        </select>
                     </div>
                 <!--{/if}-->
 				<div class="publish-btn"><a href="#" data-role="button">确定</a></div>
@@ -159,10 +168,6 @@
 	<input type="hidden" id="uid" name="uid" value="$_GET[uid]"/>
 	<input type="hidden" id="picid" name="picid" value="0"/>
     <input type="hidden" id="tagid" name="tagid" value="$taglist[0][tagid]"/>
-    <select id="tag">
-        <!--{loop $taglist $value}-->
-            <option value="$value[id]">$value[tagname]</option>
-        <!--{/loop}-->
-    </select>
+    
 </body>
 </html>
