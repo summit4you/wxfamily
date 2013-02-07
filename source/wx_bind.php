@@ -2,7 +2,7 @@
 
 $result = 0;
 
-$query = $_SGLOBAL['db']->query("SELECT * FROM ".tname('space')." WHERE wxkey='$_GET[wxkey]'");
+/*$query = $_SGLOBAL['db']->query("SELECT * FROM ".tname('space')." WHERE wxkey='$_GET[wxkey]'");
 
 if ($_SGLOBAL['db']->fetch_array($query)){
 	$result = 1;
@@ -13,7 +13,7 @@ if ($_SGLOBAL['db']->fetch_array($query)){
 	}else{
 		$result = 0;
 	}
-}
+}*/
 
 if ($_GET["op"]=="add"){
 
