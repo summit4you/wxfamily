@@ -93,7 +93,13 @@
 
 	$(function(){
 		$('.msg-image').click(function(){
-            $('input[name=Filedata]').trigger('click');
+             ver = iOSversion();
+
+            if (ver[0] < 6) {
+              alert('ios系统当前仅6.0以上的系统支持上传图片,请更新你的系统');
+            }else{
+                $('input[name=Filedata]').trigger('click');
+            }
         });
 
         $('input[name=Filedata]').change(function(e){
@@ -180,11 +186,7 @@
             $('#tagid').val($('#select-choice-1').val());
         });
 
-        ver = iOSversion();
-
-        if (ver[0] >= 6) {
-          alert('This is running iOS 5 or later.');
-        }
+       
 
 	});
 </script>
