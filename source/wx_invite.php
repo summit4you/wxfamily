@@ -7,6 +7,8 @@
 include_once(S_ROOT.'./source/function_cp.php');
 include_once(S_ROOT.'./source/function_magic.php');
 
+$query = $_SGLOBAL['db']->query("SELECT * FROM ".tname('space')." WHERE wxkey='$_GET[wxkey]'");
+$space=$_SGLOBAL['db']->fetch_array($query);
 
 if ($_GET[op]=="mobileinvite"){
 	
@@ -51,9 +53,9 @@ if ($_GET[op]=="mobileinvite"){
 		}
 	}
 
-	$query = $_SGLOBAL['db']->query("SELECT * FROM ".tname('space')." WHERE wxkey='$_GET[wxkey]'");
+	
 
-	if ($space=$_SGLOBAL['db']->fetch_array($query)){
+	if (!empty($space)){
 
 		$username = trim($_POST['username']);
 		$name = trim($_POST['name']);
@@ -126,11 +128,12 @@ if ($_GET[op]=="mobileinvite"){
 }
 
 
+realname_set($space['uid'],$space['username']);
 
-
-
+realname_get();
 $result=0;
 
+$code = strtolower(random(6));
 
 include_once template("./wx/template/invite");
 ?>

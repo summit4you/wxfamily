@@ -21,7 +21,12 @@
 <script type="text/javascript" src="template/js/jquery.resizecrop-1.0.3.js"></script>
 
  <script type="text/javascript">
-
+	$(function(){
+		$("#name").onchange(){
+			var msg = $("#name").val()+"，我在familyday.com.cn帮你注册了，账号是你的手机号码，密码是******，我们在这儿团聚吧!($_SN[$space[uid]])";
+			$('.tips2').html(msg);
+		}
+	});
  </script>
 
 </head>
@@ -69,12 +74,13 @@
 			<div class="publish-btn2"><a href="wx.php?do=reg&wxkey=$_GET[wxkey]" data-ajax="false" data-role="button">注册一个我家的帐号</a></div>
 		<!--{else}-->
 
-			<div class="tips"> 注册一个我家帐号<br/><span class="tips2">会自动与您的微信绑定</span></div>
+			<div class="tips"> 短信预览<br/><span class="tips2">周倩茹，我在familyday.com.cn帮你注册了，账号是你的手机号码，密码是******，我们在这儿团聚吧!(Summit)</span></div>
 
 			<form action="wx.php?do=invite&op=mobileinvite&wxkey=$_GET[wxkey]" method="post" data-ajax="false" id="callAjaxForm">
 				<div class="input-field"><input id="name" name="name" placeholder="姓名" value="" type="text" /></div>
 				<div class="input-field"><input id="username" name="username" placeholder="手机号" value="" type="text" /></div>
 				<input id="wxkey" type="hidden" name="wxkey" value="$_GET['wxkey']" />
+				<input id="wxkey" type="hidden" name="password" value="$code" />
 				<div class="publish-btn"><button type="submit" id="submit" name="submit" value="submit" data-theme="a">确定</button></div>
 			</form>
 
