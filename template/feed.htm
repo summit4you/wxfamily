@@ -27,8 +27,8 @@
 	 		<div class="ui-block-a avatar">
 	 			<img class="retina" src="{{= avatar}}" />
 	 		</div>
- 			<div class="ui-block-b name">{{= username}}</div>
- 			<div class="ui-block-c" style="display:none">1小时前</div>
+ 			<div class="ui-block-b name">{{= name}}   {{= title}}</div>
+ 			<div class="ui-block-c">{{= dateline}}</div>
 	 	</div>
  		<div class="panel">
  			<div class="ui-grid-a">
@@ -37,7 +37,7 @@
  				
  				<div class="ui-block-b content">
  					<div class="subject">
- 						{{= title}}
+ 						{{= subject}}
  					</div>
  					<div class="message">
  						{{html message}}
@@ -84,6 +84,7 @@
 		          	for (var i = 0, len = data.length; i < len; ++i) {
 		          		data[i].message = html_entity_decode(data[i].message);
 		          		data[i].message = html_entity_decode(data[i].message);
+		          		data[i].dateline = date('Y-m-d H:i',data[i].dateline);
 		          		if (data[i].image_1=="")
 		          		{
 		          			data[i].image_1 = "http://www.familyday.com.cn/wx/image/nopic.gif";
