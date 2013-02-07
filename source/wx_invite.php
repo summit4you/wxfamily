@@ -7,8 +7,50 @@
 include_once(S_ROOT.'./source/function_cp.php');
 include_once(S_ROOT.'./source/function_magic.php');
 
+
 if ($_GET[op]=="mobileinvite"){
 	
+
+
+	$siteurl = getsiteurl();
+
+	$friendnum = getcount('friend', array('fuid'=>$space['uid'], 'status'=>0));
+
+	$maxcount = 50;//最多好友邀请
+	$reward = getreward('invitecode', 0);
+	$appid = empty($_GET['app']) ? 0 : intval($_GET['app']);
+
+	$inviteapp = $invite_code = '';
+	if(empty($reward['credit']) || $appid) {
+		$reward['credit'] = 0;
+		$invite_code = space_key($space, $appid);
+	}
+
+	$siteurl = getsiteurl();
+	$spaceurl = $siteurl.'space.php?uid='.$_SGLOBAL['supe_uid'];
+	$mailvar = array(
+		"<a href=\"$spaceurl\">".avatar($space['uid'], 'middle')."</a><br>".$_SN[$space['uid']],
+		$_SN[$space['uid']],
+		$_SCONFIG['sitename'],
+		'',
+		'',
+		$spaceurl,
+		''
+	);
+
+	//取出相应的应用
+	$appinfo = array();
+	if($appid) {
+		$query = $_SGLOBAL['db']->query("SELECT * FROM ".tname('myapp')." WHERE appid='$appid'");
+		$appinfo = $_SGLOBAL['db']->fetch_array($query);
+		if($appinfo) {
+			$inviteapp = "&amp;app=$appid";
+			$mailvar[6] = $appinfo['appname'];
+		} else {
+			$appid = 0;
+		}
+	}
+
 	$query = $_SGLOBAL['db']->query("SELECT * FROM ".tname('space')." WHERE wxkey='$_GET[wxkey]'");
 
 	if ($space=$_SGLOBAL['db']->fetch_array($query)){
