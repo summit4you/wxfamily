@@ -135,9 +135,9 @@
                             // Create a new formdata
                             var fd = new FormData();
                             // Add file data
-                            // var f = $.canvasResize('dataURLtoBlob',data);
-                            // f.name = file.name;
-                            fd.append($('input').attr('name'), file);
+                            var f = $.canvasResize('dataURLtoBlob',data);
+                            f.name = file.name;
+                            fd.append($('input').attr('name'), f, $('input[type=file]')[0].files[0].name);
                             fd.append("op", "uploadphoto");
                             fd.append("topicid", "0");
                             fd.append("pic_title", "from wx");
