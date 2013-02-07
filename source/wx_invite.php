@@ -136,4 +136,89 @@ $result=0;
 $code = strtolower(random(6));
 
 include_once template("./wx/template/invite");
+
+
+function createmail($mail, $mailvar) {
+	global $_SGLOBAL, $_SCONFIG, $space, $_SN, $appinfo;
+	
+	$mailvar[3] = empty($_POST['saymsg'])?'':getstr($_POST['saymsg'], 500);
+	smail(0, $mail, cplang($appinfo ? 'app_invite_subject' : 'invite_subject', array($_SN[$space['uid']], $_SCONFIG['sitename'], $appinfo['appname'])), cplang($appinfo ? 'app_invite_massage' : 'invite_massage', $mailvar));
+}
+
+function creatsms($msg, $username){
+   //$msg = shtmlspecialchars(trim($msg));
+   $message = urlencode(iconv("UTF-8","GB2312//IGNORE",$msg));
+   $url='http://www.020smsvip.com/api/mtsms.php?corpid=hongmen&password=20091020&mobilelist=1,'.$username.'&content='.$message;
+   $content = file_get_contents($url);
+}
+
+function addmember($username, $password, $email){
+   global $_SGLOBAL;
+	include_once(S_ROOT.'./uc_client/client.php');
+	$newuid = uc_user_register($username, $password, $email);
+	if($newuid <= 0) {
+		if($newuid == -1) {
+			showmessage('user_name_is_not_legitimate');
+		} elseif($newuid == -2) {
+			showmessage('include_not_registered_words');
+		} elseif($newuid == -3) {
+			showmessage('user_name_already_exists');
+		} elseif($newuid == -4) {
+			showmessage('email_format_is_wrong');
+		} elseif($newuid == -5) {
+			showmessage('email_not_registered');
+		} elseif($newuid == -6) {
+			showmessage('email_has_been_registered');
+		} else {
+			showmessage('register_error');
+		}
+	} else {
+		$setarr = array(
+		'uid' => $newuid,
+		'username' => $username,
+		'password' => md5("$newuid|$_SGLOBAL[timestamp]")//本地密码随机生成
+		);
+		//更新本地用户库
+		inserttable('member', $setarr, 0, true);
+
+		//开通空间
+		include_once(S_ROOT.'./source/function_space.php');
+		$space = space_open($newuid, $username, 0, $email);
+		//介绍人
+        updatetable('space', array('invite_uid'=>$_SGLOBAL['supe_uid'], 'invite_username'=>$_SGLOBAL['supe_username']), array('uid'=>$newuid));
+		//结束
+		$flog = $inserts = $fuids = $pokes = array();
+		if(!empty($_SCONFIG['defaultfusername'])) {
+			$query = $_SGLOBAL['db']->query("SELECT uid,username FROM ".tname('space')." WHERE username IN (".simplode(explode(',', $_SCONFIG['defaultfusername'])).")");
+			while ($value = $_SGLOBAL['db']->fetch_array($query)) {
+				$value = saddslashes($value);
+				$fuids[] = $value['uid'];
+				$inserts[] = "('$newuid','$value[uid]','$value[username]','1','$_SGLOBAL[timestamp]')";
+				$inserts[] = "('$value[uid]','$newuid','$username','1','$_SGLOBAL[timestamp]')";
+				$pokes[] = "('$newuid','$value[uid]','$value[username]','".addslashes($_SCONFIG['defaultpoke'])."','$_SGLOBAL[timestamp]')";
+				//添加好友变更记录
+				$flog[] = "('$value[uid]','$newuid','add','$_SGLOBAL[timestamp]')";
+			}
+			if($inserts) {
+				$_SGLOBAL['db']->query("REPLACE INTO ".tname('friend')." (uid,fuid,fusername,status,dateline) VALUES ".implode(',', $inserts));
+				$_SGLOBAL['db']->query("REPLACE INTO ".tname('poke')." (uid,fromuid,fromusername,note,dateline) VALUES ".implode(',', $pokes));
+				$_SGLOBAL['db']->query("REPLACE INTO ".tname('friendlog')." (uid,fuid,action,dateline) VALUES ".implode(',', $flog));
+
+				//添加到附加表
+				$friendstr = empty($fuids)?'':implode(',', $fuids);
+				updatetable('space', array('friendnum'=>count($fuids), 'pokenum'=>count($pokes)), array('uid'=>$newuid));
+				updatetable('spacefield', array('friend'=>$friendstr, 'feedfriend'=>$friendstr), array('uid'=>$newuid));
+
+				//更新默认用户好友缓存
+				include_once(S_ROOT.'./source/function_cp.php');
+				foreach ($fuids as $fuid) {
+					friend_cache($fuid);
+				}
+			}
+		}
+	}
+
+	return $space;
+}
+
 ?>
