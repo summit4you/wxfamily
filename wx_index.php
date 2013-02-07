@@ -138,6 +138,10 @@ class wechatCallbackapiTest
 						$pic = "http://www.familyday.com.cn/wx/images/reg-icon.jpg";
 						$articles[] = makeArticleItem("注册到我家帐号\n（会自动绑定微信）", "注册到我家帐号\n（会自动绑定微信）", $pic, $url);
 
+						$url = "http://www.familyday.com.cn/wx/wx.php?do=invite&wxkey=".$fromUsername;
+						$pic = "http://www.familyday.com.cn/wx/images/invite-icon.jpg";
+						$articles[] = makeArticleItem("邀请好友", "邀请好友", $pic, $url);
+
 						$url = "http://www.familyday.com.cn/wx/wx.php?do=feed&wxkey=".$fromUsername;
 						$pic = "http://www.familyday.com.cn/wx/images/feed-icon.jpg";
 						$articles[] = makeArticleItem("全部家人动态", "全部家人动态", $pic, $url);
