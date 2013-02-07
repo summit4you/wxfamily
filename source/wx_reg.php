@@ -13,7 +13,7 @@ if ($_GET[op]=="register"){
 	$password = empty($_REQUEST['password1']) ? '' : trim($_REQUEST['password1']);
 	$password2 = empty($_REQUEST['password2']) ? '' : trim($_REQUEST['password2']);
 
-	$email = isemail($_REQUEST['email']) ? $_REQUEST['email'] : $username.EMAIL_DNS;
+	$email = isemail($_REQUEST['email']) ? $_REQUEST['email'] : $username."@familyday.com.cn";
 
 	$data = array();
 
@@ -131,6 +131,9 @@ if ($_GET[op]=="register"){
 		
 		//绑定新浪微博
 		updatetable('space', array('sina_uid'=>$_SESSION['sian_token']['uid'], 'sina_token'=>$_SESSION['sian_token']['access_token'],'name'=>$userinfo['name']), array('uid'=>$newuid));
+
+		// 绑定微信key
+		updatetable('space', array('wxkey'=>$_GET['wxkey']), array('uid'=>$setarr[uid]));
 
 		//在线session
 		insertsession($setarr);
