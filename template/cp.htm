@@ -94,6 +94,7 @@
                                 if(response.error==0){
                                     // Complete
                                     $("#picid").val(response.data.picid);
+                                    console.log(response.data.picid);
                                     $('#pbar').html('done');
                                 }else{
                                 	alert("上传失败");
@@ -106,6 +107,11 @@
                             // =================================================
                             }
                     });  
+        });
+
+
+		$('#tag').change(function(){
+            $('#tagid').val($('#tag').val());
         });
 
 	});
@@ -133,8 +139,13 @@
 						<div class="msg-content"><textarea placeholder="写点东东吧..."></textarea></div>
 					</div>
 				</div>
-
-				<div class="class-btn"><a data-role="button"  data-theme="a" data-icon="image"/>创意BB杂锦</a></div>
+                 <!--{if count($taglist)>0}-->
+    				<div class="class-btn">
+                        <a data-role="button"  data-theme="a" data-icon="image" onclick=" $('#tag').trigger('click');"/>
+                            $taglist[0][tagname]
+                        </a>
+                    </div>
+                <!--{/if}-->
 				<div class="publish-btn"><a href="#" data-role="button">确定</a></div>
 				<input type="file" id="Filedata" name="Filedata" accept="image/*" style="display:none;"></div>
 			
@@ -147,5 +158,11 @@
 	<input type="hidden" id="auth" name="auth" value="$m_auth"/>
 	<input type="hidden" id="uid" name="uid" value="$_GET[uid]"/>
 	<input type="hidden" id="picid" name="picid" value="0"/>
+    <input type="hidden" id="tagid" name="tagid" value="$taglist[0][tagid]"/>
+    <select id="tag">
+        <!--{loop $taglist $value}-->
+            <option value="$value[id]">$value[tagname]</option>
+        <!--{/loop}-->
+    </select>
 </body>
 </html>
