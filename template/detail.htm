@@ -98,7 +98,7 @@
 		          if(data.error==0){
 		          		data=data.data;
 		          		data.message = html_entity_decode(data.message);
-		          		data.dateline = date('Y-m-d H:i',data.dataline);
+		          		data.dateline = date('Y-m-d H:i',data.dateline);
 		          		data.user = getUser(data.uid, auth);
 			          	$("#detailTemplate").tmpl(data).appendTo('#detail-panel');
 
@@ -118,7 +118,7 @@
 		          if(data.error==0){
 		          		data=data.data;
 		          		data.message = html_entity_decode(data.message);
-		          		data.dateline = date('Y-m-d H:i',data.dataline);
+		          		data.dateline = date('Y-m-d H:i',data.dateline);
 		          		data.user = getUser(data.uid, auth);
 			          	$("#detailTemplate").tmpl(data ).appendTo('#detail-panel');
 
@@ -139,7 +139,7 @@
 		          if(data.error==0){
 		          		data=data.data;
 		          		data.message = html_entity_decode(data.message);
-		          		data.dateline = date('Y-m-d H:i',data.dataline);
+		          		data.dateline = date('Y-m-d H:i',data.dateline);
 		          		data.user = getUser(data.uid, auth);
 			          	$("#detailTemplate").tmpl(data ).appendTo('#detail-panel');
 
@@ -169,7 +169,7 @@
 				          	for (var i = 0, len = data.length; i < len; ++i) {
 				          		data[i].message = html_entity_decode(data[i].message);
 				          		data[i].message = html_entity_decode(data[i].message);
-				          		data[i].dateline = date('Y-m-d H:i',data[i].dataline);
+				          		data[i].dateline = date('Y-m-d H:i',data[i].dateline);
 				          	}
 			          		$("#commentTemplate").tmpl(data).appendTo('#comment-panel');
 			          		$('#page').val(parseInt($('#page').val())+1);
