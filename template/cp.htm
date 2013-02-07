@@ -96,9 +96,12 @@
 	$(function(){
 		$('.msg-image').click(function(){
              ver = iOSversion();
-
-            if (ver[0] < 6) {
-              alert('ios系统当前仅6.0以上的系统支持上传图片,请更新你的系统');
+            if (typeof(ver) != 'undefined' && ver != null){
+                if (ver[0] < 6) {
+                  alert('ios系统当前仅6.0以上的系统支持上传图片,请更新你的系统');
+                }else{
+                    $('input[name=Filedata]').trigger('click');
+                }
             }else{
                 $('input[name=Filedata]').trigger('click');
             }
