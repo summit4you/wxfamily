@@ -14,5 +14,6 @@ if (isset($_COOKIE['uchome_m_auth']))
 }
 
 
+
 include_once template("./wx/template/detail");
 ?>
