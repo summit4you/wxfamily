@@ -69,7 +69,7 @@
 	function getfeeds2(auth, perpage, page){
 		 $.ajax({
 	        dataType: "jsonp",
-	        url: "http://www.familyday.com.cn/dapi/space.php?do=home&m_auth=" + auth + "&page=" + page + "&perpage=" + perpage,
+	        url: "http://www.familyday.com.cn/dapi/space.php?do=home&m_auth=" + encodeURIComponent(auth) + "&page=" + page + "&perpage=" + perpage,
 	       
 	        success: function( data ) {
 	          /* Get the movies array from the data */
@@ -134,9 +134,9 @@
 	}
 
 	$(function(){
-
+		 $('#auth').val(localStorage.getItem('auth'));
 		// getfeeds($('#wxkey').val(), $('#perpage').val(), $('#page').val());
-		getfeeds2(localStorage.getItem('auth'), $('#perpage').val(), $('#page').val());
+		getfeeds2($('#auth').val(), $('#perpage').val(), $('#page').val());
 
 	})
 
@@ -161,6 +161,7 @@
 
 		 	<input type="hidden" id="wxkey" name="wxkey" value="$_GET[wxkey]"/>
 	 		<input type="hidden" id="page" name="page" value="1"/>
+	 		<input type="hidden" id="auth" name="auth" value="1"/>
 	 		<input type="hidden" id="perpage" name="perpage" value="5"/>
 		 </div>
 		
