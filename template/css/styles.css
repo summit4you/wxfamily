@@ -55,7 +55,7 @@ body{margin-left:10px;margin-right:10px;background-color:#f5f4ef;font-family:"lt
 .msg .msg-content{width:78.33333333333333%;margin-left:3.3333333333333335%;padding-bottom:1000px;margin-bottom:-1000px;}
 .msg .msg-content2{width:100%;margin-left:3.3333333333333335%;padding-bottom:1000px;margin-bottom:-1000px;margin-top:2.604166666666667%;}
 .msg .ui-input-text{border-style:none;border-color:Transparent;overflow:auto;border-radius:0px;border:0px;height:100%;padding-bottom:1000px;margin-bottom:-1000px;box-shadow:none;-webkit-box-shadow:none;-moz-box-shadow:none;}
-.msg textarea{border-style:none;border-color:Transparent;overflow:auto;border-radius:0px;border:0px;box-shadow:none;height:100%;padding-bottom:1000px;margin-bottom:-1000px;-webkit-box-shadow:none;}
+.msg textarea{border-style:none;border-color:Transparent;border-radius:0px;border:0px;box-shadow:none;height:100%;padding-bottom:1000px;margin-bottom:-1000px;-webkit-box-shadow:none;}
 .ui-input-text.ui-focus,.ui-input-search.ui-focus{-moz-box-shadow:none;-webkit-box-shadow:none;box-shadow:none;}
 .class-btn{margin-top:2.083333333333333%;margin-left:3.125%;margin-right:3.125%;}.class-btn .ui-btn-inner{padding:5px 5px 5px 40px;}
 .class-btn .ui-icon{height:10px;width:30px;left:0px;height:150%;top:15%;background-position:-805px,10px;}
