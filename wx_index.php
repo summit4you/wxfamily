@@ -155,7 +155,7 @@ class wechatCallbackapiTest
 						$pic = "http://www.familyday.com.cn/wx/images/feed-icon.jpg";
 						$articles[] = makeArticleItem("全部家庭圈动态", "全部家庭圈动态", $pic, $url);
 
-						$url = "http://www.familyday.com.cn/wx/wx.php?do=feed&wxkey=".$fromUsername;
+						$url = "http://www.familyday.com.cn/wx/about/family.html&wxkey=".$fromUsername;
 						$pic = "http://www.familyday.com.cn/wx/images/about-icon.jpg";
 						$articles[] = makeArticleItem("关于微信家庭圈", "关于微信家庭圈", $pic, $url);
 
