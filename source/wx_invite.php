@@ -158,19 +158,19 @@ function addmember($username, $password, $email){
 	$newuid = uc_user_register($username, $password, $email);
 	if($newuid <= 0) {
 		if($newuid == -1) {
-			showmessage('user_name_is_not_legitimate');
+			wxshowmessage('user_name_is_not_legitimate');
 		} elseif($newuid == -2) {
-			showmessage('include_not_registered_words');
+			wxshowmessage('include_not_registered_words');
 		} elseif($newuid == -3) {
-			showmessage('user_name_already_exists');
+			wxshowmessage('user_name_already_exists');
 		} elseif($newuid == -4) {
-			showmessage('email_format_is_wrong');
+			wxshowmessage('email_format_is_wrong');
 		} elseif($newuid == -5) {
-			showmessage('email_not_registered');
+			wxshowmessage('email_not_registered');
 		} elseif($newuid == -6) {
-			showmessage('email_has_been_registered');
+			wxshowmessage('email_has_been_registered');
 		} else {
-			showmessage('register_error');
+			wxshowmessage('register_error');
 		}
 	} else {
 		$setarr = array(
