@@ -68,5 +68,5 @@ body{margin-left:10px;margin-right:10px;background-color:#f5f4ef;font-family:"lt
 .select-btn{overflow:hidden;width:93.75%;margin-left:3.125%;margin-right:3.125%;padding:0;}.select-btn .ui-select{width:100%;}
 .select-btn .btn-icon{width:12.5%;background-color:#145D32;height:20px;position:relative;top:20px;z-index:999;margin-bottom:-2000px;padding-bottom:2000px;}.select-btn .btn-icon .icon{width:200px;height:60px;display:table-cell;text-align:center;vertical-align:middle;}
 .select-btn .btn-icon img{position:static;top:-50%;left:-50%;}
-.select-btn .btn-icon2{width:6.25%;float:right;background-color:#9ED54B;height:0px;position:relative;top:-50px;z-index:999;}.select-btn .btn-icon2 .icon{padding-left:8.333333333333332%;width:200px;height:60px;display:table-cell;text-align:center;vertical-align:middle;}
+.select-btn .btn-icon2{width:12.5%;float:right;background-color:#9ED54B;height:0px;position:relative;top:-50px;z-index:999;}.select-btn .btn-icon2 .icon{width:200px;height:60px;display:table-cell;text-align:center;vertical-align:middle;}
 .select-btn .btn-icon2 img{position:static;top:-50%;left:-50%;}
