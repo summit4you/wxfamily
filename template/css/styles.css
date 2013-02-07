@@ -66,5 +66,5 @@ body{margin-left:10px;margin-right:10px;background-color:#f5f4ef;font-family:"lt
 .input-field input{border:1px solid #E0E0E0;color:#999999;font-size:1.5em;font-family:Microsoft YaHei;}
 .more-btn{margin-left:3.125%;margin-right:3.125%;margin-top:2.604166666666667%;text-align:center;}
 .tips{text-align:left;margin-left:5%;margin-right:auto;color:#999999;font-size:1.25em;}.tips .tips2{font-size:1em;}
-.select-btn{overflow:hidden;width:93.75%;margin-left:3.125%;margin-right:3.125%;}.select-btn .btn-icon{width:12.5%;background-color:#145D32;height:20px;position:relative;top:20px;z-index:999;margin-bottom:-2000px;padding-bottom:2000px;}.select-btn .btn-icon .icon{width:200px;height:60px;display:table-cell;text-align:center;vertical-align:middle;}
+.select-btn{overflow:hidden;width:93.75%;margin-left:3.125%;margin-right:3.125%;padding:0;}.select-btn .btn-icon{width:12.5%;background-color:#145D32;height:20px;position:relative;top:20px;z-index:999;margin-bottom:-2000px;padding-bottom:2000px;}.select-btn .btn-icon .icon{width:200px;height:60px;display:table-cell;text-align:center;vertical-align:middle;}
 .select-btn .btn-icon img{position:static;top:-50%;left:-50%;}
