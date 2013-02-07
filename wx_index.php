@@ -107,11 +107,11 @@ class wechatCallbackapiTest
 						$json_output = json_decode($json);
 
 						if ($json_output->data->error==0){
-							$url = "http://www.familyday.com.cn/wx/wx.php?do=cp&wxkey=".$fromUsername;
+							$url = "http://www.familyday.com.cn/wx/wx.php?do=cp&op=photo&wxkey=".$fromUsername;
 							$pic = "http://www.familyday.com.cn/wx/images/image-icon.jpg";
 							$articles[] = makeArticleItem("发布图片，分享给家人", "发布图片，分享给家人", $pic, $url);
 							
-							$url = "http://www.familyday.com.cn/wx/wx.php?do=cp&wxkey=".$fromUsername;
+							$url = "http://www.familyday.com.cn/wx/wx.php?do=cp&op=blog&wxkey=".$fromUsername;
 							$pic = "http://www.familyday.com.cn/wx/images/blog-icon.jpg";
 							$articles[] = makeArticleItem("发一篇日记", "发一篇日记", $pic, $url);
 
