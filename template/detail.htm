@@ -149,7 +149,7 @@
 				          		data[i].dateline = date('Y-m-d H:i',data[i].dataline);
 				          	}
 			          		$("#commentTemplate").tmpl(data).appendTo('#comment-panel');
-			          		$('#page').val($('#page').val()+1);
+			          		$('#page').val(parseInt($('#page').val())+1);
 			          	}
 		          }else{
 		          	alert(data.msg);

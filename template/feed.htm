@@ -90,7 +90,7 @@
 		          		}
 		          	}
 		          	$("#feedTemplate").tmpl(data ).appendTo('#feedlist');
-		          	$('#page').val($('#page').val()+1);
+		          	$('#page').val(parseInt($('#page').val())+1);
 		          }
 	          }else{
 	          	alert(data.msg);
@@ -100,7 +100,7 @@
 	}
 
 	$(function(){
-		
+
 		getfeeds($('#wxkey').val(), $('#perpage').val(), $('#page').val());
 
 
