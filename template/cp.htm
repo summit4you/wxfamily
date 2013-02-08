@@ -96,21 +96,14 @@
 	$(function(){
         $('#auth').val(localStorage.getItem('auth'));
 		$('.msg-image').click(function(){
-             ver = iOSversion();
-            if (typeof(ver) != 'undefined' && ver != null){
-                if (ver[0] < 6) {
-                  alert('ios系统当前仅6.0以上的系统支持上传图片,请更新你的系统');
-                }else{
-                    $('input[name=Filedata]').trigger('click');
-                }
-            }else{
-                $('input[name=Filedata]').trigger('click');
-            }
+            
+            $('input[name=Filedata]').trigger('click');
+           
         });
 
         $('input[name=Filedata]').change(function(e){
         	 var file = e.target.files[0];
-        	 $('img').remove();
+        	 $('#pic').remove();
         	 $.canvasResize(file, {
                         width   : 300,
                         height  : 0,
@@ -124,7 +117,7 @@
                                 
                                 $(this).appendTo('.msg-image');
                                 
-                            }).attr('src', data);
+                            }).attr('src', data).attr('id','pic');
 
                             // /SHOW AS AN IMAGE
                             // =================================================
@@ -235,7 +228,7 @@
 				<div class="msg-panel">
 					<div class="msg group">
 						<div class="msg-image">
-							<img class="retina" src="image/nopic.gif" />
+							<img class="retina" src="image/nopic.gif" id="pic"/>
 							<p><span style="display: block; padding: 2px 0; width: 0; background: #145d32; color:white; text-align: center;" id="pbar"></span></p>
 						</div>
 						<div class="msg-content"><textarea placeholder="写点东东吧..." id="message"></textarea></div>
