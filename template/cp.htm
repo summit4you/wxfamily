@@ -96,9 +96,16 @@
 	$(function(){
         $('#auth').val(localStorage.getItem('auth'));
 		$('.msg-image').click(function(){
-            
-            $('input[name=Filedata]').trigger('click');
-           
+             ver = iOSversion();
+            if (typeof(ver) != 'undefined' && ver != null){
+                if (ver[0] < 6) {
+                  alert('ios系统当前仅6.0以上的系统支持上传图片,请更新你的系统');
+                }else{
+                    $('input[name=Filedata]').trigger('click');
+                }
+            }else{
+                $('input[name=Filedata]').trigger('click');
+            }
         });
 
         $('input[name=Filedata]').change(function(e){
