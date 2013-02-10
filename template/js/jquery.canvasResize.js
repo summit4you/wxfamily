@@ -54,7 +54,7 @@
                 return bb.getBlob(mimeString);
             } else {
             //    console.log('Blob');  
-                bb = new Blob([ia],{
+                bb = new Blob([ab],{
                     'type' : (mimeString)
                 });
                 return bb;
