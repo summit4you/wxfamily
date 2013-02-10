@@ -56,7 +56,7 @@
             //    console.log('Blob');  
                 bb = new Blob([ab],{
                     'type' : (mimeString)
-                });
+                }); 
                 return bb;
             }
         },
