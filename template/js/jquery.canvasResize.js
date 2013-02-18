@@ -26,24 +26,25 @@
 					'width':W, 
 					'height':H
 				};
+			}else{
+				if ((W && w > W) || (H && h > H)) {
+					var r = w / h;
+					if ((r >= 1 || H == 0) && W && !C) {
+						w  = W;
+						h = (W / r) >> 0;
+					} else if (C && r <= (W / H)) {
+						w  = W;
+						h = (W / r) >> 0;
+					} else {
+						w  = (H * r) >> 0;
+						h = H;
+					}
+				}
+				return {
+					'width':w, 
+					'height':h
+				};
 			}
-            if ((W && w > W) || (H && h > H)) {
-                var r = w / h;
-                if ((r >= 1 || H == 0) && W && !C) {
-                    w  = W;
-                    h = (W / r) >> 0;
-                } else if (C && r <= (W / H)) {
-                    w  = W;
-                    h = (W / r) >> 0;
-                } else {
-                    w  = (H * r) >> 0;
-                    h = H;
-                }
-            }
-            return {
-                'width':w, 
-                'height':h
-            };
         },
         dataURLtoBlob: function (data){
             var mimeString = data.split(',')[0].split(':')[1].split(';')[0];

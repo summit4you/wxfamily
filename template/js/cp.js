@@ -84,7 +84,7 @@ $(function(){
 		 var file = e.target.files[0];
 		 $('#pic').remove();
 		 $.canvasResize(file, {
-					width   : 0,
+					width   : 640,
 					height  : 0,
 					crop    : false,
 					quality : 60,
