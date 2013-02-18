@@ -79,7 +79,7 @@
 		 		<div class="bb2"><div class="bb21"></div><div class="bb22"></div></div>
 		 		<div class="editor">
 		 			<div class="textarea"><textarea placeholder="写点评论吧..." id="review"></textarea></div>
-		 			<div class="publish-btn"><a href="javascript:;" onclick="cpComment($('#idtype').val(), $('#id').val(), $('#review').val(), $('#auth').val());" data-role="button">发布</a></div>
+		 			<div class="publish-btn"><a href="javascript:;" id="publishbtn" onclick="cpComment($('#idtype').val(), $('#id').val(), $('#review').val(), $('#auth').val());" data-role="button">发布</a></div>
 		 		</div>
 		 	</div>
 
@@ -87,7 +87,7 @@
 		 		
 		 	</div>
 
-		 	<div class="more-btn"><a href="javascript:;" onclick="getComment($('#idtype').val(), $('#id').val(), $('#page').val(), $('#perpage').val(), $('#auth').val());" data-role="button">更多</a></div>
+		 	<div class="more-btn"><a href="javascript:;" id="morebtn2" onclick="getComment($('#idtype').val(), $('#id').val(), $('#page').val(), $('#perpage').val(), $('#auth').val());" data-role="button">更多</a></div>
 
 		 </div>
 

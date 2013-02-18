@@ -85,13 +85,16 @@ function getDetail(type, id, uid, auth){
 }
 
 function getComment(idtype, id, page, perpage, auth){
+	 $("#morebtn .ui-btn-text").html("正在加载...");
+	 $("#morebtn").addClass('ui-disabled');
 	$.ajax({
 			dataType: "jsonp",
 			url: "http://www.familyday.com.cn/dapi/space.php?do=comment&id=" + id + "&idtype=" + idtype + "&m_auth=" + encodeURIComponent(auth) + "&page=" + page + "&perpage=" + perpage,
 		   
 			success: function( data ) {
 			  /* Get the movies array from the data */
-
+			  $("#morebtn .ui-btn-text").html("更多");
+			  $("#morebtn").removeClass('ui-disabled');
 			  if(data.error==0){
 					data=data.data;
 					if (data.length<=0)
@@ -115,6 +118,7 @@ function getComment(idtype, id, page, perpage, auth){
 
 function cpComment(idtype, id, message, auth){
 	var pattern = /^[\s]{0,}$/g;
+	$("#publishbtn").addClass('ui-disabled');
 	if (!pattern.test(message)){
 		$.ajax({
 				dataType: "jsonp",
@@ -122,7 +126,7 @@ function cpComment(idtype, id, message, auth){
 			   
 				success: function( data ) {
 				  /* Get the movies array from the data */
-
+				  $("#publishbtn").removeClass('ui-disabled');
 				  if(data.error==0){
 					  $('#comment-panel').html("");
 					  $('#page').val(1);
