@@ -1,11 +1,14 @@
 function getfeeds2(auth, perpage, page){
+	 $("#morebtn").changeButtonText("正在加载...");
+	 $("#morebtn").addClass('ui-disabled');
 	 $.ajax({
 		dataType: "jsonp",
 		url: "http://www.familyday.com.cn/dapi/space.php?do=home&m_auth=" + encodeURIComponent(auth) + "&page=" + page + "&perpage=" + perpage,
 	   
 		success: function( data ) {
 		  /* Get the movies array from the data */
-
+		  $("#morebtn").changeButtonText("更多");
+		   $("#morebtn").removeClass('ui-disabled');
 		  if(data.error==0){
 			data = data.data;
 			
