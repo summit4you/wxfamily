@@ -84,10 +84,10 @@ $(function(){
 		 var file = e.target.files[0];
 		 $('#pic').remove();
 		 $.canvasResize(file, {
-					width   : 300,
+					width   : 0,
 					height  : 0,
 					crop    : false,
-					quality : 80,
+					quality : 60,
 					callback: function(data, width, height){
 						// SHOW AS AN IMAGE
 						// =================================================

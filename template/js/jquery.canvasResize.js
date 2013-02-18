@@ -20,6 +20,13 @@
     var pluginName = 'canvasResize',
     methods = {
         newsize: function(w, h, W, H, C){
+			if (w==0&&h==0)
+			{
+				return {
+					'width':W, 
+					'height':H
+				};
+			}
             if ((W && w > W) || (H && h > H)) {
                 var r = w / h;
                 if ((r >= 1 || H == 0) && W && !C) {
