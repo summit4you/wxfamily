@@ -1,5 +1,5 @@
 function getfeeds2(auth, perpage, page){
-	 $("#morebtn .ui-btn-text").val("正在加载...");
+	 $("#morebtn .ui-btn-text").html("正在加载...");
 	 $("#morebtn").addClass('ui-disabled');
 	 $.ajax({
 		dataType: "jsonp",
@@ -7,7 +7,7 @@ function getfeeds2(auth, perpage, page){
 	   
 		success: function( data ) {
 		  /* Get the movies array from the data */
-		  $("#morebtn .ui-btn-text").val("更多");
+		  $("#morebtn .ui-btn-text").html("更多");
 		   $("#morebtn").removeClass('ui-disabled');
 		  if(data.error==0){
 			data = data.data;
@@ -37,13 +37,16 @@ function getfeeds2(auth, perpage, page){
 }
 
 function getfeeds( wxkey, perpage, page ) {
+	 $("#morebtn .ui-btn-text").html("正在加载...");
+	 $("#morebtn").addClass('ui-disabled');
 	  $.ajax({
 		dataType: "jsonp",
 		url: "http://www.familyday.com.cn/dapi/space.php?do=wxfeed&wxkey=" + wxkey + "&page=" + page + "&perpage=" + perpage,
 	   
 		success: function( data ) {
 		  /* Get the movies array from the data */
-
+		  $("#morebtn .ui-btn-text").html("更多");
+		   $("#morebtn").removeClass('ui-disabled');
 		  if(data.error==0){
 			data = data.data;
 			
