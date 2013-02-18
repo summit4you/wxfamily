@@ -73,3 +73,6 @@ body{margin-left:10px;margin-right:10px;background-color:#f5f4ef;font-family:"lt
 .title-btn{margin:0px;padding:0px;width:100%;background-color:#145d32;}.title-btn .ui-select{width:100%;font-family:'lthj';}
 .title-btn .ui-select div{background-color:#145d32;}
 .title-btn .ui-select span{font-size:0.875em;}
+.ui-btn-up-a{background-color:#9fd54a;background:-webkit-gradient(linear, left top, left bottom, from(#a2ed4a), to(#9cc24a));background:-moz-linear-gradient(top, #a2ed4a, #9cc24a);}
+.ui-btn-hover-a{background:#9cc44a;background:-webkit-gradient(linear, left top, left bottom, from(#a0d64a), to(#98a842));background:-moz-linear-gradient(top, #a0d64a, #98a842);text-decoration:none;}
+.ui-btn-down-a{background:-webkit-gradient(linear, left top, left bottom, from(#9cc24a), to(#a2ed4a));background:-moz-linear-gradient(top, #9cc24a, #a2ed4a);position:relative;top:1px;}

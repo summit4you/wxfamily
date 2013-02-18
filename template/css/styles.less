@@ -730,3 +730,39 @@ body{
 		.font-size-em(14);
 	}
 }
+
+@btn-color: #9fd54a;
+
+/* color variables set relative to @btn-color. 
+You probably don't need to change these. */
+@hover_background_color: @btn-color - #031100;
+@border_color: @btn-color - #1D1111;
+
+@normal_background_top: @btn-color + #031800; 
+@normal_background_bottom: @normal_background_top - #062B00; 
+
+@hover_background_top: @btn-color + #010100; 
+@hover_background_bottom: @hover_background_top - #082E08; 
+
+@active_background_top: @normal_background_bottom; 
+@active_background_bottom: @normal_background_top; 
+
+.ui-btn-up-a{
+	background-color:  @btn-color;
+	background: -webkit-gradient(linear, left top, left bottom, from(@normal_background_top), to(@normal_background_bottom));
+    background: -moz-linear-gradient(top,  @normal_background_top,  @normal_background_bottom);
+}
+
+.ui-btn-hover-a {
+	background: @hover_background_color;
+    background: -webkit-gradient(linear, left top, left bottom, from(@hover_background_top), to(@hover_background_bottom));
+    background: -moz-linear-gradient(top,  @hover_background_top,  @hover_background_bottom);
+    text-decoration: none;
+}
+
+.ui-btn-down-a {
+	background: -webkit-gradient(linear, left top, left bottom, from(@active_background_top), to(@active_background_bottom));
+    background: -moz-linear-gradient(top,  @active_background_top,  @active_background_bottom);
+    position: relative;
+  	top: 1px;
+}
