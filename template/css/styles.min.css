@@ -34,8 +34,11 @@ a{text-decoration:none}.lthj{font-family:"lthj","ltchj",Microsoft YaHei}.ltchj{f
 .detail-review .editor .textarea{width:83.33333333333334%;padding-bottom:1000px;margin-bottom:-1000px}.detail-review .editor .textarea textarea{font-size:13px;color:#999;height:40px;border-color:#ccc;border-style:solid;-webkit-border-radius:0;border-radius:0;margin:0;background:white;box-shadow:none;-webkit-box-shadow:none;-moz-box-shadow:none}
 .detail-review .editor .textarea .ui-body-a,.detail-review .editor .textarea .ui-overlay-a{border:1px solid #ccc}.detail-review .editor .publish-btn{background-color:#999;margin-left:3.3333333333333335%;width:13.333333333333334%;height:40px;text-align:center;margin-top:0}
 .detail-review .editor .publish-btn a{padding-bottom:1000px;margin-bottom:-1000px;line-height:40px;color:white;font-size:.9375em;font-family:'lthj'}
-.review-item{margin-left:3.125%;margin-right:3.125%;margin-top:2.604166666666667%}.review-item .avatar{margin-left:1.5625%;width:15.625%}.review-item .avatar img{width:100%}
-.review-item .main{margin-left:.78125%;width:75.78125%}.review-item .main .content{color:#666;font-size:.875em;font-family:'lthj';vertical-align:middle}
+.detail-review .editor .publish-btn .ui-btn-up-a{background-color:#999;background:-webkit-gradient(linear,left top,left bottom,from(#9cb199),to(#968699));background:-moz-linear-gradient(top,#9cb199,#968699)}
+.detail-review .editor .publish-btn .ui-btn-hover-a{background:#968899;background:-webkit-gradient(linear,left top,left bottom,from(#9a9a99),to(#926c91));background:-moz-linear-gradient(top,#9a9a99,#926c91);text-decoration:none}
+.detail-review .editor .publish-btn .ui-btn-down-a{background:-webkit-gradient(linear,left top,left bottom,from(#968699),to(#9cb199));background:-moz-linear-gradient(top,#968699,#9cb199);position:relative;top:1px}
+.detail-review .editor .publish-btn .ui-btn-inner{padding:0;color:white;font-size:.9375em;font-family:'lthj'}.review-item{margin-left:3.125%;margin-right:3.125%;margin-top:2.604166666666667%}
+.review-item .avatar{margin-left:1.5625%;width:15.625%}.review-item .avatar img{width:100%}.review-item .main{margin-left:.78125%;width:75.78125%}.review-item .main .content{color:#666;font-size:.875em;font-family:'lthj';vertical-align:middle}
 .review-item .main .content .name{vertical-align:middle;color:#9ed54a;font-size:.9375em;font-family:'lthj'}.review-item .main .time{color:#b7b7b7;font-size:.6875em;text-align:left}
 .review-item .main .time img{vertical-align:middle;width:3.4375000000000004%}.review-item .main .time span{margin-left:.46875%;vertical-align:middle}.msg-panel{padding:3.90625% 3.90625% 3.90625% 3.90625%;background-color:white;margin-left:3.125%;margin-right:3.125%;margin-top:3.125%;border:1px solid #ccc}
 .msg{display:-webkit-box;display:-moz-box;display:box;-webkit-box-orient:horizontal;-moz-box-orient:horizontal;box-orient:horizontal;-webkit-box-pack:start;-moz-box-pack:start;box-pack:start;-webkit-box-align:start;-moz-box-align:start;box-align:start;clear:both;overflow:hidden}
@@ -57,7 +60,4 @@ a{text-decoration:none}.lthj{font-family:"lthj","ltchj",Microsoft YaHei}.ltchj{f
 .ui-btn-down-a{background:-webkit-gradient(linear,left top,left bottom,from(#9cc24a),to(#a2ed4a));background:-moz-linear-gradient(top,#9cc24a,#a2ed4a);position:relative;top:1px}
 .title-btn{margin:0;padding:0;width:100%;background-color:#145d32}.title-btn .ui-select{width:100%;font-family:'lthj'}.title-btn .ui-select div{background-color:#145d32}
 .title-btn .ui-select span{font-size:.875em}.title-btn .ui-btn-up-a{background:0;background-color:#145d32}.title-btn .ui-btn-hover-a{background:0;background:#114c32;text-decoration:none}
-.title-btn .ui-btn-down-a{position:relative;top:1px}.publish-btn .ui-btn-up-a{background-color:#999;background:-webkit-gradient(linear,left top,left bottom,from(#9cb199),to(#968699));background:-moz-linear-gradient(top,#9cb199,#968699)}
-.publish-btn .ui-btn-hover-a{background:#968899;background:-webkit-gradient(linear,left top,left bottom,from(#9a9a99),to(#926c91));background:-moz-linear-gradient(top,#9a9a99,#926c91);text-decoration:none}
-.publish-btn .ui-btn-down-a{background:-webkit-gradient(linear,left top,left bottom,from(#968699),to(#9cb199));background:-moz-linear-gradient(top,#968699,#9cb199);position:relative;top:1px}
-.publish-btn .ui-btn-inner{padding:0;color:white;font-size:.9375em;font-family:'lthj'}
+.title-btn .ui-btn-down-a{position:relative;top:1px}
