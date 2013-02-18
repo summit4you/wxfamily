@@ -751,11 +751,27 @@ You probably don't need to change these. */
   	top: 1px;
 }
 
+@btn-color2: #145d32;
+
+/* color variables set relative to @btn-color. 
+You probably don't need to change these. */
+@hover_background_color2: @btn-color2 - #031100;
+@border_color2: @btn-color2 - #1D1111;
+
+@normal_background_top2: @btn-color2 + #031800; 
+@normal_background_bottom2: @normal_background_top2 - #062B00; 
+
+@hover_background_top2: @btn-color2 + #010100; 
+@hover_background_bottom2: @hover_background_top2 - #082E08; 
+
+@active_background_top2: @normal_background_bottom2; 
+@active_background_bottom2: @normal_background_top2; 
+
 .title-btn{
 	margin:0px;
 	padding:0px;
 	width:100%;
-	background-color: #145d32;
+	background-color: @btn-color2;
 
 	.ui-select{
 		width:100%;
@@ -768,5 +784,17 @@ You probably don't need to change these. */
 		.font-size-em(14);
 	}
 
-	
+	.ui-btn-up-a{
+		background-color:  @btn-color2;
+	}
+
+	.ui-btn-hover-a {
+		background: @hover_background_color2;
+	    text-decoration: none;
+	}
+
+	.ui-btn-down-a {
+	    position: relative;
+	  	top: 1px;
+	}
 }
