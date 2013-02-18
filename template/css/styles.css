@@ -76,6 +76,3 @@ body{margin-left:10px;margin-right:10px;background-color:#f5f4ef;font-family:"lt
 .title-btn{margin:0px;padding:0px;width:100%;background-color:#145d32;}.title-btn .ui-select{width:100%;font-family:'lthj';}
 .title-btn .ui-select div{background-color:#145d32;}
 .title-btn .ui-select span{font-size:0.875em;}
-.title-btn .ui-btn-up-a{background-color:#9fd54a;}
-.title-btn .ui-btn-hover-a{background:#9cc44a;text-decoration:none;}
-.title-btn .ui-btn-down-a{position:relative;top:1px;}
