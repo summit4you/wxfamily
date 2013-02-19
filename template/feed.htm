@@ -29,14 +29,14 @@
  			<div class="ui-block-c">{{= dateline}}</div>
 	 	</div>
  		<div class="panel">
- 		<!--{{{if image_1}}}-->
+ 		<!--{ehco "{{if image_1}}";}-->
  			<div class="content-image2">
  				<img class="retina" src="{{= image_1}}"/>
  				<div class="title">
 					<p>{{= message}}</p>
 				</div>
  			</div>
- 		<!--{{{else}}}-->
+ 		<!--{ehco "{{else}}";}-->
  			<div class="content-text">
  				<div class="subject">
 					{{= subject}}
@@ -45,7 +45,7 @@
 					{{html message}}
 				</div>
  			</div>
- 		<!--{{{/if}}}-->
+ 		<!--{echo "{{/if}}";}-->
  			
  			<div class="ui-grid-a bottom" style="display:none">
  				<div class="ui-block-a group"><a data-role="button"  data-theme="a" data-icon="image"/>最爱电影</a></div>
