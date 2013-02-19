@@ -3,6 +3,9 @@
 include_once('./../common.php');
 include_once( 'botutil.php' );
 include_once( 'wx_common.php' );
+
+define(BLOCK_TAG_START, "{{");
+define(BLOCK_TAG_END, "}}");
 //ÔÊÐí¶¯×÷
 $dos = array('bind', 'feed', 'cp', 'detail', 'reg', 'setting', 'invite');
 $do = (!empty($_GET['do']) && in_array($_GET['do'], $dos))?$_GET['do']:'bind';
