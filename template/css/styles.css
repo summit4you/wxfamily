@@ -18,7 +18,7 @@ body{margin-left:10px;margin-right:10px;background-color:#f5f4ef;font-family:"lt
 .feed .avatar{margin-left:1.5625%;}.feed .avatar img{width:83.33333333333334%;}
 .feed .panel{-moz-box-shadow:1px 1px 1px 1px #CCCCCC;-webkit-box-shadow:1px 1px 1px 1px #CCCCCC;box-shadow:1px 1px 1px 1px #CCCCCC;margin-top:-10.416666666666667%;background-color:white;}.feed .panel .content-image{margin-top:11.458333333333332%;margin-left:1.5625%;width:33.275862068965516%;}.feed .panel .content-image img{width:100%;}
 .feed .panel .content-text{color:#797979;font-size:0.875em;font-family:'微软雅黑';margin-left:1.5625%;padding-top:11.458333333333332%;width:96.66666666666667%;}
-.feed .panel .content-image2{margin-left:1.5625%;padding-top:11.458333333333332%;padding-top:5.729166666666666%;width:96.66666666666667%;position:relative;}.feed .panel .content-image2 .title{position:absolute;bottom:0px;color:white;font-size:0.875em;font-family:'lthj';width:100%;background-color:#000000;-moz-opacity:0.6;opacity:0.6;}.feed .panel .content-image2 .title p{margin-left:2.586206896551724%;margin-top:2.3958333333333335%;}
+.feed .panel .content-image2{margin-left:1.5625%;padding-top:11.458333333333332%;width:96.66666666666667%;position:relative;}.feed .panel .content-image2 .title{position:absolute;bottom:0px;color:white;font-size:0.875em;font-family:'lthj';width:100%;background-color:#000000;-moz-opacity:0.6;opacity:0.6;}.feed .panel .content-image2 .title p{margin-left:2.586206896551724%;margin-top:2.3958333333333335%;}
 .feed .panel .content-image2 img{width:100%;}
 .feed .panel .content{margin-top:11.458333333333332%;margin-left:1.25%;font-family:'微软雅黑';}.feed .panel .content .subject{color:#333333;font-size:0.9375em;}
 .feed .panel .content .message{color:#797979;font-size:0.875em;}
