@@ -121,7 +121,7 @@ class wechatCallbackapiTest
 							$articles[] = makeArticleItem("发布图片，分享给家人", "发布图片，分享给家人", $pic, $url);
 
 							$url = "http://www.familyday.com.cn/wx/wx.php?do=cp&op=photo&wxkey=".$fromUsername;
-							$pic = "http://www.familyday.com.cn/wx/images/image-icon.jpg";
+							$pic = "http://www.familyday.com.cn/wx/images/image2-icon.jpg";
 							$articles[] = makeArticleItem("发一张图片", "发一张图片", $pic, $url);
 							
 							$url = "http://www.familyday.com.cn/wx/wx.php?do=cp&op=blog&wxkey=".$fromUsername;
@@ -147,6 +147,10 @@ class wechatCallbackapiTest
 						$pic = "http://www.familyday.com.cn/wx/images/bind.jpg";
 						$articles[] = makeArticleItem("把微信号绑定到我的家庭圈", "把微信号绑定到我的家庭圈", $pic, $url);
 
+						$url = "http://www.familyday.com.cn/wx/wx.php?do=bind&wxkey=".$fromUsername;
+						$pic = "http://www.familyday.com.cn/wx/images/bind-icon.jpg";
+						$articles[] = makeArticleItem("绑定微信", "绑定微信", $pic, $url);
+
 						$url = "http://www.familyday.com.cn/wx/wx.php?do=reg&wxkey=".$fromUsername;
 						$pic = "http://www.familyday.com.cn/wx/images/reg-icon.jpg";
 						$articles[] = makeArticleItem("注册到家庭圈帐号\n（会自动绑定微信）", "注册到家庭圈帐号\n（会自动绑定微信）", $pic, $url);
@@ -154,10 +158,6 @@ class wechatCallbackapiTest
 						$url = "http://www.familyday.com.cn/wx/wx.php?do=invite&wxkey=".$fromUsername;
 						$pic = "http://www.familyday.com.cn/wx/images/invite-icon.jpg";
 						$articles[] = makeArticleItem("邀请家人", "邀请家人", $pic, $url);
-
-						$url = "http://www.familyday.com.cn/wx/wx.php?do=feed&wxkey=".$fromUsername;
-						$pic = "http://www.familyday.com.cn/wx/images/feed-icon.jpg";
-						$articles[] = makeArticleItem("全部家庭圈动态", "全部家庭圈动态", $pic, $url);
 
 						$url = "http://www.familyday.com.cn/wx/about/family.html?wxkey=".$fromUsername;
 						$pic = "http://www.familyday.com.cn/wx/images/about-icon.jpg";
