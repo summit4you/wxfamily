@@ -197,6 +197,43 @@ body{
 				width:100%;
 			}
 		}
+
+		.content-text{
+			color:#797979;
+			.font-size-em(14);
+			font-family: '微软雅黑';
+			.margin-left(640, 10);
+			.padding-top(960, 110);
+			.width(600, 580);
+		}
+
+		.content-image2{
+			.margin-left(640, 10);
+			.padding-top(960, 110);
+			.width(600, 580);
+			position: relative; 
+			.title{
+				position: absolute; 
+				bottom: 0px;
+				color:white;
+				.font-size-em(14);
+				font-family: 'lthj';
+				width:100%;
+				background-color:#000000;
+			    -moz-opacity:0.6; 
+			    opacity: 0.6; 
+				p{
+					.margin-left(580,15);
+					.margin-top(960,23);
+
+				}
+			}
+			
+			img{
+				width:100%;
+			}
+		}
+
 		.content{
 			
 			.margin-top(960, 110);
@@ -842,3 +879,6 @@ You probably don't need to change these. */
 @active_background_top3: @normal_background_bottom3; 
 @active_background_bottom3: @normal_background_top3; 
 
+.ui-content{
+	padding:0;
+}

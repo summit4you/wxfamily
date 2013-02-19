@@ -22,7 +22,8 @@ function getfeeds2(auth, perpage, page){
 					data[i].dateline = date('Y-m-d',data[i].dateline);
 					if (data[i].image_1=="")
 					{
-						data[i].image_1 = "http://www.familyday.com.cn/wx/image/nopic.gif";
+						//data[i].image_1 = "http://www.familyday.com.cn/wx/image/nopic.gif";
+						delete data[i].image_1;
 					}
 				}
 				$("#feedTemplate").tmpl(data ).appendTo('#feedlist');
@@ -59,7 +60,8 @@ function getfeeds( wxkey, perpage, page ) {
 					data[i].message = html_entity_decode(data[i].message);
 					if (data[i].image_1=="")
 					{
-						data[i].image_1 = "http://www.familyday.com.cn/wx/image/nopic.gif";
+						//data[i].image_1 = "http://www.familyday.com.cn/wx/image/nopic.gif";
+						delete data[i].image_1;
 					}
 				}
 				$("#feedTemplate").tmpl(data ).appendTo('#feedlist');
