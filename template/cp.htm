@@ -14,15 +14,20 @@
 <link rel="stylesheet" href="template/js/jquery.mobile-1.3.0-beta.1.min.css " />
 <link rel="stylesheet" href="template/css/jquery.mobile-1.2.0.min.css" />
 <link rel="stylesheet"  href="template/css/styles.min.css">
-<script type="text/javascript" src="template/js/jquery-1.8.2.min.js"></script>
-<script type="text/javascript" src="template/js/jquery.mobile-1.3.0-beta.1.min.js"></script>
-<script type="text/javascript" src="template/js/jquery.retina.min.js"></script>
-<script type="text/javascript" src="template/js/jquery.tmpl.min.js"></script>
-<script type="text/javascript" src="template/js/util.min.js"></script>
-<script type="text/javascript" src="template/js/jquery.exif.min.js"></script>
-<script type="text/javascript" src="template/js/jquery.canvasResize.min.js"></script>
+<script type="text/javascript">
+<!--{DOLLOR_TAG}-->CLS.script("template/js/jquery-1.8.2.min.js").wait()
+      .script("template/js/jquery.mobile-1.3.0-beta.1.min.js")
+      .script("template/js/jquery.retina.js")
+      .wait()
+	  .script("template/js/jquery.tmpl.min.js")
+	  .script("template/js/util.min.js")
+	  .script("template/js/jquery.exif.min.js")
+	  .script("template/js/jquery.canvasResize.min.js")
+	  .wait()
+	  .script("template/js/cp.min.js");
+$CLS.remove(['template/js/util.min.js', 'template/js/cp.min.js']);
+</script>
 
-<script type="text/javascript" src="template/js/cp.min.js"></script>
 
 </head>
 <body id="top">
