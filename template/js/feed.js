@@ -20,6 +20,12 @@ function getfeeds2(auth, perpage, page){
 					data[i].message = html_entity_decode(data[i].message);
 					data[i].message = html_entity_decode(data[i].message);
 					data[i].dateline = date('Y-m-d',data[i].dateline);
+					if (length(data[i].message)>80)
+					{
+						data[i].mc = 1;
+					}else{
+						data[i].mc = 0;
+					}
 					if (data[i].image_1=="")
 					{
 						//data[i].image_1 = "http://www.familyday.com.cn/wx/image/nopic.gif";
@@ -58,6 +64,12 @@ function getfeeds( wxkey, perpage, page ) {
 				for (var i = 0, len = data.length; i < len; ++i) {
 					data[i].message = html_entity_decode(data[i].message);
 					data[i].message = html_entity_decode(data[i].message);
+					if (length(data[i].message)>80)
+					{
+						data[i].mc = 1;
+					}else{
+						data[i].mc = 0;
+					}
 					if (data[i].image_1=="")
 					{
 						//data[i].image_1 = "http://www.familyday.com.cn/wx/image/nopic.gif";
