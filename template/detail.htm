@@ -23,15 +23,17 @@
 	  .script("template/js/jquery.tmpl.min.js")
 	  .script("template/js/util.min.js")
 	  .wait()
-	  .script("template/js/detail.min.js");
-<!--{DOLLOR_TAG}-->CLS.remove(['template/js/util.min.js', 'template/js/detail.min.js']);
+	  .script("template/js/detail.min.js").wait(function(){
+		<!--{DOLLOR_TAG}-->CLS.remove(['template/js/util.min.js', 'template/js/detail.min.js']);
+	  });
+
 </script>
 
 
 <script id="detailTemplate" type="text/x-jquery-tmpl">
 <div class="detail-header">
 	<div class="avatar"><img class="retina" src="{{= user.avatar}}"/><span>{{= name}}</span></div>
-	<div class="header-logo" onclick="window.location.href = 'http://www.familyday.com.cn/wx/wx.php?do=feed&wxkey=$_GET[wxkey]';"><div><a href="javascript:history.back()" data-role="none" style="float: right;color: black;line-height: 40px;">返回</a></div>
+	<div class="header-logo" onclick="window.location.href = 'http://www.familyday.com.cn/wx/wx.php?do=feed&wxkey=$_GET[wxkey]';"><a href="javascript:history.back()" data-role="none" style="float: right;color: black;line-height: 40px;font-size: 1.375em;">返回</a>
 		</div>
 </div>
 

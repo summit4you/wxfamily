@@ -22,7 +22,7 @@ function getfeeds2(auth, perpage, page){
 					data[i].dateline = date('Y-m-d',data[i].dateline);
 
 					if (data[i].idtype!="blogid"&&data[i].idtype!="reblogid"&&data[i].idtype!="photoid"&&data[i].idtype!="rephotoid"){
-						console.log(data[i].idtype);
+						
 						delete data[i].idtype;
 					}
 					
