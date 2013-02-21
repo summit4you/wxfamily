@@ -31,7 +31,11 @@
 </script>
 
 <script id="feedTemplate" type="text/x-jquery-tmpl">
+<!--{BLOCK_TAG_START}-->if idtype<!--{BLOCK_TAG_END}-->
 	<div class="feed" id="feed_{{= id}}_{{= idtype}}" onclick="var href = $('#a_{{= id}}_{{= idtype}}').attr('href');window.location.href = href;">
+<!--{BLOCK_TAG_START}-->else<!--{BLOCK_TAG_END}-->
+	<div class="feed" id="feed_{{= id}}_{{= idtype}}">
+<!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
  		<div class="ui-grid-b pheader">
 	 		<div class="ui-block-a avatar">
 	 			<img class="retina" src="{{= avatar}}" />

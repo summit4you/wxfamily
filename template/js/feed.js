@@ -20,6 +20,10 @@ function getfeeds2(auth, perpage, page){
 					data[i].message = html_entity_decode(data[i].message);
 					data[i].message = html_entity_decode(data[i].message);
 					data[i].dateline = date('Y-m-d',data[i].dateline);
+
+					if (data[i].idtype!="blogid"||data[i].idtype!="reblogid"||data[i].idtype!="photoid"||data[i].idtype!="rephotoid"){
+						delete data[i].idtype;
+					}
 					
 					if (data[i].message.length>70)
 					{
@@ -64,6 +68,10 @@ function getfeeds( wxkey, perpage, page ) {
 				for (var i = 0, len = data.length; i < len; ++i) {
 					data[i].message = html_entity_decode(data[i].message);
 					data[i].message = html_entity_decode(data[i].message);
+
+					if (data[i].idtype!="blogid"||data[i].idtype!="reblogid"||data[i].idtype!="photoid"||data[i].idtype!="rephotoid"){
+						delete data[i].idtype;
+					}
 					
 					if (data[i].message.length>70)
 					{
