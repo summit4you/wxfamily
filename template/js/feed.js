@@ -21,7 +21,7 @@ function getfeeds2(auth, perpage, page){
 					data[i].message = html_entity_decode(data[i].message);
 					data[i].dateline = date('Y-m-d',data[i].dateline);
 					console.log(data[i].message.length);
-					if (data[i].message.length>80)
+					if (data[i].message.length>70)
 					{
 						data[i].mc = 1;
 						
@@ -65,7 +65,7 @@ function getfeeds( wxkey, perpage, page ) {
 					data[i].message = html_entity_decode(data[i].message);
 					data[i].message = html_entity_decode(data[i].message);
 					console.log(data[i].message.length);
-					if (data[i].message.length>80)
+					if (data[i].message.length>70)
 					{
 						data[i].mc = 1;
 						
