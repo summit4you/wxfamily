@@ -24,8 +24,10 @@
 	  .script("template/js/jquery.tmpl.min.js")
 	  .script("template/js/util.min.js")
 	  .wait()
-	  .script("template/js/feed.min.js");
-$CLS.remove(['template/js/util.min.js', 'template/js/feed.min.js']);
+	  .script("template/js/feed.min.js").wait(function(){
+		$CLS.remove(["template/js/util.min.js", "template/js/feed.min.js"]);
+	  });
+
 </script>
 
 <script id="feedTemplate" type="text/x-jquery-tmpl">
