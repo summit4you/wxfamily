@@ -117,6 +117,7 @@ function getComment(idtype, id, page, perpage, auth){
 			  }
 			}
 		  });
+	$("#morebtn").removeClass('ui-disabled');
 }
 
 function cpComment(idtype, id, message, auth){
@@ -140,6 +141,7 @@ function cpComment(idtype, id, message, auth){
 				}
 		});
 	}else{
+		$("#publishbtn").removeClass('ui-disabled');
 		alert("至少写一点东西！");
 	}
 }
