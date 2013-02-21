@@ -37,9 +37,13 @@ if ($_GET["op"]=="add"){
 		include_once template("./wx/template/bind");
 		exit;
 	}
-
-
+	
+	// unbind
+	updatetable('space', array('wxkey'=>''), array('wxkey'=>$_POST['wxkey']));
+	// bind
 	updatetable('space', array('wxkey'=>$_POST['wxkey']), array('uid'=>$passport['uid']));
+
+	
 
 	// 同步登陆
 	$jsonurl = "http://www.familyday.com.cn/dapi/do.php?ac=login&username=".$username."&password=".$password;
