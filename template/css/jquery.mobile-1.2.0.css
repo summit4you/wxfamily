@@ -3,7 +3,7 @@
 /*Custom Theme :a
 -----------------------------------------------------------------------------------------------------------*/
 
-@font-face {
+/*@font-face {
     font-family: 'ltchj';
     src: url('../fonts/ltchj.ttf');
     font-weight: normal;
@@ -20,7 +20,7 @@
     font-weight: normal;
     font-style: normal;
 
-}
+}*/
 
 .ui-btn-inner{
 	text-align: center;
@@ -54,7 +54,8 @@
 .ui-bar-a select,
 .ui-bar-a textarea,
 .ui-bar-a button {
-	 font-family: Microsoft YaHei;
+	 font-family: "Helvetica Neue", "Hiragino Sans GB", "Segoe UI", "Microsoft Yahei", "微软雅黑", Tahoma, Arial, STHeiti, sans-serif;
+  	_font-family: Tahoma, Arial, Helvetica, STHeiti, sans-serif;
 }
 
 .ui-bar-a .ui-link-inherit {
@@ -101,7 +102,8 @@
 .ui-body-a select,
 .ui-body-a textarea,
 .ui-body-a button {
-	 font-family: 'lthj';
+	 font-family: "Helvetica Neue", "Hiragino Sans GB", "Segoe UI", "Microsoft Yahei", "微软雅黑", Tahoma, Arial, STHeiti, sans-serif;
+  	_font-family: Tahoma, Arial, Helvetica, STHeiti, sans-serif;
 }
 
 .ui-body-a .ui-link-inherit {
@@ -113,7 +115,8 @@
 }
 
 .ui-body-a .ui-link{
-	font-family: 'lthj';
+	font-family: "Helvetica Neue", "Hiragino Sans GB", "Segoe UI", "Microsoft Yahei", "微软雅黑", Tahoma, Arial, STHeiti, sans-serif;
+  	_font-family: Tahoma, Arial, Helvetica, STHeiti, sans-serif;
 	font-size:1em;
 	font-weight:bold;
 	color:rgb(158,213,75);
@@ -123,7 +126,8 @@
 }
 
 .ui-body-a .ui-link:hover{
-	font-family: 'lthj';
+	font-family: "Helvetica Neue", "Hiragino Sans GB", "Segoe UI", "Microsoft Yahei", "微软雅黑", Tahoma, Arial, STHeiti, sans-serif;
+  	_font-family: Tahoma, Arial, Helvetica, STHeiti, sans-serif;
 	font-size:1em;
 	font-weight:bold;
 	color:rgb(158,213,75);
@@ -133,7 +137,8 @@
 }
 
 .ui-body-a .ui-link:active{
-	font-family: 'lthj';
+	font-family: "Helvetica Neue", "Hiragino Sans GB", "Segoe UI", "Microsoft Yahei", "微软雅黑", Tahoma, Arial, STHeiti, sans-serif;
+  	_font-family: Tahoma, Arial, Helvetica, STHeiti, sans-serif;
 	font-size:0.938em;
 	font-weight:bold;
 	color:rgb(158,213,75);
@@ -143,7 +148,8 @@
 }
 
 .ui-body-a .ui-link:visited{
-	font-family: 'lthj';
+	font-family: "Helvetica Neue", "Hiragino Sans GB", "Segoe UI", "Microsoft Yahei", "微软雅黑", Tahoma, Arial, STHeiti, sans-serif;
+  	_font-family: Tahoma, Arial, Helvetica, STHeiti, sans-serif;
 	font-size:1em;
 	font-weight:bold;
 	color:rgb(158,213,75);
@@ -153,7 +159,8 @@
 }
 .ui-btn-up-a {
 	background:rgb(159,213,74);
-	font-family: 'lthj';
+	font-family: "Helvetica Neue", "Hiragino Sans GB", "Segoe UI", "Microsoft Yahei", "微软雅黑", Tahoma, Arial, STHeiti, sans-serif;
+  	_font-family: Tahoma, Arial, Helvetica, STHeiti, sans-serif;
 	font-size:inherit;
 	color:rgb(255,255,255);
 	line-height:inherit;
@@ -173,7 +180,8 @@
 
 .ui-btn-hover-a {
 	background:rgb(159,213,74);
-	font-family: 'lthj';
+	font-family: "Helvetica Neue", "Hiragino Sans GB", "Segoe UI", "Microsoft Yahei", "微软雅黑", Tahoma, Arial, STHeiti, sans-serif;
+  	_font-family: Tahoma, Arial, Helvetica, STHeiti, sans-serif;
 	font-size:inherit;
 	color:rgb(255,255,255);
 	line-height:inherit;
@@ -192,7 +200,8 @@
 }
 .ui-btn-down-a {
 	background:rgb(159,213,74);
-	font-family: 'lthj';
+	font-family: "Helvetica Neue", "Hiragino Sans GB", "Segoe UI", "Microsoft Yahei", "微软雅黑", Tahoma, Arial, STHeiti, sans-serif;
+  	_font-family: Tahoma, Arial, Helvetica, STHeiti, sans-serif;
 	font-size:inherit;
 	color:rgb(255,255,255);
 	line-height:inherit;
