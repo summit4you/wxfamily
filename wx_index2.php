@@ -82,7 +82,7 @@ class wechatCallbackapiTest
 									$obj->message = html_entity_decode($obj->message);
 									$obj->message = html_entity_decode($obj->message);
 									$obj->message = strip_tags($obj->message);
-									$msg = $obj->username.":".$obj->title."\n".$obj->message;
+									$msg = $obj->username.":".$obj->title;
 
 									if ($obj->image_1)
 									{
