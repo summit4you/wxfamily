@@ -32,6 +32,7 @@ function getDetail(type, id, uid, auth){
 					data.message = html_entity_decode(data.message);
 					data.dateline = date('Y-m-d H:i',data.dateline);
 					data.user = getUser(data.uid, auth);
+					data.idtype = "blogid";
 					$("#detailTemplate").tmpl(data).appendTo('#detail-panel');
 
 			  }else{
@@ -52,6 +53,7 @@ function getDetail(type, id, uid, auth){
 					data.message = html_entity_decode(data.message);
 					data.dateline = date('Y-m-d H:i',data.dateline);
 					data.user = getUser(data.uid, auth);
+					data.idtype = "photoid";
 					$("#detailTemplate").tmpl(data ).appendTo('#detail-panel');
 
 			  }else{
@@ -73,6 +75,7 @@ function getDetail(type, id, uid, auth){
 					data.message = html_entity_decode(data.message);
 					data.dateline = date('Y-m-d H:i',data.dateline);
 					data.user = getUser(data.uid, auth);
+					data.idtype = "videoid";
 					$("#detailTemplate").tmpl(data ).appendTo('#detail-panel');
 
 			  }else{

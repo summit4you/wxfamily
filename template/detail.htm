@@ -39,16 +39,21 @@
 	<div class="subject">{if subject}{{= subject}}{else}{{= title}}{/if}</div>
 </div>
 
-<!--{if $_GET[idtype]!='reblog' || $_GET[idtype]!='blog'}-->
+<!--{BLOCK_TAG_START}-->if idtype=="photoid"<!--{BLOCK_TAG_END}-->
 <div class="detail-image">
-<!--{BLOCK_TAG_START}-->if pic<!--{BLOCK_TAG_END}-->
 	<img class="retina" src="{if pic}{{= pic}}{else}template/css/images/family/detail-content.jpg{/if}" />
-	
-	<!--{BLOCK_TAG_START}-->else<!--{BLOCK_TAG_END}-->
-	<video width="100%" src="{{= videourl}}" controls></video>
-	<!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
 </div>
-<!--{/if}-->
+
+<!--{BLOCK_TAG_START}-->else idtype=="videoid"<!--{BLOCK_TAG_END}-->
+
+<div class="detail-image">
+	<video width="100%" src="{{= videourl}}" controls></video>
+</div>
+
+<!--{BLOCK_TAG_START}-->else<!--{BLOCK_TAG_END}-->
+
+<!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+
 
 <div class="detail-message">
 	<div>{{html message}}</div>
