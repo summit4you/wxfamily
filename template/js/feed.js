@@ -21,7 +21,7 @@ function getfeeds2(auth, perpage, page){
 					data[i].message = html_entity_decode(data[i].message);
 					data[i].dateline = date('Y-m-d',data[i].dateline);
 					console(length(data[i].message));
-					if (length(data[i].message)>80)
+					if (data[i].message.length>80)
 					{
 						data[i].mc = 1;
 						console.log("mc");
@@ -64,8 +64,8 @@ function getfeeds( wxkey, perpage, page ) {
 				for (var i = 0, len = data.length; i < len; ++i) {
 					data[i].message = html_entity_decode(data[i].message);
 					data[i].message = html_entity_decode(data[i].message);
-					console(length(data[i].message));
-					if (length(data[i].message)>80)
+
+					if (data[i].message.length>80)
 					{
 						data[i].mc = 1;
 						console.log("mc");
