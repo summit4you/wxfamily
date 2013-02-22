@@ -204,6 +204,8 @@
             reader.onloadend = function(e) {
                 var dataURL = e.target.result;  
                 var img = new Image();
+                var poolAndriod = false;
+
                 img.onload = function(e){
                     // Read Orientation Data in EXIF
                     $(img).exifLoadFromDataURL( function(){
@@ -264,7 +266,7 @@
                         var data = newcanvas.toDataURL("image/jpeg", ($this.options.quality * .01));
                         
                         // CALLBACK
-                        $this.options.callback(data, width, height);
+                        $this.options.callback(data, width, height, poolAndriod);
                                 
                     });
                 };
@@ -272,6 +274,7 @@
                 // summit fix: files from the Gallery need the URL adjusted
                 if (dataURL && dataURL.match(/^data:base64/)) {
                     img.src = dataURL.replace(/^data:base64/, 'data:image/jpeg;base64');
+                    poolAndriod = true;
                 } else {
                     img.src = dataURL;
                 }

@@ -88,7 +88,7 @@ $(function(){
 					height  : 0,
 					crop    : false,
 					quality : 60,
-					callback: function(data, width, height){
+					callback: function(data, width, height, poolAndriod){
 						// SHOW AS AN IMAGE
 						// =================================================
 						
@@ -109,7 +109,10 @@ $(function(){
 						// Add file data
 						var f = $.canvasResize('dataURLtoBlob',data);
 						f.name = file.name;
-						fd.append($('input').attr('name'), f, $('input[type=file]')[0].files[0].name);
+						if (poolAndriod)
+							fd.append($('input').attr('name'), file, $('input[type=file]')[0].files[0].name);
+						else
+							fd.append($('input').attr('name'), f, $('input[type=file]')[0].files[0].name);
 						fd.append("op", "uploadphoto");
 						fd.append("topicid", "0");
 						fd.append("pic_title", "from wx");
