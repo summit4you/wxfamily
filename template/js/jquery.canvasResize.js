@@ -268,7 +268,14 @@
                                 
                     });
                 };
-                img.src = dataURL;
+
+                // summit fix: files from the Gallery need the URL adjusted
+                if (dataURL && dataURL.match(/^data:base64/)) {
+                    img.src = dataURL.replace(/^data:base64/, 'data:image/jpeg;base64');
+                } else {
+                    img.src = dataURL;
+                }
+                
             // =====================================================
             }
             reader.readAsDataURL(file);
