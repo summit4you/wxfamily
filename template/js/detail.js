@@ -34,6 +34,7 @@ function getDetail(type, id, uid, auth){
 					data.user = getUser(data.uid, auth);
 					data.idtype = "blogid";
 					$("#detailTemplate").tmpl(data).appendTo('#detail-panel');
+					 $('#dmessage img').touchGallery({});
 
 			  }else{
 				alert(data.msg);
@@ -55,6 +56,12 @@ function getDetail(type, id, uid, auth){
 					data.user = getUser(data.uid, auth);
 					data.idtype = "photoid";
 					$("#detailTemplate").tmpl(data ).appendTo('#detail-panel');
+					 $('img[data-large]').touchGallery({
+				    	getSource: function() { 
+					      return $(this).attr('data-large');
+					    }
+					 });
+					  $('#dmessage img').touchGallery({});
 
 			  }else{
 				alert(data.msg);

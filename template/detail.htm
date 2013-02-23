@@ -21,6 +21,7 @@
       .script("template/js/jquery.retina.js")
       .wait()
 	  .script("template/js/jquery.tmpl.min.js")
+	  .script("template/js/jquery.touch-gallery-1.0.0.min.js")
 	  .script("template/js/util.min.js")
 	  .wait()
 	  .script("template/js/detail.min.js").wait(function(){
@@ -43,7 +44,7 @@
 
 <!--{BLOCK_TAG_START}-->if idtype=="photoid"<!--{BLOCK_TAG_END}-->
 <div class="detail-image">
-	<img class="retina" src="{if pic}{{= pic}}{else}template/css/images/family/detail-content.jpg{/if}" />
+	<img  src="<!--{BLOCK_TAG_START}-->if pic<!--{BLOCK_TAG_END}-->{{= pic}}<!--{BLOCK_TAG_START}-->else<!--{BLOCK_TAG_END}-->template/css/images/family/detail-content.jpg<!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->" data-large="<!--{BLOCK_TAG_START}-->if pic<!--{BLOCK_TAG_END}-->{{= pic}}<!--{BLOCK_TAG_START}-->else<!--{BLOCK_TAG_END}-->template/css/images/family/detail-content.jpg<!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->"/>
 </div>
 
 <!--{BLOCK_TAG_START}-->else idtype=="videoid"<!--{BLOCK_TAG_END}-->
@@ -58,7 +59,7 @@
 
 
 <div class="detail-message">
-	<div>{{html message}}</div>
+	<div id="dmessage">{{html message}}</div>
 	<div class="time"><img class="retina" src="template/css/images/family/timeico.jpg"/><span>{{= dateline}}</span></div>
 	<div class="buttons" style="display:none">
 		<ul>
