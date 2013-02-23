@@ -70,7 +70,9 @@
 
 
 <div class="detail-message">
-	<div id="dmessage">{{html message}}</div>
+	<!--{BLOCK_TAG_START}-->if piclistlen>1<!--{BLOCK_TAG_END}-->
+		<div id="dmessage">{{html message}}</div>
+	<!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
 	<div class="time"><img class="retina" src="template/css/images/family/timeico.jpg"/><span>{{= dateline}}</span></div>
 	<div class="buttons" style="display:none">
 		<ul>

@@ -35,6 +35,7 @@ function getDetail(type, id, uid, auth){
 					data.dateline = date('Y-m-d H:i',data.dateline);
 					data.user = getUser(data.uid, auth);
 					data.idtype = "blogid";
+					data.piclistlen = 1;
 					$("#detailTemplate").tmpl(data).appendTo('#detail-panel');
 					 $('#dmessage img').touchGallery({});
 
@@ -57,6 +58,7 @@ function getDetail(type, id, uid, auth){
 					data.dateline = date('Y-m-d H:i',data.dateline);
 					data.user = getUser(data.uid, auth);
 					data.idtype = "photoid";
+					data.piclistlen = data.piclist.length;
 					$("#detailTemplate").tmpl(data ).appendTo('#detail-panel');
 					 $('img[data-large]').touchGallery({
 				    	getSource: function() { 
@@ -85,6 +87,7 @@ function getDetail(type, id, uid, auth){
 					data.dateline = date('Y-m-d H:i',data.dateline);
 					data.user = getUser(data.uid, auth);
 					data.idtype = "videoid";
+					data.piclistlen = 1;
 					$("#detailTemplate").tmpl(data ).appendTo('#detail-panel');
 
 			  }else{
