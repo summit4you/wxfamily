@@ -5,6 +5,51 @@
 
 include_once( 'simple_html_dom.php' );
 
+function mobile_user_agent_switch(){
+		$device = '';
+ 
+		if( stristr($_SERVER['HTTP_USER_AGENT'],'ipad') ) {
+			$version = preg_replace("/(.*) OS ([0-9]*)_(.*)/","$2", $_SERVER['HTTP_USER_AGENT']);
+			if ($version > 5){
+				$device = "ios6";
+			}
+			$device = "ios5";
+		} else if( stristr($_SERVER['HTTP_USER_AGENT'],'iphone') || strstr($_SERVER['HTTP_USER_AGENT'],'iphone') ) {
+			$version = preg_replace("/(.*) OS ([0-9]*)_(.*)/","$2", $_SERVER['HTTP_USER_AGENT']);
+			if ($version > 5){
+				$device = "ios6";
+			}
+			$device = "ios5";
+		} else if( stristr($_SERVER['HTTP_USER_AGENT'],'blackberry') ) {
+			$device = "blackberry";
+		} else if( stristr($_SERVER['HTTP_USER_AGENT'],'android') ) {
+			$device = "android";
+		}
+		if( $device ) {
+			return $device; 
+		} return false; {
+			return false;
+		}
+}
+
+function mobile_user_agent_switch2(){
+		$device = '';
+ 
+		if( stristr($_SERVER['HTTP_USER_AGENT'],'ipad') ) {
+			$version = preg_replace("/(.*) OS ([0-9]*)_(.*)/","$2", $_SERVER['HTTP_USER_AGENT']);
+			if ($version > 5){
+				return true;
+			}
+		} else if( stristr($_SERVER['HTTP_USER_AGENT'],'iphone') || strstr($_SERVER['HTTP_USER_AGENT'],'iphone') ) {
+			$version = preg_replace("/(.*) OS ([0-9]*)_(.*)/","$2", $_SERVER['HTTP_USER_AGENT']);
+			if ($version > 5){
+				return true;
+			}
+		}
+
+		return false;
+}
+
 function makeText($fromUsername, $toUsername, $time, $msgType, $contentStr)
 {
 	$textTpl = "<xml>

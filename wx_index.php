@@ -113,7 +113,7 @@ class wechatCallbackapiTest
 						
 
 					}elseif($keyword == "2"){
-
+						
 						$msgType = "news";
 					
 						$jsonurl = "http://www.familyday.com.cn/dapi/space.php?do=wxfeed&perpage=5&page=1&wxkey=".$fromUsername;;
@@ -171,6 +171,10 @@ class wechatCallbackapiTest
 						$articles[] = makeArticleItem("关于微信家庭圈", "关于微信家庭圈", $pic, $url);
 
 						$resultStr = makeArticles($fromUsername, $toUsername, $time, $msgType, "绑定微信帐号",$articles); 
+					}elseif($keyword == "4"){
+						$msgType = "text";
+						$contentStr = mobile_user_agent_switch();
+						$resultStr = makeText($fromUsername, $toUsername, $time, $msgType, $contentStr);
 					}else{
 						$msgType = "text";
 						$contentStr = "你好！欢迎来到“家庭圈”，绑定微信机器人，帮你快速了解家人动态、发布照片和日记、立即跟家人分享！
