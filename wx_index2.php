@@ -121,18 +121,13 @@ class wechatCallbackapiTest
 						}
 						mysql_select_db("familyday", $con);
 						$result = mysql_query("SELECT * FROM uchome_space WHERE wxkey='".$fromUsername."'");
-						$device = false;
+						$device = "";
 						if($row = mysql_fetch_array($result))
 						{	
-							if( $row["device"] == "ios6")
-								$device = true;
-							else
-								$device = false;
-						}else{
-							$device = false;
+							$device = $row["device"];
 						}
 						mysql_close($con);
-						if ($device){
+						if ($device  == "ios6" ){
 							$msgType = "news";
 						
 							$jsonurl = "http://www.familyday.com.cn/dapi/space.php?do=wxfeed&perpage=5&page=1&wxkey=".$fromUsername;;
@@ -163,9 +158,25 @@ class wechatCallbackapiTest
 								$articles[] = makeArticleItem("绑定微信帐号", "你还没有绑定微信号，请点击进入微信绑定页", $pic, $url);
 								$resultStr = makeArticles($fromUsername, $toUsername, $time, $msgType, "绑定微信帐号",$articles);  
 							}
-						}else{
+						}elseif($device==""){
+							$url = "http://www.familyday.com.cn/wx/wx.php?do=bind&wxkey=".$fromUsername;
+							$pic = "http://www.familyday.com.cn/wx/images/bind.jpg";
+							$articles[] = makeArticleItem("绑定微信帐号", "你还没有绑定微信号，请点击进入微信绑定页", $pic, $url);
+							$resultStr = makeArticles($fromUsername, $toUsername, $time, $msgType, "绑定微信帐号",$articles);  
+						}
+						else{
+							session_start();
+							$op = "";
+							if(isset($_SESSION['cp']))
+								$op = $_SESSION['cp'];
+							else
+								$op = $_SESSION['cp'] = 21;
 
-
+							$msgType = "text";
+							$contentStr = $op;
+							$resultStr = makeText($fromUsername, $toUsername, $time, $msgType, $contentStr);
+							
+							$op = $op+1;
 						}
 
 
