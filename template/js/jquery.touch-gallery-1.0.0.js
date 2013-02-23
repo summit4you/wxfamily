@@ -721,7 +721,7 @@
 	$.fn.touchGallery = function(opts) {
 		opts = $.extend({}, $.fn.touchGallery.defaults, opts);
 		var thumbs = this;
-		this.on('click', function(ev) {
+		this.bind('click', function(ev) {
 			ev.preventDefault();
 			ev = ev||window.event;
    			ev.stopPropagation(); 

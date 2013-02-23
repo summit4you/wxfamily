@@ -41,7 +41,7 @@ function getfeeds2(auth, perpage, page){
 				$('#page').val(parseInt($('#page').val())+1);
 				
 				 $('.feed-photo').each(function(){
-				 		$(this).on("click", function(ev){
+				 		$(this).bind("click", function(ev){
 				 			var href = $($(this).attr('data-a-id')).attr('href');
 				 			window.location.href = href;
 				 		});
