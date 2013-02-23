@@ -33,7 +33,8 @@
 
 <script id="feedTemplate" type="text/x-jquery-tmpl">
 <!--{BLOCK_TAG_START}-->if idtype<!--{BLOCK_TAG_END}-->
-	<div class="feed" id="feed_{{= id}}_{{= idtype}}" onclick="var href = $('#a_{{= id}}_{{= idtype}}').attr('href');window.location.href = href;">
+	<div class="feed" id="feed_{{= id}}_{{= idtype}}">
+	<script>$('#feed_{{= id}}_{{= idtype}}').live("click", function(){var href = $('#a_{{= id}}_{{= idtype}}').attr('href');window.location.href = href;});</script>
 <!--{BLOCK_TAG_START}-->else<!--{BLOCK_TAG_END}-->
 	<div class="feed" id="feed_{{= id}}_{{= idtype}}">
 <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
