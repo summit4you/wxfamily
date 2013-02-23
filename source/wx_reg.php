@@ -139,7 +139,7 @@ if ($_GET[op]=="register"){
 		updatetable('space', array('wxkey'=>''), array('wxkey'=>$_GET['wxkey']));
 
 		// 绑定微信key
-		updatetable('space', array('wxkey'=>$_GET['wxkey'], 'name'=>$name, 'namestatus'=>1), array('uid'=>$setarr[uid]));
+		updatetable('space', array('wxkey'=>$_GET['wxkey'], 'name'=>$name, 'namestatus'=>1,'device'=>mobile_user_agent_switch()), array('uid'=>$setarr[uid]));
 
 		// 同步登陆
 		$jsonurl = "http://www.familyday.com.cn/dapi/do.php?ac=login&username=".$username."&password=".$password;

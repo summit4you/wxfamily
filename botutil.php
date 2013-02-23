@@ -30,7 +30,7 @@ function mobile_user_agent_switch(){
 		if( $device ) {
 			return $device; 
 		} else{
-			return 'find';
+			return '';
 		}
 }
 
