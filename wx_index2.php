@@ -114,35 +114,57 @@ class wechatCallbackapiTest
 
 					}elseif($keyword == "2"){
 
-						$msgType = "news";
-					
-						$jsonurl = "http://www.familyday.com.cn/dapi/space.php?do=wxfeed&perpage=5&page=1&wxkey=".$fromUsername;;
-						$json = file_get_contents($jsonurl,0,null,null);
-						$json_output = json_decode($json);
-
-						if ($json_output->data->error==0){
-							$url = "http://www.familyday.com.cn/wx/wx.php?do=cp&op=photo&wxkey=".$fromUsername;
-							$pic = "http://www.familyday.com.cn/wx/images/image-icon.jpg";
-							$articles[] = makeArticleItem("发布图片，分享给家人", "发布图片，分享给家人", $pic, $url);
-
-							$url = "http://www.familyday.com.cn/wx/wx.php?do=cp&op=photo&wxkey=".$fromUsername;
-							$pic = "http://www.familyday.com.cn/wx/images/image2-icon.jpg";
-							$articles[] = makeArticleItem("发一张图片", "发一张图片", $pic, $url);
-							
-							$url = "http://www.familyday.com.cn/wx/wx.php?do=cp&op=blog&wxkey=".$fromUsername;
-							$pic = "http://www.familyday.com.cn/wx/images/blog-icon.jpg";
-							$articles[] = makeArticleItem("发一篇日记", "发一篇日记", $pic, $url);
-
-							$url = "http://www.familyday.com.cn/wx/wx.php?do=feed&wxkey=".$fromUsername;
-							$pic = "http://www.familyday.com.cn/wx/images/feed-icon.jpg";
-							$articles[] = makeArticleItem("全部家庭圈动态", "全部家庭圈动态", $pic, $url);
-							$resultStr = makeArticles($fromUsername, $toUsername, $time, $msgType, "发布",$articles); 
-
+						$con = mysql_connect("localhost","familyday","fmd30991261");
+						if (!$con)
+						{
+							die('Could not connect: ' . mysql_error());
+						}
+						mysql_select_db("familyday", $con);
+						$result = mysql_query("SELECT * FROM uchome_space WHERE wxkey='".$fromUsername."'");
+						if($row = mysql_fetch_array($result, MYSQL_ASSOC))
+						{	
+							if( $row["device"] == "ios6");
+								$device = true;
+							else
+								$device = false;
 						}else{
-							$url = "http://www.familyday.com.cn/wx/wx.php?do=bind&wxkey=".$fromUsername;
-							$pic = "http://www.familyday.com.cn/wx/images/bind.jpg";
-							$articles[] = makeArticleItem("绑定微信帐号", "你还没有绑定微信号，请点击进入微信绑定页", $pic, $url);
-							$resultStr = makeArticles($fromUsername, $toUsername, $time, $msgType, "绑定微信帐号",$articles);  
+							$device = false;
+						}
+						mysql_close($con);
+						if ($device){
+							$msgType = "news";
+						
+							$jsonurl = "http://www.familyday.com.cn/dapi/space.php?do=wxfeed&perpage=5&page=1&wxkey=".$fromUsername;;
+							$json = file_get_contents($jsonurl,0,null,null);
+							$json_output = json_decode($json);
+
+							if ($json_output->data->error==0){
+								$url = "http://www.familyday.com.cn/wx/wx.php?do=cp&op=photo&wxkey=".$fromUsername;
+								$pic = "http://www.familyday.com.cn/wx/images/image-icon.jpg";
+								$articles[] = makeArticleItem("发布图片，分享给家人", "发布图片，分享给家人", $pic, $url);
+
+								$url = "http://www.familyday.com.cn/wx/wx.php?do=cp&op=photo&wxkey=".$fromUsername;
+								$pic = "http://www.familyday.com.cn/wx/images/image2-icon.jpg";
+								$articles[] = makeArticleItem("发一张图片", "发一张图片", $pic, $url);
+								
+								$url = "http://www.familyday.com.cn/wx/wx.php?do=cp&op=blog&wxkey=".$fromUsername;
+								$pic = "http://www.familyday.com.cn/wx/images/blog-icon.jpg";
+								$articles[] = makeArticleItem("发一篇日记", "发一篇日记", $pic, $url);
+
+								$url = "http://www.familyday.com.cn/wx/wx.php?do=feed&wxkey=".$fromUsername;
+								$pic = "http://www.familyday.com.cn/wx/images/feed-icon.jpg";
+								$articles[] = makeArticleItem("全部家庭圈动态", "全部家庭圈动态", $pic, $url);
+								$resultStr = makeArticles($fromUsername, $toUsername, $time, $msgType, "发布",$articles); 
+
+							}else{
+								$url = "http://www.familyday.com.cn/wx/wx.php?do=bind&wxkey=".$fromUsername;
+								$pic = "http://www.familyday.com.cn/wx/images/bind.jpg";
+								$articles[] = makeArticleItem("绑定微信帐号", "你还没有绑定微信号，请点击进入微信绑定页", $pic, $url);
+								$resultStr = makeArticles($fromUsername, $toUsername, $time, $msgType, "绑定微信帐号",$articles);  
+							}
+						}else{
+
+
 						}
 
 
