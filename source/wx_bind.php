@@ -40,8 +40,10 @@ if ($_GET["op"]=="add"){
 	
 	// unbind
 	updatetable('space', array('wxkey'=>''), array('wxkey'=>$_POST['wxkey']));
+
+	$device = serialize(array("os"=>mobile_user_agent_switch()));
 	// bind
-	updatetable('space', array('wxkey'=>$_POST['wxkey'], 'device'=>mobile_user_agent_switch()), array('uid'=>$passport['uid']));
+	updatetable('space', array('wxkey'=>$_POST['wxkey'], 'device'=>$device), array('uid'=>$passport['uid']));
 
 	
 
