@@ -95,6 +95,8 @@ $(function(){
 						$('<img>').load(function(){ 
 							
 							$(this).appendTo('.msg-image');
+							$("#message").css({"padding-bottom":"0","margin-bottom":"0","height":$(this).height()});
+							$(".msg-content").css({"padding-bottom":"0","margin-bottom":"0","height":$(this).height()});
 							
 						}).attr('src', data).attr('id','pic');
 
@@ -170,5 +172,8 @@ $(function(){
    $('#select-choice-2').change(function(){
 		window.location.href = $('#select-choice-2').val();
 	});
+
+   $("#message").css({"padding-bottom":"0","margin-bottom":"0","height":$("#pic").height()});
+   $(".msg-content").css({"padding-bottom":"0","margin-bottom":"0","height":$("#pic").height()});
 
 });
