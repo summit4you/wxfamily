@@ -22,8 +22,7 @@
       .script("template/js/jquery.retina.js")
       .wait()
 	  .script("template/js/jquery.tmpl.min.js")
-	  .script("template/js/klass.min.js")
-	  .script("template/js/code.photoswipe.jquery-3.0.5.min.js")
+	  .script("template/js/jquery.touch-gallery-1.0.0.min.js")
 	  .script("template/js/util.min.js")
 	  .wait()
 	  .script("template/js/feed.min.js").wait(function(){
@@ -48,7 +47,7 @@
  		<div class="panel">
  		<!--{BLOCK_TAG_START}-->if image_1<!--{BLOCK_TAG_END}-->
  			<div class="content-image2">
- 				<a href="{{= image_1}}" rel="external"><img  src="{{= image_1}}" alt="{{= subject}}"/></a>
+ 				<img  src="{{= image_1}}" alt="{{= subject}}" data-large="{{= image_1}}"/>
  				<div class="title">
 					<div class="subject">
 						{{= subject}}

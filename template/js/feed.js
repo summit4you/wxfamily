@@ -39,31 +39,11 @@ function getfeeds2(auth, perpage, page){
 				}
 				$("#feedTemplate").tmpl(data ).appendTo('#feedlist');
 				$('#page').val(parseInt($('#page').val())+1);
-				$('div#feed-page')
-					.live('pageshow', function(e){
-						
-						var 
-							currentPage = $(e.target),
-							options = {},
-							photoSwipeInstance = $("div.content-image2 a", e.target).photoSwipe(options,  currentPage.attr('id'));
-							
-						return true;
-						
-					})
-					
-					.live('pagehide', function(e){
-						
-						var 
-							currentPage = $(e.target),
-							photoSwipeInstance = PhotoSwipe.getInstance(currentPage.attr('id'));
-
-						if (typeof photoSwipeInstance != "undefined" && photoSwipeInstance != null) {
-							PhotoSwipe.detatch(photoSwipeInstance);
-						}
-						
-						return true;
-						
-					});
+				 $('img[data-large]').touchGallery({
+				    	getSource: function() { 
+					      return $(this).attr('data-large');
+					    }
+					 });
 			  }
 		  }else{
 			alert(data.msg);
@@ -128,39 +108,10 @@ $(function(){
 	$('.header-logo').click(function(){
 		window.location.href = "http://www.familyday.com.cn/wx/wx.php?do=feed&wxkey=$_GET[wxkey]";
 	});
-
+	 $('img[data-large]').touchGallery({
+	    getSource: function() { 
+	      return $(this).attr('data-large');
+	    }
+	 });
 });
 
-(function(window, $, PhotoSwipe){
-			
-			$(document).ready(function(){
-				
-				$('div#feed-page')
-					.live('pageshow', function(e){
-						
-						var 
-							currentPage = $(e.target),
-							options = {},
-							photoSwipeInstance = $("div.content-image2 a", e.target).photoSwipe(options,  currentPage.attr('id'));
-							
-						return true;
-						
-					})
-					
-					.live('pagehide', function(e){
-						
-						var 
-							currentPage = $(e.target),
-							photoSwipeInstance = PhotoSwipe.getInstance(currentPage.attr('id'));
-
-						if (typeof photoSwipeInstance != "undefined" && photoSwipeInstance != null) {
-							PhotoSwipe.detatch(photoSwipeInstance);
-						}
-						
-						return true;
-						
-					});
-				
-			});
-		
-}(window, window.jQuery, window.Code.PhotoSwipe));
