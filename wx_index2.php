@@ -124,10 +124,10 @@ class wechatCallbackapiTest
 						$device = "";
 						if($row = mysql_fetch_array($result))
 						{	
-							$device = $row["device"];
+							$device = unserialize($row["device"]);
 						}
 						mysql_close($con);
-						if ($device  == "ios6" ){
+						if ($device["os"]  == "ios6" ){
 							$msgType = "news";
 						
 							$jsonurl = "http://www.familyday.com.cn/dapi/space.php?do=wxfeed&perpage=5&page=1&wxkey=".$fromUsername;;
@@ -165,18 +165,27 @@ class wechatCallbackapiTest
 							$resultStr = makeArticles($fromUsername, $toUsername, $time, $msgType, "绑定微信帐号",$articles);  
 						}
 						else{
-							session_start();
-							$op = "";
-							if(isset($_SESSION['cp']))
-								$op = $_SESSION['cp'];
-							else
-								$op = $_SESSION['cp'] = 21;
-
+							
+							if(isset($device['cp']))
+							{
+								$op = $device['cp'];
+							}else{
+								$op = 21;
+							}
 							$msgType = "text";
 							$contentStr = $op;
 							$resultStr = makeText($fromUsername, $toUsername, $time, $msgType, $contentStr);
 							
 							$op = $op+1;
+							$device['cp'] = $op;
+							$con = mysql_connect("localhost","familyday","fmd30991261");
+							if (!$con)
+							{
+								die('Could not connect: ' . mysql_error());
+							}
+							mysql_select_db("familyday", $con);
+							$result = mysql_query("UPDATE  uchome_space SET device='".serialize($device)."' WHERE wxkey='".$fromUsername."'");
+							mysql_close($con);
 						}
 
 
