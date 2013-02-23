@@ -172,6 +172,16 @@ $(function(){
 		window.location.href = $('#select-choice-2').val();
 	});
 
-  
+  document.getElementById('message').onkeyup = function() {
+	  var ta = document.getElementById('message');
+	  var maxrows = 30;
+	  var lh = ta.clientHeight / ta.rows;
+	  while (ta.scrollHeight &gt; ta.clientHeight &amp;&amp; !window.opera &amp;&amp; ta.rows &lt; maxrows) {
+	    ta.style.overflow = 'hidden';
+	    ta.rows += 1;
+	  }
+	  if (ta.scrollHeight &gt; ta.clientHeight) ta.style.overflow = 'auto';
+	  ta.height(ta.height()+20);
+	}
 
 });
