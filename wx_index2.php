@@ -228,15 +228,16 @@ class wechatCallbackapiTest
 						$resultStr = makeText($fromUsername, $toUsername, $time, $msgType, $contentStr); 
 					}
                 	echo $resultStr;
-                }elseif(!empty($picUrl)){
-					$msgType = "text";
-					$contentStr = $picUrl;
-					$resultStr = makeText($fromUsername, $toUsername, $time, $msgType, $contentStr); 
-				}else{
+                }else{
                 	echo "Input something...";
                 }
 
-        }else {
+        }elseif(!empty($picUrl)){
+					$msgType = "text";
+					$contentStr = $picUrl;
+					$resultStr = makeText($fromUsername, $toUsername, $time, $msgType, $contentStr);
+					echo $resultStr;
+				}else {
         	echo "";
         	exit;
         }

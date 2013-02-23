@@ -41,9 +41,7 @@ if ($_GET["op"]=="add"){
 	// unbind
 	updatetable('space', array('wxkey'=>''), array('wxkey'=>$_POST['wxkey']));
 
-	$device = serialize(array("os"=>mobile_user_agent_switch()));
-	// bind
-	updatetable('space', array('wxkey'=>$_POST['wxkey'], 'device'=>$device), array('uid'=>$passport['uid']));
+	
 
 	
 
@@ -51,6 +49,10 @@ if ($_GET["op"]=="add"){
 	$jsonurl = "http://www.familyday.com.cn/dapi/do.php?ac=login&username=".$username."&password=".$password;
 	$json = file_get_contents($jsonurl,0,null,null);
 	$json_output = json_decode($json);
+
+	$device = serialize(array("os"=>mobile_user_agent_switch(), "auth"=>$json_output->data->m_auth));
+	// bind
+	updatetable('space', array('wxkey'=>$_POST['wxkey'], 'device'=>$device), array('uid'=>$passport['uid']));
 	
 	echo "<script>localStorage.removeItem('auth');localStorage.setItem('auth','".$json_output->data->m_auth."');</script>";
 	
