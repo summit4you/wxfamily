@@ -18,7 +18,7 @@ function getUser( fuid, auth){
 	return r;
 }
 
-var s ;
+
 
 function getDetail(type, id, uid, auth){
 	if (type=="blogid"){
@@ -52,7 +52,7 @@ function getDetail(type, id, uid, auth){
 			  /* Get the movies array from the data */
 
 			  if(data.error==0){
-					s = data=data.data;
+					data=data.data;
 					data.message = html_entity_decode(data.message);
 					data.dateline = date('Y-m-d H:i',data.dateline);
 					data.user = getUser(data.uid, auth);

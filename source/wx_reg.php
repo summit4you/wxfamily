@@ -10,6 +10,7 @@ if ($_GET[op]=="register"){
 
 
 	$username = empty($_REQUEST['username']) ? '' : trim($_REQUEST['username']);
+	$name = empty($_REQUEST['name']) ? '' : trim($_REQUEST['name']);
 	$password = empty($_REQUEST['password1']) ? '' : trim($_REQUEST['password1']);
 	$password2 = empty($_REQUEST['password2']) ? '' : trim($_REQUEST['password2']);
 
@@ -25,7 +26,9 @@ if ($_GET[op]=="register"){
 		exit;
 	}
 
-	
+	if(empty($name)) {
+		wxshowmessage('姓名不能为空');
+	}
 
 	// 验证手机号码
 	if(empty($username)) {
@@ -132,8 +135,18 @@ if ($_GET[op]=="register"){
 		//绑定新浪微博
 		updatetable('space', array('sina_uid'=>$_SESSION['sian_token']['uid'], 'sina_token'=>$_SESSION['sian_token']['access_token'],'name'=>$userinfo['name']), array('uid'=>$newuid));
 
+		// unbind
+		updatetable('space', array('wxkey'=>''), array('wxkey'=>$_GET['wxkey']));
+
 		// 绑定微信key
-		updatetable('space', array('wxkey'=>$_GET['wxkey']), array('uid'=>$setarr[uid]));
+		updatetable('space', array('wxkey'=>$_GET['wxkey'], 'name'=>$name, 'namestatus'=1), array('uid'=>$setarr[uid]));
+
+		// 同步登陆
+		$jsonurl = "http://www.familyday.com.cn/dapi/do.php?ac=login&username=".$username."&password=".$password;
+		$json = file_get_contents($jsonurl,0,null,null);
+		$json_output = json_decode($json);
+		
+		echo "<script>localStorage.removeItem('auth');localStorage.setItem('auth','".$json_output->data->m_auth."');</script>";
 
 		//在线session
 		insertsession($setarr);
