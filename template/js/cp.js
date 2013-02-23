@@ -20,7 +20,7 @@ function pubilchPhoto(picid, message, tags, auth){
 		  if(data.error==0){
 			data = data.data;
 			alert("提交成功，获得了"+data.credit+"点积分");
-			window.location.href = "http://www.familyday.com.cn/wx/wx.php?do=feed&wxkey=$_GET[wxkey]";
+			window.location.href = "http://www.familyday.com.cn/wx/wx.php?do=feed&wxkey="+$('#wxkey').val();
 		  }else{
 			alert(data.msg);
 		  }
@@ -39,7 +39,7 @@ function publicBlog(subject, message, tags, auth){
 		  if(data.error==0){
 			data = data.data;
 			alert("提交成功，获得了"+data.credit+"点积分");
-			window.location.href = "http://www.familyday.com.cn/wx/wx.php?do=feed&wxkey=$_GET[wxkey]";
+			window.location.href = "http://www.familyday.com.cn/wx/wx.php?do=feed&wxkey="+$('#wxkey').val();
 		  }else{
 			alert(data.msg);
 		  }
