@@ -22,13 +22,10 @@
       .script("template/js/jquery.retina.js")
       .wait()
 	  .script("template/js/jquery.tmpl.min.js")
-	  .script("template/js/util.min.js")
-	  .wait()
-	  .script("template/js/feed.min.js").wait(function(){
-		<!--{DOLLOR_TAG}-->CLS.remove(["template/js/util.min.js", "template/js/feed.min.js"]);
-	  });
 
 </script>
+<script type="text/javascript" src="template/js/util.min.js"></script>
+<script type="text/javascript" src="template/js/feed.min.js"></script>
 
 <script id="feedTemplate" type="text/x-jquery-tmpl">
 <!--{BLOCK_TAG_START}-->if idtype<!--{BLOCK_TAG_END}-->
