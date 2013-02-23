@@ -41,7 +41,10 @@ function getfeeds2(auth, perpage, page){
 				$('#page').val(parseInt($('#page').val())+1);
 				
 				 $('.feed-photo').each(function(){
-				 		$(this).live("click", function(){var href = $($(this).attr('data-a-id')).attr('href');window.location.href = href;});
+				 		$(this).on("click", function(ev){
+				 			var href = $($(this).attr('data-a-id')).attr('href');
+				 			window.location.href = href;
+				 		});
 				 });
 				  $('img[data-large]').touchGallery({
 				    	getSource: function() { 
