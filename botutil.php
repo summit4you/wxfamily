@@ -240,4 +240,16 @@ function uploadByCURL($post_data,$post_url){
 	return $error ? $error : $result;
 }
 
+function asyn_get($url)
+{
+	 $fp = fsockopen('localhost',80,&$errno,&$errstr,5); 
+	 if(!$fp)
+	 {
+		echo "$errstr ($errno)<br />\n";
+	 }
+	 
+	 fputs($fp,"GET /".$url."\r\n"); 
+	 fclose($fp);
+} 
+
 ?>
