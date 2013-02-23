@@ -723,7 +723,8 @@
 		var thumbs = this;
 		this.live('click', function(ev) {
 			ev.preventDefault();
-			if (ev.stopPropagation){ e.stopPropagation();} 
+			if (ev.stopPropagation){ ev.stopPropagation();} 
+			else ev.cancelBubble = false;
 			var clickedThumb = $(this);
 			if (!clickedThumb.is('.open')) {
 				thumbs.addClass('open');
