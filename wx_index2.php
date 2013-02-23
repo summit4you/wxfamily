@@ -121,9 +121,10 @@ class wechatCallbackapiTest
 						}
 						mysql_select_db("familyday", $con);
 						$result = mysql_query("SELECT * FROM uchome_space WHERE wxkey='".$fromUsername."'");
-						if($row = mysql_fetch_array($result, MYSQL_ASSOC))
+						$device = false;
+						if($row = mysql_fetch_array($result))
 						{	
-							if( $row["device"] == "ios6");
+							if( $row["device"] == "ios6")
 								$device = true;
 							else
 								$device = false;
