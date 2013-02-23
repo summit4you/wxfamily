@@ -247,7 +247,9 @@ class wechatCallbackapiTest
 					}
 					mysql_close($con);
 
-					asyn_get("/wx_upload.php?url=".$picUrl);
+					$path = "/wx/wx.php?do=upload&url=".$picUrl."&m_auth=".$device["auth"];
+
+					asyn_get($path);
 
 					
 

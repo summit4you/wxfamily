@@ -240,16 +240,22 @@ function uploadByCURL($post_data,$post_url){
 	return $error ? $error : $result;
 }
 
-function asyn_get($url)
+function asyn_get($path)
 {
-	 $fp = fsockopen('localhost',80,&$errno,&$errstr,5); 
-	 if(!$fp)
-	 {
-		echo "$errstr ($errno)<br />\n";
-	 }
-	 
-	 fputs($fp,"GET /".$url."\r\n"); 
-	 fclose($fp);
+	$host = "www.familyday.com.cn";
+	
+	$cookie = Session_id();
+	$fp = fsockopen($host, 80, $errno, $errstr, 30);
+	if (!$fp) {
+		print "$errstr ($errno)<br />\n";
+		exit;
+	}
+	$out = "GET ".$path." HTTP/1.1\r\n";
+	$out .= "Host: ".$host."\r\n";
+	$out .= "Connection: Close\r\n";
+	$out .= "Cookie: ".$cookie."\r\n\r\n";
+	fwrite($fp, $out);
+	fclose($fp);
 } 
 
 ?>
