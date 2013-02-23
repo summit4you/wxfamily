@@ -723,6 +723,8 @@
 		var thumbs = this;
 		this.live('click', function(ev) {
 			ev.preventDefault();
+			ev = ev||window.event;
+   			ev.stopPropagation(); 
 			if (ev.stopPropagation){ ev.stopPropagation();} 
 			else ev.cancelBubble = false;
 			var clickedThumb = $(this);
