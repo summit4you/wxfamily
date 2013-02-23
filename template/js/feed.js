@@ -44,6 +44,9 @@ function getfeeds2(auth, perpage, page){
 					      return $(this).attr('data-large');
 					    }
 					 });
+				 $('.feed-photo').each(function(){
+				 		$(this).live("click", function(){var href = $($(this).attr('data-a-id')).attr('href');window.location.href = href;});
+				 });
 			  }
 		  }else{
 			alert(data.msg);
