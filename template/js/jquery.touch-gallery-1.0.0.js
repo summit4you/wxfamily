@@ -723,11 +723,13 @@
 		var thumbs = this;
 		this.live('click', function(ev) {
 			ev.preventDefault();
+			if (ev.stopPropagation){ e.stopPropagation();} 
 			var clickedThumb = $(this);
 			if (!clickedThumb.is('.open')) {
 				thumbs.addClass('open');
 				openGallery(thumbs, clickedThumb, opts);
 			}
+			return false;
 		});
 		return this;
 	};
