@@ -27,7 +27,7 @@ if ($_GET[op]=="register"){
 	}
 
 	if(empty($name)) {
-		wxshowmessage('姓名不能为空');
+		wxshowmessage('昵称不能为空');
 	}
 
 	// 验证手机号码
