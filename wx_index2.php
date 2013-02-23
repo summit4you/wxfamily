@@ -49,6 +49,7 @@ class wechatCallbackapiTest
               	$postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
                 $fromUsername = $postObj->FromUserName;
                 $toUsername = $postObj->ToUserName;
+				$picUrl = $postObj->picUrl;
                 $keyword = trim($postObj->Content);
                 $time = time();
 				
@@ -158,13 +159,12 @@ class wechatCallbackapiTest
 								$articles[] = makeArticleItem("绑定微信帐号", "你还没有绑定微信号，请点击进入微信绑定页", $pic, $url);
 								$resultStr = makeArticles($fromUsername, $toUsername, $time, $msgType, "绑定微信帐号",$articles);  
 							}
-						}elseif($device==""){
+						}elseif($device["os"]==""){
 							$url = "http://www.familyday.com.cn/wx/wx.php?do=bind&wxkey=".$fromUsername;
 							$pic = "http://www.familyday.com.cn/wx/images/bind.jpg";
 							$articles[] = makeArticleItem("绑定微信帐号", "你还没有绑定微信号，请点击进入微信绑定页", $pic, $url);
 							$resultStr = makeArticles($fromUsername, $toUsername, $time, $msgType, "绑定微信帐号",$articles);  
-						}
-						else{
+						}else{
 							
 							if(isset($device['cp']))
 							{
@@ -172,10 +172,11 @@ class wechatCallbackapiTest
 							}else{
 								$op = 21;
 							}
-							$msgType = "text";
-							$contentStr = $op;
-							$resultStr = makeText($fromUsername, $toUsername, $time, $msgType, $contentStr);
-							
+							if ($op==21){
+								$msgType = "text";
+								$contentStr = "步骤1：通过回复图片上传";
+								$resultStr = makeText($fromUsername, $toUsername, $time, $msgType, $contentStr);
+							}
 							$op = $op+1;
 							$device['cp'] = $op;
 							$con = mysql_connect("localhost","familyday","fmd30991261");
@@ -227,7 +228,11 @@ class wechatCallbackapiTest
 						$resultStr = makeText($fromUsername, $toUsername, $time, $msgType, $contentStr); 
 					}
                 	echo $resultStr;
-                }else{
+                }elseif(!empty($picUrl)){
+					$msgType = "text";
+					$contentStr = $picUrl;
+					$resultStr = makeText($fromUsername, $toUsername, $time, $msgType, $contentStr); 
+				}else{
                 	echo "Input something...";
                 }
 
