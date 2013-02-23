@@ -86,3 +86,4 @@ body{margin-left:10px;margin-right:10px;background-color:#f5f4ef;font-family:"He
 .title-btn .ui-btn-hover-a{background:none;background:#114c32;text-decoration:none;}
 .title-btn .ui-btn-down-a{position:relative;top:1px;}
 .ui-content{padding:0;overflow-x:visible;}
+body.ui-mobile-viewport,div.ui-mobile-viewport{overflow-x:visible;}
