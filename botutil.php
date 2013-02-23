@@ -227,4 +227,17 @@ function getAuth(){
 	$json = file_get_contents($jsonurl,0,null,null);
 	return $json;
 }
+
+function uploadByCURL($post_data,$post_url){
+	$curl = curl_init();
+	curl_setopt($curl, CURLOPT_URL, $post_url);
+	curl_setopt($curl, CURLOPT_POST, 1 );
+	curl_setopt($curl, CURLOPT_POSTFIELDS, $post_data);
+	curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+	curl_setopt($curl,CURLOPT_USERAGENT,"Mozilla/4.0");
+	$result = curl_exec($curl);
+	$error = curl_error($curl);
+	return $error ? $error : $result;
+}
+
 ?>

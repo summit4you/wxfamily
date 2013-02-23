@@ -233,8 +233,40 @@ class wechatCallbackapiTest
                 }
 
         }elseif(!empty($picUrl)){
-					$msgType = "text";
+					/* $msgType = "text";
 					$contentStr = $picUrl;
+					$resultStr = makeText($fromUsername, $toUsername, $time, $msgType, $contentStr);
+					echo $resultStr; */
+					$con = mysql_connect("localhost","familyday","fmd30991261");
+					if (!$con)
+					{
+						die('Could not connect: ' . mysql_error());
+					}
+					mysql_select_db("familyday", $con);
+					$result = mysql_query("SELECT * FROM uchome_space WHERE wxkey='".$fromUsername."'");
+					$device = "";
+					if($row = mysql_fetch_array($result))
+					{	
+						$device = unserialize($row["device"]);
+					}
+					mysql_close($con);
+
+					$milliSecond = strftime("%H%M%S",time());
+					$rndFileName = "tmpfile/".$milliSecond.".jpg";
+					file_put_contents($rndFileName, file_get_contents($picUrl));
+
+					$url = "http://www.familyday.com.cn/dapi/cp.php?ac=upload";
+					$file_name_with_full_path = realpath($rndFileName);
+					$data = array(
+						"op"=>"uploadphoto",
+						"topicid"=>"0",
+						"pic_title"=>"",
+						"m_auth"=>$device["auth"],
+						"Filedata"  => "@".$file_name_with_full_path,    
+					);
+					
+					$msgType = "text";
+					$contentStr =uploadByCURL($data,$url);
 					$resultStr = makeText($fromUsername, $toUsername, $time, $msgType, $contentStr);
 					echo $resultStr;
 				}else {
