@@ -46,11 +46,7 @@ function getfeeds2(auth, perpage, page){
 				 			window.location.href = href;
 				 		});
 				 });
-				  $('img[data-large]').touchGallery({
-				    	getSource: function() { 
-					      return $(this).attr('data-large');
-					    }
-					 });
+				  
 			  }
 		  }else{
 			alert(data.msg);
