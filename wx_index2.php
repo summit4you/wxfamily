@@ -49,7 +49,7 @@ class wechatCallbackapiTest
               	$postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
                 $fromUsername = $postObj->FromUserName;
                 $toUsername = $postObj->ToUserName;
-				$picUrl = $postObj->picUrl;
+				$picUrl = $postObj->PicUrl;
                 $keyword = trim($postObj->Content);
                 $time = time();
 				
