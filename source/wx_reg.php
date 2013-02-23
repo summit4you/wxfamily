@@ -145,7 +145,7 @@ if ($_GET[op]=="register"){
 		$json = file_get_contents($jsonurl,0,null,null);
 		$json_output = json_decode($json);
 
-		$device = serialize(array("os"=>mobile_user_agent_switch(), "auth"=>$json_output->data->m_auth));
+		$device = json_encode(array("os"=>mobile_user_agent_switch(), "auth"=>$json_output->data->m_auth));
 
 		// 绑定微信key
 		updatetable('space', array('wxkey'=>$_GET['wxkey'], 'name'=>$name, 'namestatus'=>1,'device'=>$device), array('uid'=>$setarr[uid]));

@@ -50,7 +50,7 @@ if ($_GET["op"]=="add"){
 	$json = file_get_contents($jsonurl,0,null,null);
 	$json_output = json_decode($json);
 
-	$device = serialize(array("os"=>mobile_user_agent_switch(), "auth"=>$json_output->data->m_auth));
+	$device = json_encode(array("os"=>mobile_user_agent_switch(), "auth"=>$json_output->data->m_auth));
 	// bind
 	updatetable('space', array('wxkey'=>$_POST['wxkey'], 'device'=>$device), array('uid'=>$passport['uid']));
 	

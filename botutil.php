@@ -258,4 +258,17 @@ function asyn_get($path)
 	fclose($fp);
 } 
 
+
+function object2array($object) {  
+    if (is_object($object)) {  
+        foreach ($object as $key => $value) {  
+            $array[$key] = $value;  
+        }  
+    }  
+    else {  
+        $array = $object;  
+    }  
+    return $array;  
+}  
+
 ?>
