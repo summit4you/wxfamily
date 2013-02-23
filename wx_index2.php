@@ -228,11 +228,7 @@ class wechatCallbackapiTest
 						$resultStr = makeText($fromUsername, $toUsername, $time, $msgType, $contentStr); 
 					}
                 	echo $resultStr;
-                }else{
-                	echo "Input something...";
-                }
-
-        }elseif(!empty($picUrl)){
+                }elseif(!empty($picUrl)){
 					/* $msgType = "text";
 					$contentStr = $picUrl;
 					$resultStr = makeText($fromUsername, $toUsername, $time, $msgType, $contentStr);
@@ -269,7 +265,11 @@ class wechatCallbackapiTest
 					$contentStr =uploadByCURL($data,$url);
 					$resultStr = makeText($fromUsername, $toUsername, $time, $msgType, $contentStr);
 					echo $resultStr;
-				}else {
+				}else{
+                	echo "Input something...";
+                }
+
+        }else {
         	echo "";
         	exit;
         }
