@@ -37,13 +37,13 @@
 
 <script id="detailTemplate" type="text/x-jquery-tmpl">
 <div class="detail-header">
-	<div class="avatar"><img class="retina" src="{{= user.avatar}}"/><span>{{= name}}</span></div>
+	<div class="avatar"><img class="retina" src="<!--{BLOCK_TAG_START}-->if user<!--{BLOCK_TAG_END}-->{{= user.avatar}}<!--{BLOCK_TAG_START}-->else<!--{BLOCK_TAG_END}-->image/nophoto.jpg<!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->"/><span>{{= name}}</span></div>
 	<div class="header-logo" onclick="window.location.href = 'http://www.familyday.com.cn/wx/wx.php?do=feed&wxkey=$_GET[wxkey]';"><a href="javascript:history.back()" data-role="none" style="float: right;color: black;line-height: 40px;font-size: 1.375em;">返回</a>
 		</div>
 </div>
 
 <div class="detail-subject">
-	<div class="subject">{if subject}{{= subject}}{else}{{= title}}{/if}</div>
+	<div class="subject"><!--{BLOCK_TAG_START}-->if subject<!--{BLOCK_TAG_END}-->{{= subject}}<!--{BLOCK_TAG_START}-->else<!--{BLOCK_TAG_END}-->{{= title}}<!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}--></div>
 </div>
 
 <!--{BLOCK_TAG_START}-->if idtype=="photoid"<!--{BLOCK_TAG_END}-->
