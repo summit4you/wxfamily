@@ -39,14 +39,15 @@ function getfeeds2(auth, perpage, page){
 				}
 				$("#feedTemplate").tmpl(data ).appendTo('#feedlist');
 				$('#page').val(parseInt($('#page').val())+1);
-				 $('img[data-large]').touchGallery({
+				
+				 $('.feed-photo').each(function(){
+				 		$(this).live("click", function(){var href = $($(this).attr('data-a-id')).attr('href');window.location.href = href;});
+				 });
+				  $('img[data-large]').touchGallery({
 				    	getSource: function() { 
 					      return $(this).attr('data-large');
 					    }
 					 });
-				 $('.feed-photo').each(function(){
-				 		$(this).live("click", function(){var href = $($(this).attr('data-a-id')).attr('href');window.location.href = href;});
-				 });
 			  }
 		  }else{
 			alert(data.msg);
@@ -111,10 +112,6 @@ $(function(){
 	$('.header-logo').click(function(){
 		window.location.href = "http://www.familyday.com.cn/wx/wx.php?do=feed&wxkey=$_GET[wxkey]";
 	});
-	 $('img[data-large]').touchGallery({
-	    getSource: function() { 
-	      return $(this).attr('data-large');
-	    }
-	 });
+	  
 });
 
