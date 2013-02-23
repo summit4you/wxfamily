@@ -116,7 +116,7 @@ $(function(){
 						var 
 							currentPage = $(e.target),
 							options = {},
-							photoSwipeInstance = $("content-image2 a", e.target).photoSwipe(options,  currentPage.attr('id'));
+							photoSwipeInstance = $("div.content-image2 a", e.target).photoSwipe(options,  currentPage.attr('id'));
 							
 						return true;
 						
