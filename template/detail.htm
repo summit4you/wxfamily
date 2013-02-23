@@ -28,8 +28,15 @@
 		<!--{DOLLOR_TAG}-->CLS.remove(['template/js/util.min.js', 'template/js/detail.min.js']);
 	  });
 
+	  
 </script>
 
+
+<script id="piclistTemplate" type="text/x-jquery-tmpl">
+	<div class="detail-image">
+		<img  src="{{= pic}}" data-large="{{= pic}}"/>
+	</div>
+</script>
 
 <script id="detailTemplate" type="text/x-jquery-tmpl">
 <div class="detail-header">
@@ -43,9 +50,12 @@
 </div>
 
 <!--{BLOCK_TAG_START}-->if idtype=="photoid"<!--{BLOCK_TAG_END}-->
-<div class="detail-image">
-	<img  src="<!--{BLOCK_TAG_START}-->if pic<!--{BLOCK_TAG_END}-->{{= pic}}<!--{BLOCK_TAG_START}-->else<!--{BLOCK_TAG_END}-->template/css/images/family/detail-content.jpg<!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->" data-large="<!--{BLOCK_TAG_START}-->if pic<!--{BLOCK_TAG_END}-->{{= pic}}<!--{BLOCK_TAG_START}-->else<!--{BLOCK_TAG_END}-->template/css/images/family/detail-content.jpg<!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->"/>
-</div>
+
+<!--{BLOCK_TAG_START}-->if cities<!--{BLOCK_TAG_END}-->
+		<!--{BLOCK_TAG_START}-->tmpl(piclist) getTemplate("piclist")<!--{BLOCK_TAG_END}-->
+<!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+
+
 
 <!--{BLOCK_TAG_START}-->else idtype=="videoid"<!--{BLOCK_TAG_END}-->
 

@@ -50,7 +50,7 @@ function publicBlog(subject, message, tags, auth){
 function submitBlog(){
 	var pattern = /^[\s]{0,}$/g;
 	if (!pattern.test($('#message').val())){
-		publicBlog($('#subject').val(), $('#message').val(), $('#tagname').val(), $('#auth').val());
+		publicBlog($('#subject').val(), $('#message').val(), $('#tags').val(), $('#auth').val());
 	}else{
 		alert("至少写一点东西！");
 	}
@@ -59,7 +59,7 @@ function submitBlog(){
 function submitPhoto(){
 	var pattern = /^[\s]{0,}$/g;
 	if (!pattern.test($('#message').val())){
-		pubilchPhoto($('#picid').val(), $('#message').val(), $('#tagname').val(), $('#auth').val());
+		pubilchPhoto($('#picid').val(), $('#message').val(), $('#tags').val(), $('#auth').val());
 	}else{
 		alert("至少写一点东西！");
 	}
@@ -165,7 +165,7 @@ $(function(){
 
 
 	$('#select-choice-1').change(function(){
-		$('#tagid').val($('#select-choice-1').val());
+		$('#tags').val($('#select-choice-1').val());
 	});
 
    $('#select-choice-2').change(function(){

@@ -171,3 +171,7 @@ $(function(){
 	getComment($('#idtype').val(), $('#id').val(), $('#page').val(), $('#perpage').val(), $('#auth').val());
 	
 })
+
+function getTemplate( key ) {
+		return $( "#" + key + "Template" ).template();
+}
