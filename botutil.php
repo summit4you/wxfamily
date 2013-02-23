@@ -12,14 +12,16 @@ function mobile_user_agent_switch(){
 			$version = preg_replace("/(.*) OS ([0-9]*)_(.*)/","$2", $_SERVER['HTTP_USER_AGENT']);
 			if ($version > 5){
 				$device = "ios6";
+			}else{
+				$device = "ios5";
 			}
-			$device = "ios5";
 		} else if( stristr($_SERVER['HTTP_USER_AGENT'],'iphone') || strstr($_SERVER['HTTP_USER_AGENT'],'iphone') ) {
 			$version = preg_replace("/(.*) OS ([0-9]*)_(.*)/","$2", $_SERVER['HTTP_USER_AGENT']);
 			if ($version > 5){
 				$device = "ios6";
+			}else{
+				$device = "ios5";
 			}
-			$device = "ios5";
 		} else if( stristr($_SERVER['HTTP_USER_AGENT'],'blackberry') ) {
 			$device = "blackberry";
 		} else if( stristr($_SERVER['HTTP_USER_AGENT'],'android') ) {
@@ -27,8 +29,8 @@ function mobile_user_agent_switch(){
 		}
 		if( $device ) {
 			return $device; 
-		} return false; {
-			return false;
+		} else{
+			return 'find';
 		}
 }
 
