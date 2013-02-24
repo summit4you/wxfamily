@@ -176,7 +176,7 @@ class wechatCallbackapiTest
 							}
 							if ($op==21){
 								$msgType = "text";
-								$contentStr = "回复图片进行发布";
+								$contentStr = "上传图片,发到你的家庭圈";
 								$resultStr = makeText($fromUsername, $toUsername, $time, $msgType, $contentStr);
 							}
 							$op = $op+1;
@@ -264,7 +264,7 @@ class wechatCallbackapiTest
 							unset($device['picUrl']);
 							$result = mysql_query("UPDATE  uchome_space SET device='".json_encode($device)."' WHERE wxkey='".$fromUsername."'");
 							$msgType = "text";
-							$contentStr = "正在上传，请输入1刷新动态";
+							$contentStr = "上传可能需要点时间，过一会你输入【1】就可以看到了";
 							$resultStr = makeText($fromUsername, $toUsername, $time, $msgType, $contentStr);
 							echo $resultStr;
 						}else{
@@ -306,7 +306,8 @@ class wechatCallbackapiTest
 
 					// asyn_get($path);
 					$msgType = "text";
-					$contentStr = "请描述图片，输入9置空";
+					$contentStr = "给图片增加一句有趣的文字描述
+（输入【9】回到主菜单）";
 					$resultStr = makeText($fromUsername, $toUsername, $time, $msgType, $contentStr);
 					echo $resultStr;
 				}else{
