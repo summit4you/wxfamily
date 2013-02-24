@@ -19,6 +19,7 @@ if ($_GET[op]=="register"){
 	$data = array();
 
 	$query = $_SGLOBAL['db']->query("SELECT * FROM ".tname('space')." WHERE wxkey='$_GET[wxkey]'");
+	$os = mobile_user_agent_switch();
 
 	if ($value=$_SGLOBAL['db']->fetch_array($query)){
 		$result = 2;
@@ -144,7 +145,7 @@ if ($_GET[op]=="register"){
 		$jsonurl = "http://www.familyday.com.cn/dapi/do.php?ac=login&username=".$username."&password=".$password;
 		$json = file_get_contents($jsonurl,0,null,null);
 		$json_output = json_decode($json);
-		$os = mobile_user_agent_switch();
+		
 		$device = json_encode(array("os"=>$os, "auth"=>$json_output->data->m_auth));
 
 		// 绑定微信key

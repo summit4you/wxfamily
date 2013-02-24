@@ -22,6 +22,8 @@ if ($_GET["op"]=="add"){
 	$username = empty($_POST['username']) ? '' : trim($_POST['username']);
 	$password = empty($_POST['password']) ? '' : trim($_POST['password']);
 
+	$os = mobile_user_agent_switch();
+
 	if(empty($username) || empty($password)) {
 		// showmessage('users_were_not_empty_please_re_login',  'wx.php?do=bind&wxkey='.$_POST['wxkey']);
 		$result = -1;
@@ -50,7 +52,7 @@ if ($_GET["op"]=="add"){
 	$json = file_get_contents($jsonurl,0,null,null);
 	$json_output = json_decode($json);
 
-	$device = json_encode(array("os"=>mobile_user_agent_switch(), "auth"=>$json_output->data->m_auth));
+	$device = json_encode(array("os"=>$os, "auth"=>$json_output->data->m_auth));
 	// bind
 	updatetable('space', array('wxkey'=>$_POST['wxkey'], 'device'=>$device), array('uid'=>$passport['uid']));
 	
