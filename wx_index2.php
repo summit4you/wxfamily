@@ -125,9 +125,9 @@ class wechatCallbackapiTest
 						$device = "";
 						if($row = mysql_fetch_array($result))
 						{	
-							$device = unserialize($row["device"]);
+							$device = object2array(json_decode($row["device"]));
 						}
-						mysql_close($con);
+						
 						if ($device["os"]  == "ios6" ){
 							$msgType = "news";
 						
@@ -154,12 +154,14 @@ class wechatCallbackapiTest
 								$resultStr = makeArticles($fromUsername, $toUsername, $time, $msgType, "发布",$articles); 
 
 							}else{
+								
 								$url = "http://www.familyday.com.cn/wx/wx.php?do=bind&wxkey=".$fromUsername;
 								$pic = "http://www.familyday.com.cn/wx/images/bind.jpg";
 								$articles[] = makeArticleItem("绑定微信帐号", "你还没有绑定微信号，请点击进入微信绑定页", $pic, $url);
 								$resultStr = makeArticles($fromUsername, $toUsername, $time, $msgType, "绑定微信帐号",$articles);  
 							}
-						}elseif($device["os"]==""){
+						}elseif(empty($device)||$device['os']=''){
+							$msgType = "news";
 							$url = "http://www.familyday.com.cn/wx/wx.php?do=bind&wxkey=".$fromUsername;
 							$pic = "http://www.familyday.com.cn/wx/images/bind.jpg";
 							$articles[] = makeArticleItem("绑定微信帐号", "你还没有绑定微信号，请点击进入微信绑定页", $pic, $url);
@@ -174,21 +176,16 @@ class wechatCallbackapiTest
 							}
 							if ($op==21){
 								$msgType = "text";
-								$contentStr = "步骤1：通过回复图片上传";
+								$contentStr = "回复图片进行发布";
 								$resultStr = makeText($fromUsername, $toUsername, $time, $msgType, $contentStr);
 							}
 							$op = $op+1;
 							$device['cp'] = $op;
-							$con = mysql_connect("localhost","familyday","fmd30991261");
-							if (!$con)
-							{
-								die('Could not connect: ' . mysql_error());
-							}
-							mysql_select_db("familyday", $con);
-							$result = mysql_query("UPDATE  uchome_space SET device='".serialize($device)."' WHERE wxkey='".$fromUsername."'");
-							mysql_close($con);
+							
+							$result = mysql_query("UPDATE  uchome_space SET device='".json_encode($device)."' WHERE wxkey='".$fromUsername."'");
+							
 						}
-
+						mysql_close($con);
 
 					}elseif($keyword == "3"){
 						$msgType = "news";
@@ -213,19 +210,74 @@ class wechatCallbackapiTest
 						$articles[] = makeArticleItem("关于微信家庭圈", "关于微信家庭圈", $pic, $url);
 
 						$resultStr = makeArticles($fromUsername, $toUsername, $time, $msgType, "绑定微信帐号",$articles); 
-					}elseif($keyword == "4"){
-						$msgType = "text";
-						$contentStr = mobile_user_agent_switch();
-						$resultStr = makeText($fromUsername, $toUsername, $time, $msgType, $contentStr);
+					}elseif($keyword == "9"){
+						$con = mysql_connect("localhost","familyday","fmd30991261");
+						if (!$con)
+						{
+							die('Could not connect: ' . mysql_error());
+						}
+						mysql_select_db("familyday", $con);
+						$result = mysql_query("SELECT * FROM uchome_space WHERE wxkey='".$fromUsername."'");
+						$device = "";
+						if($row = mysql_fetch_array($result))
+						{	
+							$device = object2array(json_decode($row["device"]));
+						}
+						
+						if(isset($device['cp'])&&$device['cp']==23)
+						{
+							$device['picUrl'] = object2array($device['picUrl']);
+							$device['picUrl'] = $device['picUrl']["0"];
+							$path = "/wx/wx.php?do=upload&url=".$device['picUrl']."&m_auth=".rawurlencode($device["auth"])."&message=";
+							asyn_get($path);
+							unset($device['cp']);
+							unset($device['picUrl']);
+							$result = mysql_query("UPDATE  uchome_space SET device='".json_encode($device)."' WHERE wxkey='".$fromUsername."'");
+							$msgType = "text";
+							$contentStr = "正在上传，请输入1刷新动态";
+							$resultStr = makeText($fromUsername, $toUsername, $time, $msgType, $contentStr);
+							echo $resultStr;
+						}
+						mysql_close($con);
 					}else{
-						$msgType = "text";
-						$contentStr = "你好！欢迎来到“家庭圈”，绑定微信机器人，帮你快速了解家人动态、发布照片和日记、立即跟家人分享！
+
+						$con = mysql_connect("localhost","familyday","fmd30991261");
+						if (!$con)
+						{
+							die('Could not connect: ' . mysql_error());
+						}
+						mysql_select_db("familyday", $con);
+						$result = mysql_query("SELECT * FROM uchome_space WHERE wxkey='".$fromUsername."'");
+						$device = "";
+						if($row = mysql_fetch_array($result))
+						{	
+							$device = object2array(json_decode($row["device"]));
+						}
+						
+						if(isset($device['cp'])&&$device['cp']==23)
+						{
+							$device['picUrl'] = object2array($device['picUrl']);
+							$device['picUrl'] = $device['picUrl']["0"];
+							$path = "/wx/wx.php?do=upload&url=".$device['picUrl']."&m_auth=".rawurlencode($device["auth"])."&message=".$keyword;
+							asyn_get($path);
+							unset($device['cp']);
+							unset($device['picUrl']);
+							$result = mysql_query("UPDATE  uchome_space SET device='".json_encode($device)."' WHERE wxkey='".$fromUsername."'");
+							$msgType = "text";
+							$contentStr = "正在上传，请输入1刷新动态";
+							$resultStr = makeText($fromUsername, $toUsername, $time, $msgType, $contentStr);
+							echo $resultStr;
+						}else{
+							$msgType = "text";
+							$contentStr = "你好！欢迎来到“家庭圈”，绑定微信机器人，帮你快速了解家人动态、发布照片和日记、立即跟家人分享！
 
 •回复【1】——查看你的家庭圈动态；
 •回复【2】——发表照片或日记；
 •回复【3】——绑定微信、注册家庭圈；
 ";
-						$resultStr = makeText($fromUsername, $toUsername, $time, $msgType, $contentStr); 
+							$resultStr = makeText($fromUsername, $toUsername, $time, $msgType, $contentStr); 
+						}
+						mysql_close($con);
 					}
                 	echo $resultStr;
                 }elseif(!empty($picUrl)){
@@ -233,6 +285,7 @@ class wechatCallbackapiTest
 					$contentStr = $picUrl;
 					$resultStr = makeText($fromUsername, $toUsername, $time, $msgType, $contentStr);
 					echo $resultStr; */
+
 					$con = mysql_connect("localhost","familyday","fmd30991261");
 					if (!$con)
 					{
@@ -243,28 +296,17 @@ class wechatCallbackapiTest
 					$device = "";
 					if($row = mysql_fetch_array($result))
 					{	
-						$device = unserialize($row["device"]);
+						$device = object2array(json_decode($row["device"]));
 					}
+					
+					$device["cp"]=23;
+					$device["picUrl"]=$picUrl;
+					$result = mysql_query("UPDATE  uchome_space SET device='".json_encode($device)."' WHERE wxkey='".$fromUsername."'");
 					mysql_close($con);
 
-					$path = "/wx/wx.php?do=upload&url=".$picUrl."&m_auth=".$device["auth"];
-
-					asyn_get($path);
-
-					
-
-					$url = "http://www.familyday.com.cn/dapi/cp.php?ac=upload";
-					$file_name_with_full_path = realpath($rndFileName);
-					$data = array(
-						"op"=>"uploadphoto",
-						"topicid"=>"0",
-						"pic_title"=>"",
-						"m_auth"=>$device["auth"],
-						"Filedata"  => "@".$file_name_with_full_path,    
-					);
-					
+					// asyn_get($path);
 					$msgType = "text";
-					$contentStr =uploadByCURL($data,$url);
+					$contentStr = "请描述图片，输入9置空";
 					$resultStr = makeText($fromUsername, $toUsername, $time, $msgType, $contentStr);
 					echo $resultStr;
 				}else{
