@@ -45,7 +45,9 @@
 			X 收藏、转发
 			</div>
 			<div class="publish-btn2"><a href="wx.php?do=feed&wxkey=$_GET[wxkey]" data-ajax="false" data-role="button">看看家人的动态</a></div>
+			<!--{if $device[os]=="ios6"-->
 			<div class="publish-btn2"><a href="wx.php?do=cp&wxkey=$_GET[wxkey]" data-ajax="false" data-role="button">发布照片</a></div>
+			<!--{/if}-->
 		<!--{elseif $result==2}-->
 			<div class="tips">您已经注册过我家帐号。<br/>
 			你可以：<br/>
