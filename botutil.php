@@ -5,6 +5,53 @@
 
 include_once( 'simple_html_dom.php' );
 
+function mobile_user_agent_switch(){
+		$device = '';
+ 
+		if( stristr($_SERVER['HTTP_USER_AGENT'],'ipad') ) {
+			$version = preg_replace("/(.*) OS ([0-9]*)_(.*)/","$2", $_SERVER['HTTP_USER_AGENT']);
+			if ($version > 5){
+				$device = "ios6";
+			}else{
+				$device = "ios5";
+			}
+		} else if( stristr($_SERVER['HTTP_USER_AGENT'],'iphone') || strstr($_SERVER['HTTP_USER_AGENT'],'iphone') ) {
+			$version = preg_replace("/(.*) OS ([0-9]*)_(.*)/","$2", $_SERVER['HTTP_USER_AGENT']);
+			if ($version > 5){
+				$device = "ios6";
+			}else{
+				$device = "ios5";
+			}
+		} else if( stristr($_SERVER['HTTP_USER_AGENT'],'blackberry') ) {
+			$device = "blackberry";
+		} else if( stristr($_SERVER['HTTP_USER_AGENT'],'android') ) {
+			$device = "android";
+		}
+		if( $device ) {
+			return $device; 
+		} else{
+			return '';
+		}
+}
+
+function mobile_user_agent_switch2(){
+		$device = '';
+ 
+		if( stristr($_SERVER['HTTP_USER_AGENT'],'ipad') ) {
+			$version = preg_replace("/(.*) OS ([0-9]*)_(.*)/","$2", $_SERVER['HTTP_USER_AGENT']);
+			if ($version > 5){
+				return true;
+			}
+		} else if( stristr($_SERVER['HTTP_USER_AGENT'],'iphone') || strstr($_SERVER['HTTP_USER_AGENT'],'iphone') ) {
+			$version = preg_replace("/(.*) OS ([0-9]*)_(.*)/","$2", $_SERVER['HTTP_USER_AGENT']);
+			if ($version > 5){
+				return true;
+			}
+		}
+
+		return false;
+}
+
 function makeText($fromUsername, $toUsername, $time, $msgType, $contentStr)
 {
 	$textTpl = "<xml>
@@ -180,4 +227,48 @@ function getAuth(){
 	$json = file_get_contents($jsonurl,0,null,null);
 	return $json;
 }
+
+function uploadByCURL($post_data,$post_url){
+	$curl = curl_init();
+	curl_setopt($curl, CURLOPT_URL, $post_url);
+	curl_setopt($curl, CURLOPT_POST, 1 );
+	curl_setopt($curl, CURLOPT_POSTFIELDS, $post_data);
+	curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+	curl_setopt($curl,CURLOPT_USERAGENT,"Mozilla/4.0");
+	$result = curl_exec($curl);
+	$error = curl_error($curl);
+	return $error ? $error : $result;
+}
+
+function asyn_get($path)
+{
+	$host = "www.familyday.com.cn";
+	
+	$cookie = Session_id();
+	$fp = fsockopen($host, 80, $errno, $errstr, 30);
+	if (!$fp) {
+		print "$errstr ($errno)<br />\n";
+		exit;
+	}
+	$out = "GET ".$path." HTTP/1.1\r\n";
+	$out .= "Host: ".$host."\r\n";
+	$out .= "Connection: Close\r\n";
+	$out .= "Cookie: ".$cookie."\r\n\r\n";
+	fwrite($fp, $out);
+	fclose($fp);
+} 
+
+
+function object2array($object) {  
+    if (is_object($object)) {  
+        foreach ($object as $key => $value) {  
+            $array[$key] = $value;  
+        }  
+    }  
+    else {  
+        $array = $object;  
+    }  
+    return $array;  
+}  
+
 ?>

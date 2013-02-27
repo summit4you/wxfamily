@@ -54,10 +54,15 @@ class wechatCallbackapiTest
 				
 				if(!empty( $keyword ))
                 {
-					runlog("wx", $keyword);
+					
 					if ($keyword=='Hello2BizUser'){
 						$msgType = "text";
-						$contentStr = $this->welcome($toUsername);
+						$contentStr = "你好！欢迎来到“家庭圈”，绑定微信机器人，帮你快速了解家人动态、发布照片和日记、立即跟家人分享！
+
+•回复【1】——查看你的家庭圈动态；
+•回复【2】——发表照片或日记；
+•回复【3】——绑定微信、注册家庭圈；
+";
 						$resultStr = makeText($fromUsername, $toUsername, $time, $msgType, $contentStr); 
 					}elseif($keyword == "1"){
 						$msgType = "news";
@@ -108,7 +113,7 @@ class wechatCallbackapiTest
 						
 
 					}elseif($keyword == "2"){
-
+						
 						$msgType = "news";
 					
 						$jsonurl = "http://www.familyday.com.cn/dapi/space.php?do=wxfeed&perpage=5&page=1&wxkey=".$fromUsername;;
@@ -166,6 +171,10 @@ class wechatCallbackapiTest
 						$articles[] = makeArticleItem("关于微信家庭圈", "关于微信家庭圈", $pic, $url);
 
 						$resultStr = makeArticles($fromUsername, $toUsername, $time, $msgType, "绑定微信帐号",$articles); 
+					}elseif($keyword == "4"){
+						$msgType = "text";
+						$contentStr = mobile_user_agent_switch();
+						$resultStr = makeText($fromUsername, $toUsername, $time, $msgType, $contentStr);
 					}else{
 						$msgType = "text";
 						$contentStr = "你好！欢迎来到“家庭圈”，绑定微信机器人，帮你快速了解家人动态、发布照片和日记、立即跟家人分享！

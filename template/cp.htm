@@ -21,14 +21,12 @@
       .script("template/js/jquery.retina.js")
       .wait()
 	  .script("template/js/jquery.tmpl.min.js")
-	  .script("template/js/util.min.js")
 	  .script("template/js/jquery.exif.min.js")
 	  .script("template/js/jquery.canvasResize.min.js")
-	  .wait()
-	  .script("template/js/cp.min.js");
-<!--{DOLLOR_TAG}-->CLS.remove(['template/js/util.min.js', 'template/js/cp.min.js']);
+	  .wait();
 </script>
-
+<script type="text/javascript" src="template/js/util.min.js"></script>
+<script type="text/javascript" src="template/js/cp.min.js"></script>
 
 </head>
 <body id="top">
@@ -134,7 +132,7 @@
 	<input type="hidden" id="auth" name="auth" value="$m_auth"/>
 	<input type="hidden" id="uid" name="uid" value="$_GET[uid]"/>
 	<input type="hidden" id="picid" name="picid" value="0"/>
-    <input type="hidden" id="tagname" name="tagname" value="$taglist[0][tagname]"/>
+    <input type="hidden" id="tags" name="tags" value="$taglist[0][tagname]"/>
     
 </body>
 </html>

@@ -39,6 +39,14 @@ function getfeeds2(auth, perpage, page){
 				}
 				$("#feedTemplate").tmpl(data ).appendTo('#feedlist');
 				$('#page').val(parseInt($('#page').val())+1);
+				
+				 $('.feed-photo').each(function(){
+				 		$(this).bind("click", function(ev){
+				 			var href = $($(this).attr('data-a-id')).attr('href');
+				 			window.location.href = href;
+				 		});
+				 });
+				  
 			  }
 		  }else{
 			alert(data.msg);
@@ -103,5 +111,6 @@ $(function(){
 	$('.header-logo').click(function(){
 		window.location.href = "http://www.familyday.com.cn/wx/wx.php?do=feed&wxkey=$_GET[wxkey]";
 	});
+	  
+});
 
-})

@@ -356,7 +356,7 @@ body{
 	margin-left:0px;
 	margin-right:0px;
 	.margin-top(960, 32);
-
+	line-height: normal;
 	.subject{
 		display:inline-block;
 		.margin-left(640, 20);
@@ -365,10 +365,10 @@ body{
 		.padding-right(640,17);
 		background-color: white;
 		color:#141414;
-		.font-size-em(17);
-		overflow:auto;
+		.font-size-em(20);
+		
 		width:auto;
-
+		line-height: normal;
 	}
 }
 
@@ -386,7 +386,7 @@ body{
 	.margin-right(640, 20);
 	.margin-top(960, 17);
 	color:#666666;
-	.font-size-em(14);
+	.font-size-em(18);
 	//font-family: 'lthj';
 	
 	.time{
@@ -466,7 +466,7 @@ body{
 	}
 	.editor{
 		.box(horizontal, end, end);
-		.margin-top(960, 15);
+		.margin-top(960, 17);
 		clear:both;
 	 	overflow:hidden;
 		.textarea{
@@ -490,8 +490,8 @@ body{
 				border: 1px  solid #cccccc;
 			}
 			
-			padding-bottom:1000px; /* @max-column-height */
-   			margin-bottom:-1000px; /* @max-column-height */
+			padding-bottom:100px; /* @max-column-height */
+   			margin-bottom:-100px; /* @max-column-height */
 		}
 		.publish-btn{
 			background-color: #999999;
@@ -502,8 +502,8 @@ body{
 			
    			margin-top:0;
 			a{
-				padding-bottom:1000px; /* @max-column-height */
-   				margin-bottom:-1000px; /* @max-column-height */
+				padding-bottom:100px; /* @max-column-height */
+   				margin-bottom:-100px; /* @max-column-height */
 				 line-height:40px;   
 				color: white;
 				.font-size-em(15);
@@ -607,14 +607,14 @@ body{
 	.msg-content{
 		.width(600,380);
 		.margin-left(600,20);
-		padding-bottom:1000px; /* @max-column-height */
-    	margin-bottom:-1000px; /* @max-column-height */
+		padding-bottom:100px; /* @max-column-height */
+    	margin-bottom:-100px; /* @max-column-height */
 	}
 	.msg-content2{
 		width:100%;
 		.margin-left(600,20);
-		padding-bottom:1000px; /* @max-column-height */
-    	margin-bottom:-1000px; /* @max-column-height */
+		padding-bottom:100px; /* @max-column-height */
+    	margin-bottom:-100px; /* @max-column-height */
     	.margin-top(960,25);
     	textarea{
     		padding-bottom:0; /* @max-column-height */
@@ -628,8 +628,8 @@ body{
 	    border-radius: 0px;
 		border: 0px;
 		height:100%;
-		padding-bottom:1000px; /* @max-column-height */
-   		margin-bottom:-1000px; /* @max-column-height */
+		padding-bottom:100px; /* @max-column-height */
+   		margin-bottom:-100px; /* @max-column-height */
    		box-shadow:none;
    		-webkit-box-shadow:none;
    		-moz-box-shadow:none;
@@ -642,8 +642,8 @@ body{
 		border: 0px;
 		box-shadow: none;
 		height:100%;
-		padding-bottom:1000px; /* @max-column-height */
-   		margin-bottom:-1000px; /* @max-column-height */
+		padding-bottom:100px; /* @max-column-height */
+   		margin-bottom:-100px; /* @max-column-height */
    		-webkit-box-shadow:none;
 	}
 }
@@ -895,4 +895,6 @@ You probably don't need to change these. */
 
 .ui-content{
 	padding:0;
+	
 }
+
