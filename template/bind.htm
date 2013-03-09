@@ -35,7 +35,7 @@
 		<div data-role="content">
 		
 		<!--{if $result==1}-->
-			<div class="tips">您已经成功的将微信和我家的账号绑定了。<br/>
+			<div class="tips">您已经成功的将微信和Family的账号绑定了。<br/>
 			你可以：<br/>
 			—快速掌握家人动态<br/>
 			—发布照片、日记跟家人分享<br/>
@@ -50,22 +50,22 @@
 			<div class="publish-btn2"><a href="wx.php?do=cp&wxkey=$_GET[wxkey]" data-ajax="false" data-role="button">发布照片</a></div>
 			<!--{/if}-->
 		<!--{elseif $result==-1}-->			
-			<div class="tips">未能将您的微信和我家账号实现绑定<br/>
+			<div class="tips">未能将您的微信和Family账号实现绑定<br/>
 							原因可能是：<br/>
 							—检查您输入的账号密码是否正确<br/>
-							—您还没有注册我家的账号
+							—您还没有注册Family的账号
 			</div>
 			<div class="publish-btn2"><a href="wx.php?do=bind&wxkey=$_GET[wxkey]" data-ajax="false" data-role="button">重新绑定</a></div>
 			<!--{if $os=="ios6"}-->
-			<div class="publish-btn2"><a href="wx.php?do=reg&wxkey=$_GET[wxkey]" data-ajax="false" data-role="button">注册一个我家的帐号</a></div>
+			<div class="publish-btn2"><a href="wx.php?do=reg&wxkey=$_GET[wxkey]" data-ajax="false" data-role="button">注册一个Family的帐号</a></div>
 			<!--{/if}-->
 		<!--{else}-->
 
-			<div class="tips"> 将微信绑定到我家<br/><span class="tips2">通过微信在家庭圈分享</span></div>
+			<div class="tips"> 将微信绑定到Family<br/><span class="tips2">通过微信在家庭圈分享</span></div>
 
 			<form action="wx.php?do=bind&op=add&wxkey=$_GET[wxkey]" method="post" data-ajax="false" id="callAjaxForm">
 				<div class="input-field"><input id="username" name="username" placeholder="手机号码" value="" type="text" /></div>
-				<div class="input-field"><input id="password" name="password" placeholder="请输入你在我家的密码" value="" type="password" /></div>
+				<div class="input-field"><input id="password" name="password" placeholder="请输入你在Family的密码" value="" type="password" /></div>
 				<input id="wxkey" type="hidden" name="wxkey" value="$_GET['wxkey']" />
 				<div class="publish-btn"><button type="submit" id="submit" name="submit" value="submit" data-theme="a">确定</button></div>
 			</form>

@@ -35,7 +35,7 @@
 		<div data-role="content">
 		
 		<!--{if $result==1}-->
-			<div class="tips">您已经成功的注册我家的账号，并与微信绑定。<br/>
+			<div class="tips">您已经成功的注册Family账号，并与微信绑定。<br/>
 			你可以：<br/>
 			—快速掌握家人动态<br/>
 			—发布照片、日记跟家人分享<br/>
@@ -49,7 +49,7 @@
 			<div class="publish-btn2"><a href="wx.php?do=cp&wxkey=$_GET[wxkey]" data-ajax="false" data-role="button">发布照片</a></div>
 			<!--{/if}-->
 		<!--{elseif $result==2}-->
-			<div class="tips">您已经注册过我家帐号。<br/>
+			<div class="tips">您已经注册过Family帐号。<br/>
 			你可以：<br/>
 			—快速掌握家人动态<br/>
 			—发布照片、日记跟家人分享<br/>
@@ -67,13 +67,13 @@
 			<div class="tips">未能注册成功<br/>
 							原因可能是：<br/>
 							—检查您输入的账号密码是否正确<br/>
-							—您还没有注册我家的账号
+							—您还没有注册Family的账号
 			</div>
 			<div class="publish-btn2"><a href="wx.php?do=bind&wxkey=$_GET[wxkey]" data-ajax="false" data-role="button">重新绑定</a></div>
-			<div class="publish-btn2"><a href="wx.php?do=reg&wxkey=$_GET[wxkey]" data-ajax="false" data-role="button">注册一个我家的帐号</a></div>
+			<div class="publish-btn2"><a href="wx.php?do=reg&wxkey=$_GET[wxkey]" data-ajax="false" data-role="button">注册一个Family的帐号</a></div>
 		<!--{else}-->
 
-			<div class="tips"> 注册一个我家帐号<br/><span class="tips2">会自动与您的微信绑定</span></div>
+			<div class="tips"> 注册一个Family帐号<br/><span class="tips2">会自动建立你的微信家庭圈</span></div>
 
 			<form action="wx.php?do=reg&op=register&wxkey=$_GET[wxkey]" method="post" data-ajax="false" id="callAjaxForm">
 				<div class="input-field"><input id="name" name="name" placeholder="填写昵称" value="" type="text" /></div>
