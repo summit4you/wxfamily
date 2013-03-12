@@ -12,7 +12,7 @@ function iOSversion() {
 function pubilchPhoto(picid, message, tags, auth){
 		$.ajax({
 		dataType: "jsonp",
-		url: "http://www.familyday.com.cn/dapi/cp.php?ac=photo&m_auth=" + encodeURIComponent(auth) + "&title["+picid+"]=&message=" + encodeURIComponent(message) + "&friend=0&come=wx&makefeed=1&photosubmit=1&tags=" + encodeURIComponent(tags),
+		url: "http://www.familyday.com.cn/dapi/cp.php?ac=photo&m_auth=" + encodeURIComponent(auth) + "&picids="+picid+"&message=" + encodeURIComponent(message) + "&friend=0&come=wx&makefeed=1&photosubmit=1&tags=" + encodeURIComponent(tags),
 	   
 		success: function( data ) {
 		  /* Get the movies array from the data */
