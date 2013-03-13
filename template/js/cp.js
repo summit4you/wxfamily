@@ -116,7 +116,7 @@ $(function(){
 							fd.append($('input').attr('name'), f, $('input[type=file]')[0].files[0].name);
 						fd.append("op", "uploadphoto");
 						fd.append("topicid", "0");
-						fd.append("pic_title", "from wx");
+						fd.append("pic_title", "");
 						fd.append("m_auth", $('#auth').val());
 
 						 $.ajax({
