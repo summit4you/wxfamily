@@ -58,7 +58,7 @@ function getDetail(type, id, uid, auth){
 					data.dateline = date('Y-m-d H:i',data.dateline);
 					data.user = getUser(data.uid, auth);
 					data.idtype = "photoid";
-					data.piclistlen = data.piclist.length;
+					data.piclistlen = data.picid.length;
 					$("#detailTemplate").tmpl(data ).appendTo('#detail-panel');
 					 $('img[data-large]').touchGallery({
 				    	getSource: function() { 
