@@ -19,7 +19,7 @@ runlog('upload', $result);
 $result = json_decode($result);
 $picid = $result->data->picid;
 
-$url = "http://www.familyday.com.cn/dapi/cp.php?ac=photo&m_auth=".$_GET["m_auth"]."&picids=".$picid."&message=".$_GET["message"]."&friend=0&come=wx&makefeed=1&photosubmit=1&tags=默认空间";
+$url = "http://www.familyday.com.cn/dapi/cp.php?ac=photo&m_auth=".$_GET["m_auth"]."&picids=".$picid."&message=".$_GET["message"]."&friend=0&come=wx&makefeed=1&photosubmit=1&tags=".urlencode("默认空间");
 $result = file_get_contents($url);
 runlog('upload', $result);
 
