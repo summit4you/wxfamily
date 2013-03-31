@@ -3,7 +3,7 @@ function getfeeds2(auth, perpage, page){
 	 $("#morebtn").addClass('ui-disabled');
 	 $.ajax({
 		dataType: "jsonp",
-		url: "http://www.familyday.com.cn/dapi/space.php?do=home&m_auth=" + encodeURIComponent(auth) + "&page=" + page + "&perpage=" + perpage,
+		url: "http://www.familyday.com.cn/dapi/space.php?do=home&m_auth=" + auth + "&page=" + page + "&perpage=" + perpage,
 	   
 		success: function( data ) {
 		  /* Get the movies array from the data */
